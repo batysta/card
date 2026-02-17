@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horários CMT XVIII - 2026</title>
     <link rel="icon" href="https://batysta.com/horarioscmtxviii/cmt.png" sizes="32x32">
+    <meta name="theme-color" content="#0f766e">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Horários CMT XVIII">
     <link rel="apple-touch-icon" href="https://batysta.com/horarioscmtxviii/cmt.png">
-    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Hor%C3%A1rios%22CMT%22XVIII%22,%22short_name%22:%22Hor%C3%A1rios%22CMT%22XVIII%22,%22display%22:%22standalone%22,%22start_url%22:%22.%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%230f766e%22,%22icons%22:[{%22src%22:%22https://batysta.com/horarioscmtxviii/cmt.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%20maskable%22}]}">
+    <link rel="manifest" href="./horarios.webmanifest">
 
     <style>
         :root {
@@ -260,6 +261,7 @@
 
     <div id="android-install-prompt">
         <p>Deseja instalar o app <strong>Horários</strong> no seu Android?</p>
+        <p id="android-install-help" style="display:none; color:#64748b;">Se não abrir automático, use o menu do navegador e toque em <strong>Instalar app</strong> ou <strong>Adicionar à tela inicial</strong>.</p>
         <button id="btn-install-android">Instalar Agora</button>
         <button onclick="document.getElementById('android-install-prompt').style.display='none'" style="background:#64748b;">Depois</button>
     </div>
@@ -471,13 +473,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          const swCode = `
-            self.addEventListener('install', (e) => self.skipWaiting());
-            self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
-          `;
-          const blob = new Blob([swCode], { type: 'text/javascript' });
-          const url = URL.createObjectURL(blob);
-          navigator.serviceWorker.register(url).catch((err) => console.log('SW Erro:', err));
+          navigator.serviceWorker.register('./horarios-sw.js').catch((err) => console.log('SW Erro:', err));
         });
       }
     </script>
@@ -511,10 +507,12 @@
       let deferredPrompt;
       const androidPrompt = document.getElementById('android-install-prompt');
       const btnInstallAndroid = document.getElementById('btn-install-android');
+      const androidInstallHelp = document.getElementById('android-install-help');
 
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
+        androidInstallHelp.style.display = 'none';
         androidPrompt.style.display = 'block';
         setTimeout(() => {
           androidPrompt.style.display = 'none';
@@ -535,7 +533,7 @@
           deferredPrompt = null;
           androidPrompt.style.display = 'none';
         } else {
-          alert('Se a instalação não abrir automaticamente, use o menu do navegador e toque em "Instalar app" ou "Adicionar à tela inicial".');
+          androidInstallHelp.style.display = 'block';
         }
       });
 

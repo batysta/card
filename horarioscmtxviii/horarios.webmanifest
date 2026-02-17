@@ -1,0 +1,23 @@
+{
+  "name": "Horários CMT XVIII",
+  "short_name": "Horários CMT",
+  "start_url": "./horarios.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "https://batysta.com/horarioscmtxviii/cmt.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://batysta.com/horarioscmtxviii/cmt.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
