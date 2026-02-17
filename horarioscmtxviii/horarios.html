@@ -42,6 +42,37 @@
             box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
         }
 
+        .tabs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 0 0 12px 0;
+        }
+
+        .tab-btn {
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tab-btn.active {
+            background: #0f766e;
+            border-color: #0f766e;
+            color: #ffffff;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -112,13 +143,19 @@
     <main class="app">
         <h1 id="doc-title">Horários</h1>
         <p id="load-status" class="status">Carregando planilha...</p>
-        <div class="table-wrap">
-            <h2 style="margin: 10px 10px 0 10px; color:#0f172a;">Turno Matutino</h2>
-            <table id="sheet-table-matutino"></table>
+        <div class="tabs">
+            <button id="tab-btn-matutino" class="tab-btn active" type="button">Matutino</button>
+            <button id="tab-btn-vespertino" class="tab-btn" type="button">Vespertino</button>
         </div>
-        <div class="table-wrap" style="margin-top:12px;">
-            <h2 style="margin: 10px 10px 0 10px; color:#0f172a;">Turno Vespertino</h2>
-            <table id="sheet-table-vespertino"></table>
+        <div id="panel-matutino" class="tab-panel active">
+            <div class="table-wrap">
+                <table id="sheet-table-matutino"></table>
+            </div>
+        </div>
+        <div id="panel-vespertino" class="tab-panel">
+            <div class="table-wrap">
+                <table id="sheet-table-vespertino"></table>
+            </div>
         </div>
     </main>
 
@@ -248,6 +285,24 @@
       }
 
       loadSheets();
+    </script>
+
+    <script>
+      const tabBtnMatutino = document.getElementById('tab-btn-matutino');
+      const tabBtnVespertino = document.getElementById('tab-btn-vespertino');
+      const panelMatutino = document.getElementById('panel-matutino');
+      const panelVespertino = document.getElementById('panel-vespertino');
+
+      function setActiveTab(tabName) {
+        const isMatutino = tabName === 'matutino';
+        tabBtnMatutino.classList.toggle('active', isMatutino);
+        tabBtnVespertino.classList.toggle('active', !isMatutino);
+        panelMatutino.classList.toggle('active', isMatutino);
+        panelVespertino.classList.toggle('active', !isMatutino);
+      }
+
+      tabBtnMatutino.addEventListener('click', () => setActiveTab('matutino'));
+      tabBtnVespertino.addEventListener('click', () => setActiveTab('vespertino'));
     </script>
 
     <script>
