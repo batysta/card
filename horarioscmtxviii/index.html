@@ -262,6 +262,7 @@
     <div id="android-install-prompt">
         <p>Deseja instalar o app <strong>Horários</strong> no seu Android?</p>
         <p id="android-install-help" style="display:none; color:#64748b;">Se não abrir automático, use o menu do navegador e toque em <strong>Instalar app</strong> ou <strong>Adicionar à tela inicial</strong>.</p>
+        <p id="android-install-status" style="display:none; color:#0f766e;"></p>
         <button id="btn-install-android">Instalar Agora</button>
         <button onclick="document.getElementById('android-install-prompt').style.display='none'" style="background:#64748b;">Depois</button>
     </div>
@@ -505,14 +506,22 @@
 
     <script>
       let deferredPrompt;
+      let isPromptInProgress = false;
       const androidPrompt = document.getElementById('android-install-prompt');
       const btnInstallAndroid = document.getElementById('btn-install-android');
       const androidInstallHelp = document.getElementById('android-install-help');
+      const androidInstallStatus = document.getElementById('android-install-status');
+
+      function resetAndroidInstallMessages() {
+        androidInstallHelp.style.display = 'none';
+        androidInstallStatus.style.display = 'none';
+        androidInstallStatus.textContent = '';
+      }
 
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        androidInstallHelp.style.display = 'none';
+        resetAndroidInstallMessages();
         androidPrompt.style.display = 'block';
         setTimeout(() => {
           androidPrompt.style.display = 'none';
@@ -520,6 +529,7 @@
       });
 
       if (isAndroid() && !isInStandaloneMode()) {
+        resetAndroidInstallMessages();
         androidPrompt.style.display = 'block';
         setTimeout(() => {
           androidPrompt.style.display = 'none';
@@ -527,13 +537,45 @@
       }
 
       btnInstallAndroid.addEventListener('click', async () => {
+        if (isPromptInProgress) return;
+
         if (deferredPrompt) {
-          deferredPrompt.prompt();
-          await deferredPrompt.userChoice;
-          deferredPrompt = null;
-          androidPrompt.style.display = 'none';
+          try {
+            isPromptInProgress = true;
+            btnInstallAndroid.disabled = true;
+            btnInstallAndroid.textContent = 'Aguarde...';
+            resetAndroidInstallMessages();
+
+            deferredPrompt.prompt();
+            const choice = await deferredPrompt.userChoice;
+            const outcome = choice && choice.outcome ? choice.outcome : 'unknown';
+
+            if (outcome === 'accepted') {
+              androidInstallStatus.textContent = 'Instalação iniciada com sucesso.';
+              androidInstallStatus.style.display = 'block';
+              setTimeout(() => {
+                androidPrompt.style.display = 'none';
+              }, 1200);
+            } else {
+              androidInstallHelp.style.display = 'block';
+              androidInstallStatus.textContent = 'Instalação cancelada. Você pode tentar novamente.';
+              androidInstallStatus.style.display = 'block';
+            }
+          } catch (err) {
+            androidInstallHelp.style.display = 'block';
+            androidInstallStatus.textContent = 'Não foi possível abrir a instalação agora.';
+            androidInstallStatus.style.display = 'block';
+            console.error('Erro ao iniciar instalação:', err);
+          } finally {
+            deferredPrompt = null;
+            isPromptInProgress = false;
+            btnInstallAndroid.disabled = false;
+            btnInstallAndroid.textContent = 'Instalar Agora';
+          }
         } else {
           androidInstallHelp.style.display = 'block';
+          androidInstallStatus.textContent = 'Instalação automática não disponível neste momento.';
+          androidInstallStatus.style.display = 'block';
         }
       });
 
