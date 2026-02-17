@@ -304,12 +304,28 @@
         return [];
       }
 
+      async function fetchSheetRowsByGid(gid) {
+        const urls = [
+          `${SHEET_PUB_BASE_URL}?output=csv&single=true&gid=${encodeURIComponent(gid)}`,
+          `${SHEET_GVIZ_BASE_URL}&gid=${encodeURIComponent(gid)}`
+        ];
+        for (const url of urls) {
+          try {
+            const rows = await fetchCsvRows(url);
+            if (rows.length) return rows;
+          } catch (err) {
+            console.error(`Erro ao carregar gid fixo ${gid}:`, err);
+          }
+        }
+        return [];
+      }
+
       async function loadSheets() {
         const status = document.getElementById('load-status');
         try {
           const [matutinoRows, vespertinoRows] = await Promise.all([
             fetchSheetRows('Matutino', [0]),
-            fetchSheetRows('Vespertino', [1, 2, 3, 4, 5, 1000000000, 2000000000])
+            fetchSheetRowsByGid(2012795581)
           ]);
 
           renderTable(
