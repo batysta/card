@@ -113,7 +113,12 @@
         <h1 id="doc-title">Horários</h1>
         <p id="load-status" class="status">Carregando planilha...</p>
         <div class="table-wrap">
-            <table id="sheet-table"></table>
+            <h2 style="margin: 10px 10px 0 10px; color:#0f172a;">Turno Matutino</h2>
+            <table id="sheet-table-matutino"></table>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+            <h2 style="margin: 10px 10px 0 10px; color:#0f172a;">Turno Vespertino</h2>
+            <table id="sheet-table-vespertino"></table>
         </div>
     </main>
 
@@ -132,7 +137,7 @@
     </div>
 
     <script>
-      const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQDpiBCZUArTzP8PCltSxSXwFKsvx8G-aRf9uDFvai0-YRhXMdoKmlw1aWEYq5PmnbYNeBJmyI-j642/pub?output=csv';
+      const SHEET_CSV_BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQDpiBCZUArTzP8PCltSxSXwFKsvx8G-aRf9uDFvai0-YRhXMdoKmlw1aWEYq5PmnbYNeBJmyI-j642/pub?output=csv';
 
       function parseCsv(text) {
         const rows = [];
@@ -171,8 +176,8 @@
         return rows.filter((r) => r.some((c) => c.trim() !== ''));
       }
 
-      function renderTable(rows) {
-        const table = document.getElementById('sheet-table');
+      function renderTable(rows, tableId) {
+        const table = document.getElementById(tableId);
         table.innerHTML = '';
 
         if (!rows.length) {
@@ -204,14 +209,37 @@
         table.appendChild(tbody);
       }
 
-      async function loadSheet() {
+      async function fetchSheetRows(sheetName) {
+        const candidates = [sheetName, sheetName.toLowerCase(), sheetName.toUpperCase()];
+        for (const candidate of candidates) {
+          const url = `${SHEET_CSV_BASE_URL}&sheet=${encodeURIComponent(candidate)}`;
+          try {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) continue;
+            const csv = await res.text();
+            const rows = parseCsv(csv);
+            if (rows.length) return rows;
+          } catch (err) {
+            console.error(`Erro ao carregar aba ${candidate}:`, err);
+          }
+        }
+        return [];
+      }
+
+      async function loadSheets() {
         const status = document.getElementById('load-status');
         try {
-          const res = await fetch(SHEET_CSV_URL, { cache: 'no-store' });
-          if (!res.ok) throw new Error('Falha ao carregar planilha');
-          const csv = await res.text();
-          const rows = parseCsv(csv);
-          renderTable(rows);
+          const [matutinoRows, vespertinoRows] = await Promise.all([
+            fetchSheetRows('Matutino'),
+            fetchSheetRows('Vespertino')
+          ]);
+
+          renderTable(matutinoRows, 'sheet-table-matutino');
+          renderTable(vespertinoRows, 'sheet-table-vespertino');
+
+          if (!matutinoRows.length && !vespertinoRows.length) {
+            throw new Error('Nenhuma aba retornou dados');
+          }
           status.textContent = '';
         } catch (err) {
           status.textContent = 'Não foi possível carregar os horários agora.';
@@ -219,7 +247,7 @@
         }
       }
 
-      loadSheet();
+      loadSheets();
     </script>
 
     <script>
