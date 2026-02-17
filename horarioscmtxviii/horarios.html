@@ -98,6 +98,12 @@
             color: #475569;
         }
 
+        .empty-note {
+            padding: 14px;
+            text-align: center;
+            color: #64748b;
+        }
+
         #ios-install-prompt,
         #android-install-prompt {
             display: none;
@@ -175,6 +181,7 @@
 
     <script>
       const SHEET_PUB_BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQDpiBCZUArTzP8PCltSxSXwFKsvx8G-aRf9uDFvai0-YRhXMdoKmlw1aWEYq5PmnbYNeBJmyI-j642/pub';
+      const SHEET_GVIZ_BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQDpiBCZUArTzP8PCltSxSXwFKsvx8G-aRf9uDFvai0-YRhXMdoKmlw1aWEYq5PmnbYNeBJmyI-j642/gviz/tq?tqx=out:csv';
 
       function parseCsv(text) {
         const rows = [];
@@ -213,11 +220,20 @@
         return rows.filter((r) => r.some((c) => c.trim() !== ''));
       }
 
-      function renderTable(rows, tableId) {
+      function renderTable(rows, tableId, emptyMessage) {
         const table = document.getElementById(tableId);
         table.innerHTML = '';
 
         if (!rows.length) {
+          const tbody = document.createElement('tbody');
+          const tr = document.createElement('tr');
+          const td = document.createElement('td');
+          td.className = 'empty-note';
+          td.textContent = emptyMessage || 'Sem dados para exibir.';
+          td.colSpan = 12;
+          tr.appendChild(td);
+          tbody.appendChild(tr);
+          table.appendChild(tbody);
           return;
         }
 
@@ -256,20 +272,30 @@
       async function fetchSheetRows(sheetName, gidCandidates = []) {
         const candidates = [sheetName, sheetName.toLowerCase(), sheetName.toUpperCase()];
         for (const candidate of candidates) {
-          const url = `${SHEET_PUB_BASE_URL}?output=csv&sheet=${encodeURIComponent(candidate)}`;
+          const urls = [
+            `${SHEET_PUB_BASE_URL}?output=csv&sheet=${encodeURIComponent(candidate)}`,
+            `${SHEET_GVIZ_BASE_URL}&sheet=${encodeURIComponent(candidate)}`
+          ];
           try {
-            const rows = await fetchCsvRows(url);
-            if (rows.length) return rows;
+            for (const url of urls) {
+              const rows = await fetchCsvRows(url);
+              if (rows.length) return rows;
+            }
           } catch (err) {
             console.error(`Erro ao carregar aba ${candidate}:`, err);
           }
         }
 
         for (const gid of gidCandidates) {
-          const url = `${SHEET_PUB_BASE_URL}?output=csv&single=true&gid=${encodeURIComponent(gid)}`;
+          const urls = [
+            `${SHEET_PUB_BASE_URL}?output=csv&single=true&gid=${encodeURIComponent(gid)}`,
+            `${SHEET_GVIZ_BASE_URL}&gid=${encodeURIComponent(gid)}`
+          ];
           try {
-            const rows = await fetchCsvRows(url);
-            if (rows.length) return rows;
+            for (const url of urls) {
+              const rows = await fetchCsvRows(url);
+              if (rows.length) return rows;
+            }
           } catch (err) {
             console.error(`Erro ao carregar gid ${gid}:`, err);
           }
@@ -283,11 +309,19 @@
         try {
           const [matutinoRows, vespertinoRows] = await Promise.all([
             fetchSheetRows('Matutino', [0]),
-            fetchSheetRows('Vespertino', [1, 2, 3, 4, 5])
+            fetchSheetRows('Vespertino', [1, 2, 3, 4, 5, 1000000000, 2000000000])
           ]);
 
-          renderTable(matutinoRows, 'sheet-table-matutino');
-          renderTable(vespertinoRows, 'sheet-table-vespertino');
+          renderTable(
+            matutinoRows,
+            'sheet-table-matutino',
+            'Não foi possível carregar a aba Matutino.'
+          );
+          renderTable(
+            vespertinoRows,
+            'sheet-table-vespertino',
+            'Não foi possível carregar a aba Vespertino. Se quiser, me passe o gid dessa aba para eu fixar com precisão.'
+          );
 
           if (!matutinoRows.length && !vespertinoRows.length) {
             throw new Error('Nenhuma aba retornou dados');
