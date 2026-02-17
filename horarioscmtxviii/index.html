@@ -13,13 +13,24 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Hor%C3%A1rios%22,%22short_name%22:%22Hor%C3%A1rios%22,%22display%22:%22standalone%22,%22start_url%22:%22.%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%230f766e%22,%22icons%22:[{%22src%22:%22https://simulador.batysta.com/img/logo.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%20maskable%22}]}">
 
     <style>
+        :root {
+            --app-bg: linear-gradient(180deg, #eef8f6 0%, #f8fafc 100%);
+            --card-bg: #ffffff;
+            --line: #e2e8f0;
+            --muted: #64748b;
+            --title: #0f172a;
+            --primary: #0f766e;
+            --primary-soft: #dff5f2;
+            --header-bg: #f1f5f9;
+        }
+
         html, body {
             width: 100%;
             min-height: 100%;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: #f8fafc;
+            background: var(--app-bg);
         }
 
         body {
@@ -30,46 +41,52 @@
         .app {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 16px;
+            padding: 20px 16px 16px 16px;
             width: 100%;
             box-sizing: border-box;
         }
 
         #doc-title {
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
             text-align: center;
-            color: #0f172a;
+            color: var(--title);
+            font-size: clamp(1.25rem, 2vw, 1.7rem);
+            letter-spacing: 0.2px;
         }
 
         .table-wrap {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 14px;
             overflow: auto;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
         }
 
         .tabs {
             display: flex;
             gap: 8px;
             justify-content: center;
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
         }
 
         .tab-btn {
             border: 1px solid #cbd5e1;
             background: #ffffff;
-            color: #0f172a;
+            color: var(--title);
             border-radius: 999px;
-            padding: 8px 14px;
+            min-height: 40px;
+            padding: 8px 16px;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .tab-btn.active {
-            background: #0f766e;
-            border-color: #0f766e;
+            background: var(--primary);
+            border-color: var(--primary);
             color: #ffffff;
+            box-shadow: 0 4px 10px rgba(15, 118, 110, 0.35);
         }
 
         .tab-panel {
@@ -88,26 +105,30 @@
 
         th,
         td {
-            border: 1px solid #e2e8f0;
-            padding: 8px 10px;
+            border: 1px solid var(--line);
+            padding: 10px 12px;
             text-align: left;
             white-space: nowrap;
         }
 
         th {
-            background: #f1f5f9;
+            background: var(--header-bg);
             font-weight: 700;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            backdrop-filter: saturate(130%);
         }
 
         tbody td:first-child {
-            background: #f1f5f9;
+            background: var(--header-bg);
             font-weight: 700;
             text-align: center;
         }
 
         .weekday-cell {
-            background: #f1f5f9;
+            background: var(--header-bg);
             font-weight: 700;
             text-align: center;
         }
@@ -115,13 +136,13 @@
         .status {
             margin: 0 0 10px 0;
             text-align: center;
-            color: #475569;
+            color: var(--muted);
         }
 
         .empty-note {
             padding: 14px;
             text-align: center;
-            color: #64748b;
+            color: var(--muted);
         }
 
         #ios-install-prompt,
@@ -180,6 +201,28 @@
 
         .site-footer a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .app {
+                padding: 14px 10px 10px 10px;
+            }
+
+            .tabs {
+                gap: 6px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                padding: 8px 10px;
+                font-size: 0.92rem;
+            }
+
+            th,
+            td {
+                padding: 9px 8px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
