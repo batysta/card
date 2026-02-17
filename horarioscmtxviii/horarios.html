@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horários</title>
+    <link rel="icon" href="https://simulador.batysta.com/img/logo.png" sizes="32x32">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Horários">
+    <link rel="apple-touch-icon" href="https://simulador.batysta.com/img/logo.png">
+    <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Hor%C3%A1rios%22,%22short_name%22:%22Hor%C3%A1rios%22,%22display%22:%22standalone%22,%22start_url%22:%22.%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%230f766e%22,%22icons%22:[{%22src%22:%22https://simulador.batysta.com/img/logo.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%20maskable%22}]}">
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #ffffff;
+        }
+
+        .frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #ios-install-prompt,
+        #android-install-prompt {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #ffffff;
+            color: #333;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        #ios-install-prompt p,
+        #android-install-prompt p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+
+        #android-install-prompt button,
+        #ios-install-prompt button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .share-icon {
+            width: 20px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <iframe
+        class="frame"
+        name="myiFrame"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQDpiBCZUArTzP8PCltSxSXwFKsvx8G-aRf9uDFvai0-YRhXMdoKmlw1aWEYq5PmnbYNeBJmyI-j642/pubhtml"
+        scrolling="no"
+        marginwidth="0"
+        marginheight="0">
+    </iframe>
+
+    <div id="ios-install-prompt">
+        <p><strong>Quer instalar este app no iPhone?</strong></p>
+        <p>1. Toque em <strong>Compartilhar</strong> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Ei-share-apple.svg" class="share-icon"> no Safari.</p>
+        <p>2. Toque em <strong>Adicionar à Tela de Início</strong>.</p>
+        <p>3. Toque em <strong>Adicionar</strong> para confirmar.</p>
+        <button onclick="document.getElementById('ios-install-prompt').style.display='none'">Fechar</button>
+    </div>
+
+    <div id="android-install-prompt">
+        <p>Deseja instalar o app <strong>Horários</strong> no seu Android?</p>
+        <button id="btn-install-android">Instalar Agora</button>
+        <button onclick="document.getElementById('android-install-prompt').style.display='none'" style="background:#64748b;">Depois</button>
+    </div>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          const swCode = `
+            self.addEventListener('install', (e) => self.skipWaiting());
+            self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
+          `;
+          const blob = new Blob([swCode], { type: 'text/javascript' });
+          const url = URL.createObjectURL(blob);
+          navigator.serviceWorker.register(url).catch((err) => console.log('SW Erro:', err));
+        });
+      }
+    </script>
+
+    <script>
+      const INSTALL_PROMPT_AUTO_CLOSE_MS = 5000;
+
+      const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test(userAgent);
+      };
+
+      const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+      if (isIos() && !isInStandaloneMode()) {
+        const iosPrompt = document.getElementById('ios-install-prompt');
+        iosPrompt.style.display = 'block';
+        setTimeout(() => {
+          iosPrompt.style.display = 'none';
+        }, INSTALL_PROMPT_AUTO_CLOSE_MS);
+      }
+    </script>
+
+    <script>
+      let deferredPrompt;
+      const androidPrompt = document.getElementById('android-install-prompt');
+      const btnInstallAndroid = document.getElementById('btn-install-android');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        androidPrompt.style.display = 'block';
+        setTimeout(() => {
+          androidPrompt.style.display = 'none';
+        }, INSTALL_PROMPT_AUTO_CLOSE_MS);
+      });
+
+      btnInstallAndroid.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          await deferredPrompt.userChoice;
+          deferredPrompt = null;
+          androidPrompt.style.display = 'none';
+        }
+      });
+
+      window.addEventListener('appinstalled', () => {
+        androidPrompt.style.display = 'none';
+      });
+    </script>
+</body>
+</html>
