@@ -98,6 +98,12 @@
             text-align: center;
         }
 
+        .weekday-cell {
+            background: #f1f5f9;
+            font-weight: 700;
+            text-align: center;
+        }
+
         .status {
             margin: 0 0 10px 0;
             text-align: center;
@@ -226,6 +232,15 @@
         return rows.filter((r) => r.some((c) => c.trim() !== ''));
       }
 
+      function isWeekdayCell(value) {
+        const normalized = (value || '')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toUpperCase();
+        const weekdays = ['SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA'];
+        return weekdays.some((day) => normalized.includes(day));
+      }
+
       function renderTable(rows, tableId, emptyMessage) {
         const table = document.getElementById(tableId);
         table.innerHTML = '';
@@ -258,7 +273,11 @@
           const tr = document.createElement('tr');
           header.forEach((_, i) => {
             const td = document.createElement('td');
-            td.textContent = (r[i] || '').trim();
+            const cellText = (r[i] || '').trim();
+            td.textContent = cellText;
+            if (isWeekdayCell(cellText)) {
+              td.classList.add('weekday-cell');
+            }
             tr.appendChild(td);
           });
           tbody.appendChild(tr);
