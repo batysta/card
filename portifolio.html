@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio | Antonio Batysta</title>
+    <meta name="description" content="Portifólio e projetos web de Antonio Batysta.">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2ecc71;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --muted-text: #5d6d7e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 980px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 1;
+            transition: opacity 0.3s, transform 0.2s;
+            padding: 0 5px;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.5);
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            padding: 42px 28px 30px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.55;
+        }
+
+        .content {
+            padding: 28px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+            justify-content: center;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            filter: brightness(1.07);
+        }
+
+        .primary { background-color: #2c3e50; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 16px;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(44, 62, 80, 0.13);
+        }
+
+        .project-tag {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: #edf2f7;
+            color: #334155;
+            text-align: center;
+        }
+
+        .project-card h2 {
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .project-card p {
+            font-size: 0.92rem;
+            color: var(--muted-text);
+            line-height: 1.55;
+            margin-bottom: 14px;
+        }
+
+        .project-thumb {
+            display: block;
+            margin-bottom: 14px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #dbe3ea;
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.1);
+        }
+
+        .project-thumb img {
+            display: block;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.25s ease;
+        }
+
+        .project-thumb:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: filter 0.2s;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .project-links a:hover {
+            filter: brightness(1.08);
+        }
+
+        .demo { background: #2ecc71; }
+
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 1000;
+        }
+
+        .image-modal.open {
+            display: flex;
+        }
+
+        .image-modal-content {
+            position: relative;
+            width: min(96vw, 1100px);
+        }
+
+        .image-modal img {
+            width: 100%;
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #111827;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -42px;
+            right: 0;
+            background: #fff;
+            color: #111827;
+            border: none;
+            border-radius: 999px;
+            width: 34px;
+            height: 34px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+            .content { padding: 20px; }
+            .header { padding: 44px 18px 22px; }
+            .action-btn { min-width: 220px; }
+            .close-modal { top: -38px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('pt')" title="Português">🇧🇷</button>
+            <button class="lang-btn" onclick="setLanguage('en')" title="English">🇺🇸</button>
+        </div>
+
+        <header class="header">
+            <h1 id="page-title">Portifólio e Projetos</h1>
+            <p class="subtitle" id="page-subtitle">Uma seleção dos meus trabalhos em Web Design e desenvolvimento web.</p>
+        </header>
+
+        <main class="content">
+            <div class="actions">
+                <a class="action-btn primary" href="index.html" id="btn-back">⬅ Voltar para o Início</a>
+            </div>
+
+            <section class="projects-grid">
+                <article class="project-card">
+                    <span class="project-tag" id="tag-1">Landing Page</span>
+                    <h2 id="title-1">Projeto 01 - Página Institucional</h2>
+                    <p id="desc-1">Layout moderno e responsivo para apresentação de serviços, com foco em conversão e identidade visual.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto1/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto1/600/380" alt="Miniatura do Projeto 01">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto1/1600/1000" id="demo-1">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-2">Portfólio</span>
+                    <h2 id="title-2">Projeto 02 - Site Pessoal</h2>
+                    <p id="desc-2">Site pessoal com informações profissionais, links de contato e estrutura otimizada para SEO.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto2/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto2/600/380" alt="Miniatura do Projeto 02">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto2/1600/1000" id="demo-2">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-3">Aplicação Web</span>
+                    <h2 id="title-3">Projeto 03 - Sistema Educacional</h2>
+                    <p id="desc-3">Protótipo web para organização de conteúdos e acompanhamento de atividades pedagógicas.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto3/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto3/600/380" alt="Miniatura do Projeto 03">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto3/1600/1000" id="demo-3">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-4">E-commerce</span>
+                    <h2 id="title-4">Projeto 04 - Loja Virtual</h2>
+                    <p id="desc-4">Layout de e-commerce com foco em catálogo, carrinho e experiência de compra em dispositivos móveis.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto4/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto4/600/380" alt="Miniatura do Projeto 04">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto4/1600/1000" id="demo-4">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-5">Dashboard</span>
+                    <h2 id="title-5">Projeto 05 - Painel Administrativo</h2>
+                    <p id="desc-5">Painel para visualização de dados, gráficos e métricas, com navegação clara e interface responsiva.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto5/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto5/600/380" alt="Miniatura do Projeto 05">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto5/1600/1000" id="demo-5">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-6">Blog</span>
+                    <h2 id="title-6">Projeto 06 - Blog Profissional</h2>
+                    <p id="desc-6">Estrutura de blog com foco em leitura, organização de artigos por categorias e boa performance.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto6/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto6/600/380" alt="Miniatura do Projeto 06">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto6/1600/1000" id="demo-6">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-7">Sistema</span>
+                    <h2 id="title-7">Projeto 07 - Gestão de Alunos</h2>
+                    <p id="desc-7">Sistema web para cadastro e acompanhamento de alunos, com fluxos simples para uso diário.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto7/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto7/600/380" alt="Miniatura do Projeto 07">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto7/1600/1000" id="demo-7">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-8">Landing Page</span>
+                    <h2 id="title-8">Projeto 08 - Página de Vendas</h2>
+                    <p id="desc-8">Página de vendas otimizada com seções estratégicas, CTA destacado e design voltado para conversão.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto8/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto8/600/380" alt="Miniatura do Projeto 08">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto8/1600/1000" id="demo-8">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-9">Site Empresarial</span>
+                    <h2 id="title-9">Projeto 09 - Presença Digital</h2>
+                    <p id="desc-9">Website institucional para empresa, com apresentação de serviços, equipe e formulário de contato.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto9/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto9/600/380" alt="Miniatura do Projeto 09">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto9/1600/1000" id="demo-9">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-10">Portfólio</span>
+                    <h2 id="title-10">Projeto 10 - Portfólio Criativo</h2>
+                    <p id="desc-10">Modelo de portfólio com foco em apresentação visual de trabalhos e experiência fluida de navegação.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto10/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto10/600/380" alt="Miniatura do Projeto 10">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto10/1600/1000" id="demo-10">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-11">Aplicação Web</span>
+                    <h2 id="title-11">Projeto 11 - Agenda Online</h2>
+                    <p id="desc-11">Aplicação para agendamentos com calendário, horários disponíveis e confirmação de atendimento.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto11/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto11/600/380" alt="Miniatura do Projeto 11">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto11/1600/1000" id="demo-11">Visualisar</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <span class="project-tag" id="tag-12">Dashboard</span>
+                    <h2 id="title-12">Projeto 12 - Relatórios e Métricas</h2>
+                    <p id="desc-12">Painel para análise de indicadores com cartões, tabelas e gráficos para tomada de decisão.</p>
+                    <a class="project-thumb" href="https://picsum.photos/seed/projeto12/1600/1000">
+                        <img src="https://picsum.photos/seed/projeto12/600/380" alt="Miniatura do Projeto 12">
+                    </a>
+                    <div class="project-links">
+                        <a class="demo" href="https://picsum.photos/seed/projeto12/1600/1000" id="demo-12">Visualisar</a>
+                    </div>
+                </article>
+            </section>
+
+            <div class="footer">
+                <p id="footer-text">&copy; 2026 ∴ Antonio Batysta</p>
+            </div>
+        </main>
+    </div>
+
+    <div class="image-modal" id="image-modal" aria-hidden="true">
+        <div class="image-modal-content">
+            <button class="close-modal" id="close-modal" aria-label="Fechar imagem">×</button>
+            <img id="modal-image" src="" alt="Imagem ampliada do projeto">
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            pt: {
+                "page-title": "Portifólio e Projetos",
+                "page-subtitle": "Uma seleção dos meus trabalhos em Web Design e desenvolvimento web.",
+                "btn-back": "⬅ Voltar para o Início",
+                "tag-1": "Landing Page",
+                "title-1": "Projeto 01 - Página Institucional",
+                "desc-1": "Layout moderno e responsivo para apresentação de serviços, com foco em conversão e identidade visual.",
+                "tag-2": "Portfólio",
+                "title-2": "Projeto 02 - Site Pessoal",
+                "desc-2": "Site pessoal com informações profissionais, links de contato e estrutura otimizada para SEO.",
+                "tag-3": "Aplicação Web",
+                "title-3": "Projeto 03 - Sistema Educacional",
+                "desc-3": "Protótipo web para organização de conteúdos e acompanhamento de atividades pedagógicas.",
+                "tag-4": "E-commerce",
+                "title-4": "Projeto 04 - Loja Virtual",
+                "desc-4": "Layout de e-commerce com foco em catálogo, carrinho e experiência de compra em dispositivos móveis.",
+                "tag-5": "Dashboard",
+                "title-5": "Projeto 05 - Painel Administrativo",
+                "desc-5": "Painel para visualização de dados, gráficos e métricas, com navegação clara e interface responsiva.",
+                "tag-6": "Blog",
+                "title-6": "Projeto 06 - Blog Profissional",
+                "desc-6": "Estrutura de blog com foco em leitura, organização de artigos por categorias e boa performance.",
+                "tag-7": "Sistema",
+                "title-7": "Projeto 07 - Gestão de Alunos",
+                "desc-7": "Sistema web para cadastro e acompanhamento de alunos, com fluxos simples para uso diário.",
+                "tag-8": "Landing Page",
+                "title-8": "Projeto 08 - Página de Vendas",
+                "desc-8": "Página de vendas otimizada com seções estratégicas, CTA destacado e design voltado para conversão.",
+                "tag-9": "Site Empresarial",
+                "title-9": "Projeto 09 - Presença Digital",
+                "desc-9": "Website institucional para empresa, com apresentação de serviços, equipe e formulário de contato.",
+                "tag-10": "Portfólio",
+                "title-10": "Projeto 10 - Portfólio Criativo",
+                "desc-10": "Modelo de portfólio com foco em apresentação visual de trabalhos e experiência fluida de navegação.",
+                "tag-11": "Aplicação Web",
+                "title-11": "Projeto 11 - Agenda Online",
+                "desc-11": "Aplicação para agendamentos com calendário, horários disponíveis e confirmação de atendimento.",
+                "tag-12": "Dashboard",
+                "title-12": "Projeto 12 - Relatórios e Métricas",
+                "desc-12": "Painel para análise de indicadores com cartões, tabelas e gráficos para tomada de decisão.",
+                "demo-1": "Visualisar",
+                "demo-2": "Visualisar",
+                "demo-3": "Visualisar",
+                "demo-4": "Visualisar",
+                "demo-5": "Visualisar",
+                "demo-6": "Visualisar",
+                "demo-7": "Visualisar",
+                "demo-8": "Visualisar",
+                "demo-9": "Visualisar",
+                "demo-10": "Visualisar",
+                "demo-11": "Visualisar",
+                "demo-12": "Visualisar",
+                "footer-text": "© 2026 ∴ Antonio Batysta"
+            },
+            en: {
+                "page-title": "Portfolio and Projects",
+                "page-subtitle": "A selection of my Web Design and web development work.",
+                "btn-back": "⬅ Back to Home",
+                "tag-1": "Landing Page",
+                "title-1": "Project 01 - Institutional Website",
+                "desc-1": "Modern, responsive layout for service presentation, focused on conversion and visual identity.",
+                "tag-2": "Portfolio",
+                "title-2": "Project 02 - Personal Website",
+                "desc-2": "Personal website with professional information, contact links, and SEO-oriented structure.",
+                "tag-3": "Web Application",
+                "title-3": "Project 03 - Educational System",
+                "desc-3": "Web prototype for content organization and monitoring pedagogical activities.",
+                "tag-4": "E-commerce",
+                "title-4": "Project 04 - Online Store",
+                "desc-4": "E-commerce layout focused on catalog, cart, and mobile shopping experience.",
+                "tag-5": "Dashboard",
+                "title-5": "Project 05 - Admin Dashboard",
+                "desc-5": "Dashboard for data visualization, charts, and metrics with a clear, responsive interface.",
+                "tag-6": "Blog",
+                "title-6": "Project 06 - Professional Blog",
+                "desc-6": "Blog structure focused on readability, post categorization, and strong performance.",
+                "tag-7": "System",
+                "title-7": "Project 07 - Student Management",
+                "desc-7": "Web system for student registration and tracking with simple daily workflows.",
+                "tag-8": "Landing Page",
+                "title-8": "Project 08 - Sales Page",
+                "desc-8": "Optimized sales page with strategic sections, clear CTA, and conversion-oriented design.",
+                "tag-9": "Business Website",
+                "title-9": "Project 09 - Digital Presence",
+                "desc-9": "Corporate website presenting services, team, and contact form for lead generation.",
+                "tag-10": "Portfolio",
+                "title-10": "Project 10 - Creative Portfolio",
+                "desc-10": "Portfolio template focused on visual work presentation and smooth navigation.",
+                "tag-11": "Web Application",
+                "title-11": "Project 11 - Online Schedule",
+                "desc-11": "Scheduling app with calendar, available slots, and booking confirmation.",
+                "tag-12": "Dashboard",
+                "title-12": "Project 12 - Reports and Metrics",
+                "desc-12": "Metrics dashboard with cards, tables, and charts to support decision-making.",
+                "demo-1": "View",
+                "demo-2": "View",
+                "demo-3": "View",
+                "demo-4": "View",
+                "demo-5": "View",
+                "demo-6": "View",
+                "demo-7": "View",
+                "demo-8": "View",
+                "demo-9": "View",
+                "demo-10": "View",
+                "demo-11": "View",
+                "demo-12": "View",
+                "footer-text": "© 2026 ∴ Antonio Batysta"
+            }
+        };
+
+        function setLanguage(lang) {
+            Object.keys(translations[lang]).forEach((id) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = translations[lang][id];
+            });
+
+            const buttons = document.querySelectorAll(".lang-btn");
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            if (lang === "pt") {
+                buttons[0].classList.add("active");
+            } else {
+                buttons[1].classList.add("active");
+            }
+        }
+
+        const imageModal = document.getElementById("image-modal");
+        const modalImage = document.getElementById("modal-image");
+        const closeModalButton = document.getElementById("close-modal");
+
+        function openImageModal(url) {
+            modalImage.src = url;
+            imageModal.classList.add("open");
+            imageModal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeImageModal() {
+            imageModal.classList.remove("open");
+            imageModal.setAttribute("aria-hidden", "true");
+            modalImage.src = "";
+            document.body.style.overflow = "";
+        }
+
+        document.querySelectorAll(".project-thumb, .demo").forEach((el) => {
+            el.addEventListener("click", (event) => {
+                event.preventDefault();
+                openImageModal(el.getAttribute("href"));
+            });
+        });
+
+        closeModalButton.addEventListener("click", closeImageModal);
+
+        imageModal.addEventListener("click", (event) => {
+            if (event.target === imageModal) closeImageModal();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && imageModal.classList.contains("open")) {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
