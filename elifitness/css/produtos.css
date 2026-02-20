@@ -2,6 +2,10 @@
   gap: 1.6rem;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .products-hero {
   padding: 0.9rem 1.2rem 0.3rem;
   text-align: center;
