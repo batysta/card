@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos EliFitness | Suplementos e Acessórios em Alto Alegre do Pindaré - MA</title>
+    <meta
+      name="description"
+      content="Loja da EliFitness com suplementos e acessórios fitness em Alto Alegre do Pindaré - MA. Compre pelo WhatsApp com atendimento rápido."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#e6431f" />
+    <link rel="canonical" href="https://batysta.github.io/EliFitness/produtos.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="EliFitness" />
+    <meta property="og:title" content="Produtos EliFitness | Suplementos e Acessórios" />
+    <meta
+      property="og:description"
+      content="Catálogo online da EliFitness com compra direta pelo WhatsApp."
+    />
+    <meta property="og:url" content="https://batysta.github.io/EliFitness/produtos.html" />
+    <meta property="og:image" content="https://images.pexels.com/photos/17227606/pexels-photo-17227606.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Produtos EliFitness | Suplementos e Acessórios" />
+    <meta name="twitter:description" content="Loja da EliFitness com compra rápida pelo WhatsApp." />
+    <meta name="twitter:image" content="https://images.pexels.com/photos/17227606/pexels-photo-17227606.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+    <link rel="dns-prefetch" href="//images.pexels.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/produtos.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <header class="header">
+      <a class="logo" href="index.html#inicio">ELI<span>FITNESS</span></a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+      <nav class="nav" aria-label="Menu principal">
+        <a href="index.html#inicio">Início</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#planos">Planos</a>
+        <a href="index.html#estrutura">Estrutura</a>
+        <a href="produtos.html" aria-current="page">Produtos</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main class="products-main">
+      <section class="products-hero reveal" aria-labelledby="produtos-titulo">
+        <p class="section-tag">Loja EliFitness</p>
+        <h1 id="produtos-titulo">Suplementos e acessórios para apoiar seu resultado.</h1>
+        <p>
+          Encontre o produto ideal e finalize sua compra direto no WhatsApp.
+        </p>
+      </section>
+
+      <section class="products-controls reveal" aria-label="Filtros de produtos">
+        <div class="control search-control">
+          <label for="searchInput">Buscar</label>
+          <input id="searchInput" type="search" placeholder="Ex.: whey, creatina, luva" aria-label="Buscar por nome ou descrição" />
+        </div>
+
+        <div class="control categories-control">
+          <label for="categorySelect">Categoria</label>
+          <select id="categorySelect" aria-label="Filtrar por categoria"></select>
+        </div>
+
+        <div class="control sort-control">
+          <label for="sortSelect">Ordenar por</label>
+          <select id="sortSelect" aria-label="Ordenar produtos">
+            <option value="custom">Ordem personalizada</option>
+            <option value="price-asc">Menor preço</option>
+            <option value="price-desc">Maior preço</option>
+            <option value="name-asc">Nome A-Z</option>
+          </select>
+        </div>
+
+        <div class="control per-page-control">
+          <label for="perPageSelect">Itens por página</label>
+          <select id="perPageSelect" aria-label="Quantidade de produtos por página">
+            <option value="9" selected>9 (padrão)</option>
+            <option value="12">12</option>
+            <option value="15">15</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="products-list-section reveal" aria-live="polite" aria-busy="false">
+        <h2 class="sr-only">Lista de produtos</h2>
+
+        <div id="loadingState" class="status-card" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <p>Carregando produtos...</p>
+        </div>
+
+        <div id="errorState" class="status-card status-error" hidden>
+          <p>Não foi possível atualizar da planilha agora. Exibindo catálogo demonstrativo.</p>
+        </div>
+
+        <div id="emptyState" class="status-card" hidden>
+          <p>Nenhum produto encontrado com os filtros atuais.</p>
+        </div>
+
+        <div id="productsGrid" class="products-grid" hidden></div>
+
+        <nav id="pagination" class="pagination" aria-label="Paginação de produtos" hidden>
+          <button id="pagePrev" class="page-btn" type="button" aria-label="Página anterior">Anterior</button>
+          <div id="pageNumbers" class="page-numbers" aria-live="polite"></div>
+          <button id="pageNext" class="page-btn" type="button" aria-label="Próxima página">Próxima</button>
+        </nav>
+      </section>
+    </main>
+
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Imagem ampliada do produto" hidden>
+      <button class="product-modal-close" id="productModalClose" type="button" aria-label="Fechar imagem">×</button>
+      <button class="product-modal-nav prev" id="productModalPrev" type="button" aria-label="Imagem anterior">‹</button>
+      <img class="product-modal-image" id="productModalImage" src="" alt="" />
+      <button class="product-modal-nav next" id="productModalNext" type="button" aria-label="Próxima imagem">›</button>
+      <p class="product-modal-counter" id="productModalCounter" aria-live="polite"></p>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> EliFitness. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="js/produtos.js" defer></script>
+  </body>
+</html>
