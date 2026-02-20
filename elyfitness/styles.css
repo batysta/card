@@ -16,7 +16,6 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -29,7 +28,6 @@ body {
     linear-gradient(180deg, #f7f7f0 0%, #ecece1 45%, #e3e2d5 100%);
   min-height: 100vh;
   line-height: 1.5;
-  overflow-x: hidden;
 }
 
 .bg-shape {
@@ -575,6 +573,7 @@ body.modal-open {
 
   .hero-copy {
     text-align: center;
+    min-width: 0;
   }
 
   .hero h1 {
@@ -593,17 +592,22 @@ body.modal-open {
     margin-right: auto;
   }
 
+  .eyebrow {
+    overflow-wrap: anywhere;
+  }
+
   .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 21rem);
     justify-content: center;
-    flex-wrap: nowrap;
-    width: min(100%, 26rem);
     margin-left: auto;
     margin-right: auto;
   }
 
   .hero-actions .btn {
-    flex: 1 1 0;
     min-width: 0;
+    width: 100%;
     padding: 0.78rem 0.6rem;
     font-size: 0.9rem;
   }
