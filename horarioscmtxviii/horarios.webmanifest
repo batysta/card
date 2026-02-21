@@ -1,7 +1,7 @@
 {
   "name": "Horários CMT XVIII",
   "short_name": "Horários CMT",
-  "start_url": "/",
+  "start_url": "./horarioscmtxviii/",
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
