@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Notícias e blog do SINPROESEMMA Núcleo Alto Alegre do Pindaré/MA." />
+    <meta name="keywords" content="notícias SINPROESEMMA, blog sindical, educação pública, professores, Alto Alegre do Pindaré" />
+    <meta name="author" content="SINPROESEMMA - Núcleo Alto Alegre do Pindaré/MA" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b3b8f" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SINPROESEMMA - Núcleo Alto Alegre do Pindaré/MA" />
+    <meta property="og:title" content="SINPROESEMMA | Notícias" />
+    <meta property="og:description" content="Acompanhe as notícias locais e as últimas atualizações do SINPROESEMMA Estadual." />
+    <meta property="og:image" content="img/nucleoaap.jpg" />
+    <meta property="og:url" content="noticias.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SINPROESEMMA | Notícias" />
+    <meta name="twitter:description" content="Acompanhe as notícias locais e as últimas atualizações do SINPROESEMMA Estadual." />
+    <meta name="twitter:image" content="img/nucleoaap.jpg" />
+    <title>SINPROESEMMA | Notícias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <main>
+      <section class="top-image section-offset" aria-label="Imagem do Núcleo">
+        <div class="container">
+          <img
+            src="img/nucleoaap.jpg"
+            alt="Núcleo SINPROESEMMA de Alto Alegre do Pindaré"
+            class="top-image-banner"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section class="home-menu-section">
+        <div class="container">
+          <button
+            class="menu-toggle home-menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="primary-menu"
+            type="button"
+          >
+            <span class="menu-icon"><span></span><span></span><span></span></span>
+            <span class="menu-label">Menu</span>
+          </button>
+          <nav class="nav home-menu" id="primary-menu" aria-label="Menu principal">
+            <a href="index.html">Home</a>
+            <a href="sindicato.html">O Sindicato</a>
+            <a href="noticias.html" class="is-active">Notícias</a>
+            <a href="direitos-da-categoria.html">Direitos da Categoria</a>
+            <a href="convenios.html">Convênios</a>
+            <a href="contato.html">Contato</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="page-hero section-offset">
+        <div class="container">
+          <p class="tag">Informação</p>
+          <h1>Notícias e Blog</h1>
+          <p>Comunicados oficiais, convocações e atualizações para a categoria.</p>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container">
+          <header class="section-head">
+            <p class="tag">Núcleo Local</p>
+            <h2>Notícias do Núcleo</h2>
+          </header>
+          <div id="news-list" class="news-grid" aria-live="polite"></div>
+          <div id="news-pagination" class="news-pagination" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <header class="section-head">
+            <p class="tag">SINPROESEMMA Estadual</p>
+            <h2>Notícias do Site Estadual</h2>
+            <p>Últimas atualizações das publicações do portal estadual.</p>
+          </header>
+          <div id="state-news-list" class="news-grid" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>SINPROESEMMA</strong>
+          <p>Núcleo Sindical de Alto Alegre do Pindaré - MA</p>
+          <p>Rua São Francisco, sn, centro - Alto Alegre do Pindaré - MA<br />CEP: 65398-000</p>
+          <p>Telefone/WhatsApp: (98) 98484-2330<br />E-mail: sinproesemmaap@gmail.com</p>
+        </div>
+
+        <nav aria-label="Redes sociais" class="social-links">
+          <p class="social-title">Redes Sociais:</p>
+          <div class="social-items">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="https://www.instagram.com/sinproesemmaap/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+            <a href="#topo" class="to-top" aria-label="Voltar ao topo">Topo</a>
+          </div>
+        </nav>
+        <p class="footer-credit">&copy; 2026 | <a href="https://batysta.com" target="_blank" rel="noopener noreferrer">batysta.com</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
