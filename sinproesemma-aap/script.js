@@ -201,12 +201,16 @@ const fallbackNews = [
 // Exemplo: https://opensheet.elk.sh/ID_DA_PLANILHA/noticias
 const SHEETS_JSON_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/noticias';
 const SHEETS_AGENDA_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/agenda';
+const SHEETS_CONVENIOS_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/convenios';
 const STATE_NEWS_API_URL =
   'https://www.sinproesemma.org.br/wp-json/wp/v2/posts?per_page=6&_embed=wp:featuredmedia';
 const LOCAL_NEWS_PAGE_SIZE = 3;
 
 let localNewsItems = [];
 let localNewsCurrentPage = 1;
+let conveniosItems = [];
+let conveniosCurrentPage = 1;
+let conveniosPerPage = 9;
 
 function slugify(value) {
   return String(value || '')
@@ -246,6 +250,27 @@ const fallbackAgenda = [
     time: '15:00',
     location: 'Auditório Municipal',
     summary: 'Alinhamento das demandas por escola e planejamento de mobilização.',
+  },
+];
+
+const fallbackConvenios = [
+  {
+    id: '1',
+    nome: 'Clínica Parceira - Saúde',
+    desconto: '10%',
+    imagem: 'https://picsum.photos/seed/convenio-saude/800/450',
+  },
+  {
+    id: '2',
+    nome: 'Faculdade Conveniada - Educação',
+    desconto: '20%',
+    imagem: 'https://picsum.photos/seed/convenio-faculdade/800/450',
+  },
+  {
+    id: '3',
+    nome: 'Farmácia Parceira - Descontos',
+    desconto: '12%',
+    imagem: 'https://picsum.photos/seed/convenio-farmacia/800/450',
   },
 ];
 
@@ -560,6 +585,160 @@ function normalizeAgendaRow(row) {
   };
 }
 
+function normalizeConvenioRow(row) {
+  return {
+    id: row.id ?? '',
+    nome: row.nome ?? '',
+    desconto: String(row.desconto ?? '').trim(),
+    imagem: row.imagem ?? '',
+  };
+}
+
+function prepareConveniosRows(rows) {
+  return rows
+    .map(normalizeConvenioRow)
+    .filter((item) => item.nome);
+}
+
+function formatDiscount(value) {
+  const text = String(value || '').trim();
+  if (!text) return '';
+  return text.includes('%') ? text : `${text}%`;
+}
+
+function parseDiscountNumber(value) {
+  const normalized = String(value || '')
+    .replace('%', '')
+    .replace(',', '.')
+    .replace(/[^\d.-]/g, '');
+  const numberValue = Number(normalized);
+  return Number.isFinite(numberValue) ? numberValue : 0;
+}
+
+function renderConvenios(items) {
+  const container = document.getElementById('convenios-list');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  items.forEach((item) => {
+    const card = document.createElement('article');
+    card.className = 'partner-item';
+
+    const title = document.createElement('h3');
+    title.textContent = item.nome;
+    card.appendChild(title);
+
+    const discountText = formatDiscount(item.desconto);
+    if (discountText) {
+      const discount = document.createElement('p');
+      discount.className = 'partner-discount';
+      discount.textContent = `Desconto: ${discountText}`;
+      card.appendChild(discount);
+    }
+
+    if (item.imagem) {
+      const image = document.createElement('img');
+      image.src = item.imagem;
+      image.alt = `Imagem do convênio ${item.nome}`;
+      image.className = 'partner-image';
+      image.loading = 'lazy';
+      card.appendChild(image);
+    }
+
+    container.appendChild(card);
+  });
+}
+
+function getConveniosViewItems() {
+  const searchInput = document.getElementById('convenios-search');
+  const sortSelect = document.getElementById('convenios-sort');
+  const searchValue = (searchInput?.value || '').trim().toLowerCase();
+  const sortValue = sortSelect?.value || 'alphabetical';
+
+  const filtered = conveniosItems.filter((item) =>
+    item.nome.toLowerCase().includes(searchValue)
+  );
+
+  if (sortValue === 'discount_desc') {
+    filtered.sort((a, b) => parseDiscountNumber(b.desconto) - parseDiscountNumber(a.desconto));
+  } else if (sortValue === 'discount_asc') {
+    filtered.sort((a, b) => parseDiscountNumber(a.desconto) - parseDiscountNumber(b.desconto));
+  } else {
+    filtered.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+  }
+
+  return filtered;
+}
+
+function renderConveniosPagination(totalItems) {
+  const paginationContainer = document.getElementById('convenios-pagination');
+  if (!paginationContainer) return;
+
+  const totalPages = Math.max(1, Math.ceil(totalItems / conveniosPerPage));
+  conveniosCurrentPage = Math.min(Math.max(1, conveniosCurrentPage), totalPages);
+
+  paginationContainer.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const prevButton = document.createElement('button');
+  prevButton.type = 'button';
+  prevButton.className = 'btn btn-outline btn-small';
+  prevButton.textContent = 'Anterior';
+  prevButton.disabled = conveniosCurrentPage === 1;
+  prevButton.addEventListener('click', () => {
+    conveniosCurrentPage -= 1;
+    applyConveniosFiltersAndPagination();
+  });
+
+  const pageInfo = document.createElement('span');
+  pageInfo.className = 'news-page-info';
+  pageInfo.textContent = `Página ${conveniosCurrentPage} de ${totalPages}`;
+
+  const nextButton = document.createElement('button');
+  nextButton.type = 'button';
+  nextButton.className = 'btn btn-outline btn-small';
+  nextButton.textContent = 'Próxima';
+  nextButton.disabled = conveniosCurrentPage === totalPages;
+  nextButton.addEventListener('click', () => {
+    conveniosCurrentPage += 1;
+    applyConveniosFiltersAndPagination();
+  });
+
+  paginationContainer.append(prevButton, pageInfo, nextButton);
+}
+
+function applyConveniosFiltersAndPagination() {
+  const viewItems = getConveniosViewItems();
+  const startIndex = (conveniosCurrentPage - 1) * conveniosPerPage;
+  const pageItems = viewItems.slice(startIndex, startIndex + conveniosPerPage);
+  renderConvenios(pageItems);
+  renderConveniosPagination(viewItems.length);
+}
+
+function setupConveniosControls() {
+  const searchInput = document.getElementById('convenios-search');
+  const sortSelect = document.getElementById('convenios-sort');
+  const pageSizeSelect = document.getElementById('convenios-page-size');
+  if (!searchInput || !sortSelect || !pageSizeSelect) return;
+
+  searchInput.addEventListener('input', () => {
+    conveniosCurrentPage = 1;
+    applyConveniosFiltersAndPagination();
+  });
+
+  sortSelect.addEventListener('change', () => {
+    conveniosCurrentPage = 1;
+    applyConveniosFiltersAndPagination();
+  });
+
+  pageSizeSelect.addEventListener('change', () => {
+    conveniosPerPage = Number(pageSizeSelect.value) || 9;
+    conveniosCurrentPage = 1;
+    applyConveniosFiltersAndPagination();
+  });
+}
+
 function prepareAgendaRows(rows) {
   return rows
     .map(normalizeAgendaRow)
@@ -604,6 +783,41 @@ async function loadAgenda() {
   } catch (error) {
     console.error('Erro ao carregar agenda:', error);
     renderAgenda(fallbackAgenda, 3);
+  }
+}
+
+async function loadConvenios() {
+  const container = document.getElementById('convenios-list');
+  if (!container) return;
+
+  try {
+    setupConveniosControls();
+
+    if (!SHEETS_CONVENIOS_URL) {
+      conveniosItems = fallbackConvenios;
+      conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
+      conveniosCurrentPage = 1;
+      applyConveniosFiltersAndPagination();
+      return;
+    }
+
+    // Ponto de injeção da aba "convenios":
+    // colunas esperadas: id, nome, desconto, imagem
+    const response = await fetch(SHEETS_CONVENIOS_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Falha HTTP ${response.status}`);
+
+    const rawData = await response.json();
+    const mappedConvenios = Array.isArray(rawData) ? prepareConveniosRows(rawData) : [];
+    conveniosItems = mappedConvenios.length ? mappedConvenios : fallbackConvenios;
+    conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
+    conveniosCurrentPage = 1;
+    applyConveniosFiltersAndPagination();
+  } catch (error) {
+    console.error('Erro ao carregar convênios:', error);
+    conveniosItems = fallbackConvenios;
+    conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
+    conveniosCurrentPage = 1;
+    applyConveniosFiltersAndPagination();
   }
 }
 
@@ -661,6 +875,7 @@ function updateHighlight(newsItem) {
 
 loadNews();
 loadAgenda();
+loadConvenios();
 loadStateNews();
 setupContactWhatsAppForm();
 setupImageModal();

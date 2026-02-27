@@ -574,6 +574,39 @@ a {
   font-size: 1rem;
 }
 
+.partner-discount {
+  margin: 0 0 0.7rem;
+  font-weight: 700;
+  color: var(--color-secondary-dark);
+}
+
+.convenios-toolbar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.convenios-filter {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.convenios-filter span {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.convenios-filter input,
+.convenios-filter select {
+  width: 100%;
+  border: 1px solid #cbd7ee;
+  border-radius: 10px;
+  padding: 0.58rem 0.7rem;
+  font: inherit;
+}
+
 .partner-image {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -725,6 +758,10 @@ a {
   .contact-grid,
   .news-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .convenios-toolbar {
+    grid-template-columns: 1fr;
   }
 
   .home-menu-section .container {

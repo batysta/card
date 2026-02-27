@@ -76,116 +76,37 @@
 
       <section class="section section-alt">
         <div class="container">
-          <div class="partners-grid">
-            <article class="partner-item">
-              <h3>Clínica Parceira - Saúde</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-saude/800/450"
-                alt="Imagem de exemplo da clínica parceira"
-                class="partner-image"
-                loading="lazy"
+          <div class="convenios-toolbar" aria-label="Filtros de convênios">
+            <label class="convenios-filter">
+              <span>Busca</span>
+              <input
+                id="convenios-search"
+                type="search"
+                placeholder="Buscar por nome do convênio"
               />
-            </article>
-            <article class="partner-item">
-              <h3>Faculdade Conveniada - Educação</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-faculdade/800/450"
-                alt="Imagem de exemplo da faculdade conveniada"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Laboratório Parceiro - Exames</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-laboratorio/800/450"
-                alt="Imagem de exemplo do laboratório parceiro"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Ótica Conveniada - Bem-estar</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-otica/800/450"
-                alt="Imagem de exemplo da ótica conveniada"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Farmácia Parceira - Descontos</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-farmacia/800/450"
-                alt="Imagem de exemplo da farmácia parceira"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Escola de Idiomas - Formação</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-idiomas/800/450"
-                alt="Imagem de exemplo da escola de idiomas"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Academia Conveniada - Qualidade de Vida</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-academia/800/450"
-                alt="Imagem de exemplo da academia conveniada"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Clínica Odontológica - Saúde Bucal</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-odontologia/800/450"
-                alt="Imagem de exemplo da clínica odontológica conveniada"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Curso Preparatório - Qualificação</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-curso/800/450"
-                alt="Imagem de exemplo do curso preparatório conveniado"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Loja de Informática - Tecnologia</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-informatica/800/450"
-                alt="Imagem de exemplo da loja de informática parceira"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Papelaria Parceira - Material Escolar</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-papelaria/800/450"
-                alt="Imagem de exemplo da papelaria parceira"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
-            <article class="partner-item">
-              <h3>Centro de Idiomas - Capacitação</h3>
-              <img
-                src="https://picsum.photos/seed/convenio-centro-idiomas/800/450"
-                alt="Imagem de exemplo do centro de idiomas conveniado"
-                class="partner-image"
-                loading="lazy"
-              />
-            </article>
+            </label>
+
+            <label class="convenios-filter">
+              <span>Organizar por</span>
+              <select id="convenios-sort">
+                <option value="alphabetical">Ordem alfabética</option>
+                <option value="discount_desc">Maior desconto</option>
+                <option value="discount_asc">Menor desconto</option>
+              </select>
+            </label>
+
+            <label class="convenios-filter">
+              <span>Itens por página</span>
+              <select id="convenios-page-size">
+                <option value="9" selected>9</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </label>
           </div>
+
+          <div id="convenios-list" class="partners-grid" aria-live="polite"></div>
+          <div id="convenios-pagination" class="news-pagination" aria-live="polite"></div>
         </div>
       </section>
     </main>
