@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Salarial - Pindaré Mirim - MA</title>
+
+<link rel="icon" href="./img/logo.png" sizes="32x32" />
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Simulador Salarial">
+<link rel="apple-touch-icon" href="https://simulador.batysta.com/img/logo.png">
+<link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Simulador%20Salarial%22,%22short_name%22:%22Simulador%20Salarial%22,%22display%22:%22standalone%22,%22start_url%22:%22.%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%22%232563eb%22,%22icons%22:[{%22src%22:%22https://simulador.batysta.com/img/logo.png%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22,%22purpose%22:%22any%20maskable%22}]} ">
+
+    <style>
+        :root {
+            --primary: #0f766e;
+            --bg: #f0fdfa;
+            --card-bg: #ffffff;
+            --text: #134e4a;
+            --border: #ccfbf1;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .calculator-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.15);
+            width: 100%;
+            max-width: 480px;
+            border: 1px solid var(--border);
+        }
+
+        .site-footer {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 1.25rem;
+            font-size: 0.85rem;
+            color: #57a39d;
+        }
+
+        .site-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #57a39d;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            box-sizing: border-box;
+            background-color: #fafafa;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            background-color: #f0fdfa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed #99f6e4;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            accent-color: var(--primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background-color: #f0fdfa;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+        
+        .result-row.highlight-plus { color: #059669; font-weight: 600; }
+        .result-row.total-bruto { border-top: 1px solid #ccfbf1; padding-top: 0.5rem; font-weight: 700; }
+        .result-row.total { font-weight: 800; font-size: 1.4rem; color: var(--primary); border-top: 2px dashed #99f6e4; padding-top: 1rem; }
+        .highlight-negative { color: #be123c; }
+
+        #box-detalhes-ir {
+            font-size: 0.85rem;
+            color: #6b7280;
+            padding: 10px;
+            background: #fff;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+/* Estilo do aviso de instalação iphone*/
+        #ios-install-prompt {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #ffffff;
+            color: #333;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            border: 1px solid #ddd;
+        }
+
+        #ios-install-prompt p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .share-icon {
+            width: 20px;
+            vertical-align: middle;
+        }
+
+        /* Dark Mode para o aviso */
+        @media (prefers-color-scheme: dark) {
+            #ios-install-prompt {
+                background: #1e293b;
+                color: #f1f5f9;
+                border-color: #334155;
+            }
+        }
+        /* Estilo do aviso de instalação iphone*/
+
+        /* Estilo do aviso de instalação para Android */
+        #android-install-prompt {
+            display: none; /* Fica escondido até que o navegador autorize a instalação */
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #ffffff;
+            color: #333;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        #android-install-prompt button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            #android-install-prompt {
+                background: #1e293b;
+                color: #f1f5f9;
+                border-color: #334155;
+            }
+        }
+        /* Estilo do aviso de instalação para Android */
+
+
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+                <h1>
+<img src="./img/logopindare.jpg" width="350" ></h1>
+        <h1>Simulador Salarial<br>(IRRF Regra 2026)</h1>
+        <p class="subtitle">Professores | Pindaré Mirim - MA</p>
+
+        <div class="input-group">
+            <label for="salarioBase">Vencimento Base (R$)</label>
+            <input type="number" id="salarioBase" placeholder="Ex: 5130.63" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="quinquenios">Qtd de Quinquênios (5% cada)</label>
+            <input type="number" id="quinquenios" placeholder="Ex: 2" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="dependentes">Nº de Dependentes</label>
+            <input type="number" id="dependentes" placeholder="Ex: 2" min="0">
+        </div>
+
+        <div class="input-group">
+            <div class="checkbox-group" onclick="document.getElementById('formacao').click()">
+                <input type="checkbox" id="formacao" onclick="event.stopPropagation()">
+                <label style="margin-bottom: 0; cursor: pointer;">Formação Continuada (5%)</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="checkbox-group" onclick="document.getElementById('formacao10').click()">
+                <input type="checkbox" id="formacao10" onclick="event.stopPropagation()">
+                <label style="margin-bottom: 0; cursor: pointer;">Formação Continuada (10%)</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="checkbox-group" onclick="document.getElementById('sindicato').click()">
+                <input type="checkbox" id="sindicato" onclick="event.stopPropagation()">
+                <label style="margin-bottom: 0; cursor: pointer;">Descontar Sindicato (1%)</label>
+            </div>
+        </div>
+
+        <button onclick="calcular()">Calcular Salário Líquido</button>
+
+        <div id="resultado" class="result-box">
+            <div class="result-row">
+                <span>Vencimento Base:</span>
+                <span id="res-base"></span>
+            </div>
+            <div class="result-row highlight-plus">
+                <span>Quinquênio(s):</span>
+                <span id="res-quinquenio"></span>
+            </div>
+            <div id="row-formacao" class="result-row highlight-plus" style="display: none;">
+                <span>Formação Continuada (5%):</span>
+                <span id="res-formacao"></span>
+            </div>
+            <div id="row-formacao10" class="result-row highlight-plus" style="display: none;">
+                <span>Formação Continuada (10%):</span>
+                <span id="res-formacao10"></span>
+            </div>
+            <div class="result-row total-bruto">
+                <span>Total Bruto:</span>
+                <span id="res-bruto"></span>
+            </div>
+            <div class="result-row highlight-negative">
+                <span>Previdência (14%):</span>
+                <span id="res-prev"></span>
+            </div>
+            <div id="row-sindicato" class="result-row highlight-negative" style="display: none;">
+                <span>Sindicato (1%):</span>
+                <span id="res-sindicato"></span>
+            </div>
+            
+            <div id="box-detalhes-ir" style="display: none;">
+                <div style="font-weight: bold; margin-bottom: 5px;">Detalhamento IRRF (Lei 2026):</div>
+                <div class="result-row" style="margin-bottom: 2px;">
+                    <span>IRRF Padrão:</span>
+                    <span id="res-ir-padrao"></span>
+                </div>
+                <div class="result-row" style="margin-bottom: 2px; color: #059669;">
+                    <span>Redução Lei 2026:</span>
+                    <span id="res-bonus"></span>
+                </div>
+            </div>
+
+            <div class="result-row highlight-negative">
+                <span>IRRF Final:</span>
+                <span id="res-ir"></span>
+            </div>
+            <div class="result-row total">
+                <span>Líquido a Receber:</span>
+                <span id="res-liquido"></span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        @ 2026 <a href="https://batysta.com" target="_blank" rel="noopener noreferrer">batysta.com</a>
+    </footer>
+
+    <div id="ios-install-prompt">
+            <p>Para instalar no seu iPhone:</p>
+            <p>1. Toque no ícone de <strong>Compartilhar</strong> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Ei-share-apple.svg" class="share-icon"> abaixo.</p>
+            <p>2. Role para baixo e selecione <strong>"Adicionar à Tela de Início"</strong>.</p>
+            <button onclick="document.getElementById('ios-install-prompt').style.display='none'" style="background:#64748b; margin-top:5px; padding: 5px;">Fechar</button>
+        </div>
+
+        <div id="android-install-prompt">
+            <p>Deseja instalar o <strong>Simulador de Salário</strong> no seu celular?</p>
+            <button id="btn-install-android">Instalar Agora</button>
+            <button onclick="document.getElementById('android-install-prompt').style.display='none'" style="background:#64748b; margin-left:0px;">Depois</button>
+        </div>
+
+    <script>
+        function calcular() {
+            const base = parseFloat(document.getElementById('salarioBase').value) || 0;
+            const qtdQuinquenios = parseInt(document.getElementById('quinquenios').value) || 0;
+            const numDep = parseInt(document.getElementById('dependentes').value) || 0;
+            const isFormacao = document.getElementById('formacao').checked;
+            const isFormacao10 = document.getElementById('formacao10').checked;
+            const isSindicato = document.getElementById('sindicato').checked;
+
+            if (base <= 0) return alert("Por favor, insira o vencimento base.");
+
+            // 1. Acréscimos (calculados sobre o salário base)
+            const valorQuinquenio = base * (qtdQuinquenios * 0.05);
+            const valorFormacao = isFormacao ? base * 0.05 : 0;
+            const valorFormacao10 = isFormacao10 ? base * 0.10 : 0;
+            const bruto = base + valorQuinquenio + valorFormacao + valorFormacao10;
+
+            // 2. Descontos Previdência e Sindicato
+            const previdencia = bruto * 0.14;
+            const sindicato = isSindicato ? bruto * 0.01 : 0;
+
+            // 3. Cálculo IRRF Padrão (Tabela Atualizada + Dependentes)
+            let baseIRRF = bruto - previdencia - (numDep * 189.59);
+            let irPadrao = 0;
+            
+            if (baseIRRF <= 2428.80) irPadrao = 0;
+            else if (baseIRRF <= 2826.65) irPadrao = (baseIRRF * 0.075) - 182.16;
+            else if (baseIRRF <= 3751.05) irPadrao = (baseIRRF * 0.15) - 394.16;
+            else if (baseIRRF <= 4664.68) irPadrao = (baseIRRF * 0.225) - 675.49;
+            else irPadrao = (baseIRRF * 0.275) - 908.73;
+            
+            irPadrao = Math.max(0, irPadrao);
+
+            // 4. Lógica Lei 2026 (Exatamente como solicitada)
+            let irFinal = 0;
+            let descontoLei2026 = 0;
+
+            if (bruto <= 5000) {
+                // Isenção total garantida por lei
+                descontoLei2026 = irPadrao;
+                irFinal = 0;
+            } else if (bruto <= 7350) {
+                // Fórmula de Redução: 978,62 - (0,133145 * BRUTO)
+                let fatorReducao = Math.max(0, 978.62 - (0.133145 * bruto));
+                
+                if (fatorReducao > irPadrao) {
+                    descontoLei2026 = irPadrao;
+                    irFinal = 0;
+                } else {
+                    descontoLei2026 = fatorReducao;
+                    irFinal = irPadrao - fatorReducao;
+                }
+            } else {
+                descontoLei2026 = 0;
+                irFinal = irPadrao;
+            }
+
+            const liquido = bruto - previdencia - sindicato - irFinal;
+
+            // Formatação e Exibição
+            const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+            
+            document.getElementById('res-base').innerText = fmt.format(base);
+            document.getElementById('res-quinquenio').innerText = "+ " + fmt.format(valorQuinquenio);
+            
+            const rowFormacao = document.getElementById('row-formacao');
+            if(isFormacao) {
+                rowFormacao.style.display = 'flex';
+                document.getElementById('res-formacao').innerText = "+ " + fmt.format(valorFormacao);
+            } else {
+                rowFormacao.style.display = 'none';
+            }
+
+            const rowFormacao10 = document.getElementById('row-formacao10');
+            if(isFormacao10) {
+                rowFormacao10.style.display = 'flex';
+                document.getElementById('res-formacao10').innerText = "+ " + fmt.format(valorFormacao10);
+            } else {
+                rowFormacao10.style.display = 'none';
+            }
+
+            document.getElementById('res-bruto').innerText = fmt.format(bruto);
+            document.getElementById('res-prev').innerText = "- " + fmt.format(previdencia);
+            
+            const rowSindicato = document.getElementById('row-sindicato');
+            if (isSindicato) {
+                rowSindicato.style.display = 'flex';
+                document.getElementById('res-sindicato').innerText = "- " + fmt.format(sindicato);
+            } else {
+                rowSindicato.style.display = 'none';
+            }
+
+            // Exibição Detalhada do IRRF
+            const boxDetalhes = document.getElementById('box-detalhes-ir');
+            if (descontoLei2026 > 0) {
+                boxDetalhes.style.display = 'block';
+                document.getElementById('res-ir-padrao').innerText = fmt.format(irPadrao);
+                document.getElementById('res-bonus').innerText = "- " + fmt.format(descontoLei2026);
+            } else {
+                boxDetalhes.style.display = 'none';
+            }
+
+            document.getElementById('res-ir').innerText = "- " + fmt.format(irFinal);
+            document.getElementById('res-liquido').innerText = fmt.format(liquido);
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+
+<script>
+  // Registro do Service Worker via Blob para manter arquivo único
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      const swCode = `
+        self.addEventListener('install', (e) => self.skipWaiting());
+        self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
+      `;
+      const blob = new Blob([swCode], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(url).catch(err => console.log('SW Erro:', err));
+    });
+  }
+</script>
+
+<script>
+// popup instalação android
+// Detecta se é iOS e se NÃO está no modo "standalone" (instalado)
+const INSTALL_PROMPT_AUTO_CLOSE_MS = 5000;
+
+const isIos = () => {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  return /iphone|ipad|ipod/.test(userAgent);
+}
+
+const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+// Se for iOS e não estiver instalado, mostra o alerta
+if (isIos() && !isInStandaloneMode()) {
+  const iosPrompt = document.getElementById('ios-install-prompt');
+  iosPrompt.style.display = 'block';
+  setTimeout(() => {
+    iosPrompt.style.display = 'none';
+  }, INSTALL_PROMPT_AUTO_CLOSE_MS);
+}
+</script>
+
+<script>
+    // pop instalação android
+let deferredPrompt;
+const androidPrompt = document.getElementById('android-install-prompt');
+const btnInstallAndroid = document.getElementById('btn-install-android');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Impede que o Chrome mostre o banner automático padrão
+  e.preventDefault();
+  // Guarda o evento para ser disparado quando o usuário clicar no seu botão
+  deferredPrompt = e;
+  // Mostra o seu aviso personalizado
+  androidPrompt.style.display = 'block';
+  setTimeout(() => {
+    androidPrompt.style.display = 'none';
+  }, INSTALL_PROMPT_AUTO_CLOSE_MS);
+});
+
+btnInstallAndroid.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    // Mostra o prompt de instalação do sistema
+    deferredPrompt.prompt();
+    // Aguarda a escolha do usuário
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log(`Usuário escolheu: ${outcome}`);
+    // Limpa o prompt
+    deferredPrompt = null;
+    // Esconde o seu aviso
+    androidPrompt.style.display = 'none';
+  }
+});
+
+// Esconde o aviso se o app já estiver instalado
+window.addEventListener('appinstalled', () => {
+  androidPrompt.style.display = 'none';
+  console.log('PWA instalado com sucesso!');
+});
+</script>
+
+</body>
+</html>
