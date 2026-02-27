@@ -136,14 +136,14 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
         }
 
         .project-card {
             border: 1px solid #e5e7eb;
             border-radius: 14px;
-            padding: 16px;
+            padding: 18px;
             background: #fff;
             box-shadow: 0 6px 18px rgba(44, 62, 80, 0.08);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -176,10 +176,10 @@
         }
 
         .project-card p {
-            font-size: 0.92rem;
+            font-size: 0.96rem;
             color: var(--muted-text);
-            line-height: 1.55;
-            margin-bottom: 14px;
+            line-height: 1.65;
+            margin-bottom: 16px;
         }
 
         .project-thumb {
@@ -194,7 +194,7 @@
         .project-thumb img {
             display: block;
             width: 100%;
-            height: 150px;
+            height: 210px;
             object-fit: cover;
             transition: transform 0.25s ease;
         }
@@ -282,6 +282,7 @@
         }
 
         @media (max-width: 640px) {
+            .projects-grid { grid-template-columns: 1fr; }
             .content { padding: 20px; }
             .header { padding: 44px 18px 22px; }
             .action-btn { min-width: 220px; }
@@ -298,124 +299,124 @@
 
         <header class="header">
             <h1 id="page-title">Portifólio e Projetos</h1>
-            <p class="subtitle" id="page-subtitle">Uma seleção dos meus últimos trabalhos em Web Design e desenvolvimento web.</p>
+            <p class="subtitle" id="page-subtitle">Uma seleção dos meus trabalhos em Web Design e desenvolvimento web.</p>
         </header>
 
         <main class="content">
             <div class="actions">
-                <a class="action-btn primary" href="/" id="btn-back">⬅ Voltar para o Início</a>
+                <a class="action-btn primary" href="index.html" id="btn-back">⬅ Voltar para o Início</a>
             </div>
 
             <section class="projects-grid">
                 <article class="project-card">
-                    <span class="project-tag" id="tag-1">Landing Page</span>
-                    <h2 id="title-1">Projeto 01 - Página Institucional</h2>
-                    <p id="desc-1">Layout moderno e responsivo para apresentação de serviços, com foco em conversão e identidade visual.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto1/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto1/600/380" alt="Miniatura do Projeto 01">
+                    <span class="project-tag" id="tag-1">Site Institucional / Blog</span>
+                    <h2 id="title-1">Página Institucional</h2>
+                    <p id="desc-1">O site do SINPROESEMMA – Núcleo de Alto Alegre do Pindaré - MA reúne, em um só lugar, os principais serviços e informações para os professores: notícias locais e estaduais, agenda sindical, direitos da categoria, tabela salarial 2026, plano de carreira, calculadora salarial de acordo com o IRRF 2026, além de convênios e contato via WhatsApp. Tudo em um layout moderno, responsivo e de fácil acesso.</p>
+                    <a class="project-thumb" href="img/project1.png">
+                        <img src="img/project1.png" alt="Miniatura do Projeto 01">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto1/1600/1000" id="demo-1">Visualisar</a>
+                        <a class="demo" href="img/project1.png" id="demo-1">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-2">Portfólio</span>
-                    <h2 id="title-2">Projeto 02 - Site Pessoal</h2>
-                    <p id="desc-2">Site pessoal com informações profissionais, links de contato e estrutura otimizada para SEO.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto2/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto2/600/380" alt="Miniatura do Projeto 02">
+                    <span class="project-tag" id="tag-2">Site Institucional</span>
+                    <h2 id="title-2">Site Institucional</h2>
+                    <p id="desc-2">O site do Maktub Hotel foi redesenhado com foco em presença digital e conversão: visual premium, layout responsivo, galeria com modal e navegação por setas, formulário de reservas integrado ao WhatsApp, SEO com Open Graph e favicon, além de otimização de imagens para melhor desempenho. Um projeto completo de revitalização web e experiência do usuário.</p>
+                    <a class="project-thumb" href="img/project2.png">
+                        <img src="img/project2.png" alt="Miniatura do Projeto 02">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto2/1600/1000" id="demo-2">Visualisar</a>
+                        <a class="demo" href="img/project2.png" id="demo-2">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
                     <span class="project-tag" id="tag-3">Aplicação Web</span>
-                    <h2 id="title-3">Projeto 03 - Sistema Educacional</h2>
-                    <p id="desc-3">Protótipo web para organização de conteúdos e acompanhamento de atividades pedagógicas.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto3/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto3/600/380" alt="Miniatura do Projeto 03">
+                    <h2 id="title-3">Sistema Educacional</h2>
+                    <p id="desc-3">WebApp de horários escolares (CMT XVIII 2026) com atualização dinâmica via Google Planilhas, organização por turnos Matutino e Vespertino, visual limpo e responsivo, leitura rápida por dia da semana e experiência aplicativo com instalação em Android e iOS, funcionando como app direto na tela inicial.</p>
+                    <a class="project-thumb" href="img/project3.png">
+                        <img src="img/project3.png" alt="Miniatura do Projeto 03">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto3/1600/1000" id="demo-3">Visualisar</a>
+                        <a class="demo" href="img/project3.png" id="demo-3">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-4">E-commerce</span>
-                    <h2 id="title-4">Projeto 04 - Loja Virtual</h2>
-                    <p id="desc-4">Layout de e-commerce com foco em catálogo, carrinho e experiência de compra em dispositivos móveis.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto4/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto4/600/380" alt="Miniatura do Projeto 04">
+                    <span class="project-tag" id="tag-4">Site Empresarial</span>
+                    <h2 id="title-4">Site Institucional</h2>
+                    <p id="desc-4">Projeto de website institucional e comercial para a ElyFitness, desenvolvido com foco em performance, UX e conversão. A solução inclui página da academia, planos, galeria interativa, localização integrada, contato via WhatsApp e loja dinâmica conectada ao Google Sheets, com busca, filtros, ordenação, promoções e paginação, site totalmente responsivo.</p>
+                    <a class="project-thumb" href="img/project4.png">
+                        <img src="img/project4.png" alt="Miniatura do Projeto 04">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto4/1600/1000" id="demo-4">Visualisar</a>
+                        <a class="demo" href="img/project4.png" id="demo-4">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-5">Dashboard</span>
-                    <h2 id="title-5">Projeto 05 - Painel Administrativo</h2>
-                    <p id="desc-5">Painel para visualização de dados, gráficos e métricas, com navegação clara e interface responsiva.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto5/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto5/600/380" alt="Miniatura do Projeto 05">
+                    <span class="project-tag" id="tag-5">Aplicação Web</span>
+                    <h2 id="title-5">Simulador Salarial</h2>
+                    <p id="desc-5">Desenvolvido para o SINPROESEMMA de Alto Alegre do Pindaré - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
+                    <a class="project-thumb" href="img/project5.png">
+                        <img src="img/project5.png" alt="Miniatura do Projeto 05">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto5/1600/1000" id="demo-5">Visualisar</a>
+                        <a class="demo" href="img/project5.png" id="demo-5">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-6">Blog</span>
-                    <h2 id="title-6">Projeto 06 - Blog Profissional</h2>
-                    <p id="desc-6">Estrutura de blog com foco em leitura, organização de artigos por categorias e boa performance.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto6/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto6/600/380" alt="Miniatura do Projeto 06">
+                    <span class="project-tag" id="tag-6">Aplicação Web</span>
+                    <h2 id="title-6">Simulador Salarial</h2>
+                    <p id="desc-6">Desenvolvido para o SINPROESEMMA de Humberto de Campos - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
+                    <a class="project-thumb" href="img/project6.png">
+                        <img src="img/project6.png" alt="Miniatura do Projeto 06">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto6/1600/1000" id="demo-6">Visualisar</a>
+                        <a class="demo" href="img/project6.png" id="demo-6">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-7">Sistema</span>
-                    <h2 id="title-7">Projeto 07 - Gestão de Alunos</h2>
-                    <p id="desc-7">Sistema web para cadastro e acompanhamento de alunos, com fluxos simples para uso diário.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto7/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto7/600/380" alt="Miniatura do Projeto 07">
+                    <span class="project-tag" id="tag-7">Aplicação Web</span>
+                    <h2 id="title-7">Simulador Salarial</h2>
+                    <p id="desc-7">Desenvolvido para o SINPROESEMMA de Nova Olinda do Maranhão - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
+                    <a class="project-thumb" href="img/project7.png">
+                        <img src="img/project7.png" alt="Miniatura do Projeto 07">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto7/1600/1000" id="demo-7">Visualisar</a>
+                        <a class="demo" href="img/project7.png" id="demo-7">Visualisar</a>
                     </div>
                 </article>
 
                 <article class="project-card">
-                    <span class="project-tag" id="tag-8">Landing Page</span>
-                    <h2 id="title-8">Projeto 08 - Página de Vendas</h2>
-                    <p id="desc-8">Página de vendas otimizada com seções estratégicas, CTA destacado e design voltado para conversão.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto8/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto8/600/380" alt="Miniatura do Projeto 08">
+                    <span class="project-tag" id="tag-8">Aplicação Web</span>
+                    <h2 id="title-8">Simulador Salarial</h2>
+                    <p id="desc-8">Desenvolvido para o SINPROESEMMA de Pindaré Mirim - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
+                    <a class="project-thumb" href="img/project8.png">
+                        <img src="img/project1.png" alt="Miniatura do Projeto 08">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto8/1600/1000" id="demo-8">Visualisar</a>
+                        <a class="demo" href="img/project8.png" id="demo-8">Visualisar</a>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- <article class="project-card">
                     <span class="project-tag" id="tag-9">Site Empresarial</span>
                     <h2 id="title-9">Projeto 09 - Presença Digital</h2>
                     <p id="desc-9">Website institucional para empresa, com apresentação de serviços, equipe e formulário de contato.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto9/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto9/600/380" alt="Miniatura do Projeto 09">
+                    <a class="project-thumb" href="img/project2.png">
+                        <img src="img/project2.png" alt="Miniatura do Projeto 09">
                     </a>
                     <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto9/1600/1000" id="demo-9">Visualisar</a>
+                        <a class="demo" href="img/project2.png" id="demo-9">Visualisar</a>
                     </div>
-                </article>
+                </article> -->
 
-                <article class="project-card">
+                <!-- <article class="project-card">
                     <span class="project-tag" id="tag-10">Portfólio</span>
                     <h2 id="title-10">Projeto 10 - Portfólio Criativo</h2>
                     <p id="desc-10">Modelo de portfólio com foco em apresentação visual de trabalhos e experiência fluida de navegação.</p>
@@ -449,7 +450,7 @@
                     <div class="project-links">
                         <a class="demo" href="https://picsum.photos/seed/projeto12/1600/1000" id="demo-12">Visualisar</a>
                     </div>
-                </article>
+                </article> -->
             </section>
 
             <div class="footer">
