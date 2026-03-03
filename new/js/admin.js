@@ -215,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Fetch and Display News ---
     async function fetchNews() {
         try {
-            // Order by descending date so newest show first
-            const q = query(collection(db, "noticias"), orderBy("isoDate", "desc"));
-            const querySnapshot = await getDocs(q);
+            // Buscando sem orderBy para evitar bloqueios de Índices no Firebase
+            // Faremos a ordenação manualmente no Array logo abaixo
+            const querySnapshot = await getDocs(collection(db, "noticias"));
 
             tableBody.innerHTML = ''; // clear
 
@@ -226,25 +226,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Converter para array e ordenar manualmente (Mais seguro caso não haja índice criado)
+            const newsArray = [];
             querySnapshot.forEach((docSnap) => {
-                const data = docSnap.data();
+                newsArray.push({ id: docSnap.id, ...docSnap.data() });
+            });
+
+            newsArray.sort((a, b) => {
+                const dateA = a.isoDate ? new Date(a.isoDate) : new Date(0);
+                const dateB = b.isoDate ? new Date(b.isoDate) : new Date(0);
+                return dateB - dateA; // Descending
+            });
+
+            newsArray.forEach((data) => {
                 const tr = document.createElement('tr');
 
                 const hasImage = data.imagem_url ? 'Sim' : 'Não';
 
                 tr.innerHTML = `
-          <td>${data.data}</td>
-          <td><strong>${data.titulo}</strong></td>
+          <td>${data.data || 'Sem Data'}</td>
+          <td><strong>${data.titulo || 'Sem Título'}</strong></td>
           <td>${hasImage}</td>
           <td class="action-buttons">
-            <button class="btn-delete" data-id="${docSnap.id}">Excluir</button>
+            <button class="btn-delete btn-delete-news" data-id="${data.id}">Excluir</button>
           </td>
         `;
                 tableBody.appendChild(tr);
             });
 
             // Attach delete listeners
-            document.querySelectorAll('.btn-delete').forEach(btn => {
+            document.querySelectorAll('.btn-delete-news').forEach(btn => {
                 btn.addEventListener('click', deleteNews);
             });
 
