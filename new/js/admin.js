@@ -1,8 +1,7 @@
 import {
-    auth, db, storage,
+    auth, db,
     onAuthStateChanged, signOut,
-    collection, addDoc, getDocs, deleteDoc, doc, query, orderBy,
-    ref, uploadBytes, getDownloadURL
+    collection, addDoc, getDocs, deleteDoc, doc, query, orderBy
 } from './firebase-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
