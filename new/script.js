@@ -324,10 +324,11 @@ function renderNews(newsItems, containerId = 'news-list', maxItems = newsItems.l
     detailsButton.classList.add('news-toggle-content');
     detailsButton.textContent = 'Ler conteúdo';
 
-    const detailsText = document.createElement('p');
-    detailsText.className = 'news-content';
+    const detailsText = document.createElement('div');
+    detailsText.className = 'news-content blog-content';
     detailsText.hidden = true;
-    detailsText.textContent = item.content || 'Conteúdo completo será publicado em breve.';
+    // Rendering HTML from Quill.js securely
+    detailsText.innerHTML = item.content || '<p>Conteúdo completo será publicado em breve.</p>';
 
     detailsButton.addEventListener('click', () => {
       const isHidden = detailsText.hidden;

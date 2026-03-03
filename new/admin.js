@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleInput = document.getElementById('news-title');
     const dateInput = document.getElementById('news-date');
     const summaryInput = document.getElementById('news-summary');
-    const contentInput = document.getElementById('news-content');
+    // Content will be handled by Quill
     const linkInput = document.getElementById('news-source-link');
     const imageMethod = document.getElementById('news-image-method');
     const imageFileGroup = document.getElementById('image-upload-group');
@@ -26,6 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-news-btn');
     const statusMsg = document.getElementById('form-status');
     const tableBody = document.getElementById('admin-news-list');
+
+    // --- Initialize Quill Editor ---
+    const quill = new Quill('#news-content-editor', {
+        theme: 'snow',
+        placeholder: 'Escreva o texto completo da notícia aqui... (Suporta estruturação em parágrafos, listas, etc)',
+        modules: {
+            toolbar: [
+                [{ 'header': [2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['link', 'blockquote'],
+                ['clean']
+            ]
+        }
+    });
 
     // --- Auth Check ---
     onAuthStateChanged(auth, (user) => {
@@ -79,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = titleInput.value.trim();
         const dateVal = dateInput.value; // YYYY-MM-DD
         const summary = summaryInput.value.trim();
-        const content = contentInput.value.trim();
+        const content = quill.root.innerHTML; // Get formatted HTML
         const link = linkInput.value.trim();
 
         // Convert YYYY-MM-DD to DD/MM/YYYY for the site parsing functions
@@ -87,27 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
 
         // Handle Image
-        let finalImageUrl = '';
-        const imethod = imageMethod.value;
+        let finalImageUrl = urlInput ? urlInput.value.trim() : '';
 
         try {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Publicando...';
             statusMsg.textContent = '';
             statusMsg.style.color = '';
-
-            if (imethod === 'url') {
-                finalImageUrl = urlInput.value.trim();
-            } else if (imethod === 'upload' && fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                // Create unique name
-                const fileName = `noticias/${Date.now()}_${file.name}`;
-                const storageRef = ref(storage, fileName);
-
-                statusMsg.textContent = 'Fazendo upload da imagem...';
-                await uploadBytes(storageRef, file);
-                finalImageUrl = await getDownloadURL(storageRef);
-            }
 
             statusMsg.textContent = 'Salvando notícia no banco de dados...';
 
@@ -129,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             form.reset();
             dateInput.value = `${yyyy}-${mm}-${dd}`; // reset date
-            imageMethod.value = 'upload';
-            imageMethod.dispatchEvent(new Event('change'));
+            quill.setContents([]); // clear editor
+            if (urlInput) urlInput.value = '';
 
             setTimeout(() => {
                 statusMsg.textContent = '';

@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="icon" type="image/png" href="img/logo.png" />
+    <!-- Quill.js Theme CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
         .admin-layout {
@@ -112,9 +114,28 @@
             border-color: var(--color-secondary);
         }
 
-        textarea.form-control {
+        textarea.form-control,
+        .ql-container.form-control {
             resize: vertical;
             min-height: 120px;
+        }
+
+        .ql-editor {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            min-height: 250px;
+        }
+
+        .ql-toolbar {
+            border-color: var(--color-gray-300) !important;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            background-color: var(--color-gray-50);
+        }
+
+        .ql-container {
+            border-color: var(--color-gray-300) !important;
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
         }
 
         .form-help {
@@ -268,9 +289,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="news-content">Conteúdo Completo</label>
-                        <textarea id="news-content" class="form-control" rows="6"
-                            placeholder="Escreva o texto completo da notícia aqui... (Suporta estruturação em parágrafos)"></textarea>
+                        <label>Conteúdo Completo (Formato Blog)</label>
+                        <!-- Quill Editor Container -->
+                        <div id="news-content-editor" class="form-control"></div>
                     </div>
 
                     <div class="form-row">
@@ -332,6 +353,8 @@
         </main>
     </div>
 
+    <!-- Quill.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script type="module" src="admin.js"></script>
 </body>
 
