@@ -197,10 +197,7 @@ const fallbackNews = [
   },
 ];
 
-// Substituído Sheets pelo Firebase
-// const SHEETS_JSON_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/noticias';
-const SHEETS_AGENDA_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/agenda';
-const SHEETS_CONVENIOS_URL = 'https://opensheet.elk.sh/1AYVpesvl9ee8SMY_ffFV0TogSlgfrdRG3mDN7yChJcU/convenios';
+// Substituído Sheets pelo Firebase para Notícias, Agenda e Convênios
 const STATE_NEWS_API_URL =
   'https://www.sinproesemma.org.br/wp-json/wp/v2/posts?per_page=6&_embed=wp:featuredmedia';
 const LOCAL_NEWS_PAGE_SIZE = 3;
@@ -769,21 +766,26 @@ function renderAgenda(events, maxItems = events.length) {
 
 async function loadAgenda() {
   try {
-    if (!SHEETS_AGENDA_URL) {
-      renderAgenda(fallbackAgenda, 3);
-      return;
-    }
+    const q = query(collection(db, "agenda"), orderBy("isoDate", "desc"));
+    const querySnapshot = await getDocs(q);
 
-    // Ponto de injeção dos dados da aba "agenda":
-    // colunas esperadas: titulo, data, horario, local, descricao, status
-    const response = await fetch(SHEETS_AGENDA_URL, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`Falha HTTP ${response.status}`);
+    const dbItems = [];
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      if (data.status === 'PUBLICADO') {
+        dbItems.push({
+          title: data.titulo || '',
+          date: data.data || '',
+          time: data.horario || '',
+          location: data.local || '',
+          summary: data.descricao || ''
+        });
+      }
+    });
 
-    const rawData = await response.json();
-    const mappedAgenda = Array.isArray(rawData) ? prepareAgendaRows(rawData) : [];
-    renderAgenda(mappedAgenda.length ? mappedAgenda : fallbackAgenda, 3);
+    renderAgenda(dbItems.length ? dbItems : fallbackAgenda, 3);
   } catch (error) {
-    console.error('Erro ao carregar agenda:', error);
+    console.error('Erro ao carregar agenda estática pelo Firebase:', error);
     renderAgenda(fallbackAgenda, 3);
   }
 }
@@ -795,27 +797,26 @@ async function loadConvenios() {
   try {
     setupConveniosControls();
 
-    if (!SHEETS_CONVENIOS_URL) {
-      conveniosItems = fallbackConvenios;
-      conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
-      conveniosCurrentPage = 1;
-      applyConveniosFiltersAndPagination();
-      return;
-    }
+    const q = query(collection(db, "convenios"), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
 
-    // Ponto de injeção da aba "convenios":
-    // colunas esperadas: id, nome, desconto, imagem
-    const response = await fetch(SHEETS_CONVENIOS_URL, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`Falha HTTP ${response.status}`);
+    const dbItems = [];
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      dbItems.push({
+        id: docSnap.id,
+        nome: data.nome || '',
+        desconto: data.desconto || '',
+        imagem: data.imagem || ''
+      });
+    });
 
-    const rawData = await response.json();
-    const mappedConvenios = Array.isArray(rawData) ? prepareConveniosRows(rawData) : [];
-    conveniosItems = mappedConvenios.length ? mappedConvenios : fallbackConvenios;
+    conveniosItems = dbItems.length ? dbItems : fallbackConvenios;
     conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
     conveniosCurrentPage = 1;
     applyConveniosFiltersAndPagination();
   } catch (error) {
-    console.error('Erro ao carregar convênios:', error);
+    console.error('Erro ao carregar convênios do Firebase:', error);
     conveniosItems = fallbackConvenios;
     conveniosPerPage = Number(document.getElementById('convenios-page-size')?.value || 9);
     conveniosCurrentPage = 1;
