@@ -27,20 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMsg = document.getElementById('form-status');
     const tableBody = document.getElementById('admin-news-list');
 
-    // --- Initialize Quill Editor ---
-    const quill = new Quill('#news-content-editor', {
-        theme: 'snow',
-        placeholder: 'Escreva o texto completo da notícia aqui... (Suporta estruturação em parágrafos, listas, etc)',
-        modules: {
-            toolbar: [
-                [{ 'header': [2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                ['link', 'blockquote'],
-                ['clean']
-            ]
-        }
-    });
+    // Quill variable defined here, but initialized later
+    let quill;
 
     // --- Auth Check ---
     onAuthStateChanged(auth, (user) => {
@@ -49,6 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
             userInfo.textContent = `Logado como: ${user.email}`;
             loader.style.display = 'none';
             container.style.display = 'grid'; // .admin-layout display
+
+            // Initialize Quill Editor now that the container is visible
+            quill = new Quill('#news-content-editor', {
+                theme: 'snow',
+                placeholder: 'Escreva o texto completo da notícia aqui... (Suporta estruturação em parágrafos, listas, etc)',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [2, 3, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        ['link', 'blockquote'],
+                        ['clean']
+                    ]
+                }
+            });
 
             // Load existing news right away
             fetchNews();
