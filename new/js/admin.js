@@ -116,96 +116,102 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Logout ---
-    logoutBtn.addEventListener('click', () => {
-        signOut(auth).then(() => {
-            window.location.href = '../pages/login.html';
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = '../pages/login.html';
+            });
         });
-    });
+    }
 
     // --- Image Method Toggle ---
-    imageMethod.addEventListener('change', () => {
-        const val = imageMethod.value;
-        if (val === 'upload') {
-            imageFileGroup.style.display = 'block';
-            imageUrlGroup.style.display = 'none';
-        } else if (val === 'url') {
-            imageFileGroup.style.display = 'none';
-            imageUrlGroup.style.display = 'block';
-        } else {
-            imageFileGroup.style.display = 'none';
-            imageUrlGroup.style.display = 'none';
-        }
-    });
+    if (imageMethod) {
+        imageMethod.addEventListener('change', () => {
+            const val = imageMethod.value;
+            if (val === 'upload') {
+                imageFileGroup.style.display = 'block';
+                imageUrlGroup.style.display = 'none';
+            } else if (val === 'url') {
+                imageFileGroup.style.display = 'none';
+                imageUrlGroup.style.display = 'block';
+            } else {
+                imageFileGroup.style.display = 'none';
+                imageUrlGroup.style.display = 'none';
+            }
+        });
+    }
 
     // --- Set Today as Default Date ---
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    dateInput.value = `${yyyy}-${mm}-${dd}`;
+    if (dateInput) dateInput.value = `${yyyy}-${mm}-${dd}`;
 
     // --- Submit News ---
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        const title = titleInput.value.trim();
-        const dateVal = dateInput.value; // YYYY-MM-DD
-        const summary = summaryInput.value.trim();
-        const content = quill.root.innerHTML; // Get formatted HTML
-        const link = linkInput.value.trim();
+            const title = titleInput.value.trim();
+            const dateVal = dateInput.value; // YYYY-MM-DD
+            const summary = summaryInput.value.trim();
+            const content = quill.root.innerHTML; // Get formatted HTML
+            const link = linkInput.value.trim();
 
-        // Convert YYYY-MM-DD to DD/MM/YYYY for the site parsing functions
-        const parts = dateVal.split('-');
-        const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+            // Convert YYYY-MM-DD to DD/MM/YYYY for the site parsing functions
+            const parts = dateVal.split('-');
+            const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
 
-        // Handle Image
-        let finalImageUrl = urlInput ? urlInput.value.trim() : '';
+            // Handle Image
+            let finalImageUrl = urlInput ? urlInput.value.trim() : '';
 
-        try {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Publicando...';
-            statusMsg.textContent = '';
-            statusMsg.style.color = '';
-
-            statusMsg.textContent = 'Salvando notícia no banco de dados...';
-
-            // Save to Firestore
-            const docRef = await addDoc(collection(db, "noticias"), {
-                titulo: title,
-                data: formattedDate,
-                isoDate: new Date(dateVal).toISOString(), // Used for sorting securely
-                resumo: summary,
-                conteudo: content,
-                link: link,
-                imagem_url: finalImageUrl,
-                status: 'PUBLICADO',
-                createdAt: new Date().toISOString()
-            });
-
-            statusMsg.textContent = '✅ Notícia publicada com sucesso!';
-            statusMsg.style.color = '#28a745';
-
-            form.reset();
-            dateInput.value = `${yyyy}-${mm}-${dd}`; // reset date
-            quill.setContents([]); // clear editor
-            if (urlInput) urlInput.value = '';
-
-            setTimeout(() => {
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Publicando...';
                 statusMsg.textContent = '';
-            }, 4000);
+                statusMsg.style.color = '';
 
-            // Refresh list
-            fetchNews();
+                statusMsg.textContent = 'Salvando notícia no banco de dados...';
 
-        } catch (error) {
-            console.error("Erro ao publicar:", error);
-            statusMsg.textContent = "❌ Erro ao publicar. Verifique o console.";
-            statusMsg.style.color = '#dc3545';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Publicar Notícia';
-        }
-    });
+                // Save to Firestore
+                const docRef = await addDoc(collection(db, "noticias"), {
+                    titulo: title,
+                    data: formattedDate,
+                    isoDate: new Date(dateVal).toISOString(), // Used for sorting securely
+                    resumo: summary,
+                    conteudo: content,
+                    link: link,
+                    imagem_url: finalImageUrl,
+                    status: 'PUBLICADO',
+                    createdAt: new Date().toISOString()
+                });
+
+                statusMsg.textContent = '✅ Notícia publicada com sucesso!';
+                statusMsg.style.color = '#28a745';
+
+                form.reset();
+                dateInput.value = `${yyyy}-${mm}-${dd}`; // reset date
+                quill.setContents([]); // clear editor
+                if (urlInput) urlInput.value = '';
+
+                setTimeout(() => {
+                    statusMsg.textContent = '';
+                }, 4000);
+
+                // Refresh list
+                fetchNews();
+
+            } catch (error) {
+                console.error("Erro ao publicar:", error);
+                statusMsg.textContent = "❌ Erro ao publicar. Verifique o console.";
+                statusMsg.style.color = '#dc3545';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Publicar Notícia';
+            }
+        }); // Close addEventListener
+    } // Close if(form)
 
     // --- Fetch and Display News ---
     async function fetchNews() {
