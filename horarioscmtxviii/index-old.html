@@ -490,14 +490,12 @@
       };
 
       const isAndroid = () => /android/.test(window.navigator.userAgent.toLowerCase());
-      const shouldShowIosInstallPrompt = () => isIos() && !isInStandaloneMode();
-      const shouldShowAndroidInstallPrompt = () => isAndroid() && !isInStandaloneMode();
 
       const isInStandaloneMode = () =>
         (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
         (('standalone' in window.navigator) && window.navigator.standalone);
 
-      if (shouldShowIosInstallPrompt()) {
+      if (isIos() && !isInStandaloneMode()) {
         const iosPrompt = document.getElementById('ios-install-prompt');
         iosPrompt.style.display = 'block';
         setTimeout(() => {
@@ -522,11 +520,6 @@
 
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
-        if (!shouldShowAndroidInstallPrompt()) {
-          deferredPrompt = null;
-          androidPrompt.style.display = 'none';
-          return;
-        }
         deferredPrompt = e;
         resetAndroidInstallMessages();
         androidPrompt.style.display = 'block';
@@ -535,7 +528,7 @@
         }, INSTALL_PROMPT_AUTO_CLOSE_MS);
       });
 
-      if (shouldShowAndroidInstallPrompt()) {
+      if (isAndroid() && !isInStandaloneMode()) {
         resetAndroidInstallMessages();
         androidPrompt.style.display = 'block';
         setTimeout(() => {
