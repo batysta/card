@@ -48,4 +48,4 @@ O usuario pode, a qualquer momento:
 
 ## Contato
 
-Antes de publicar, substitua esta secao pelo seu e-mail ou site de suporte oficial.
+NovaApps Studio (batysta.com)
