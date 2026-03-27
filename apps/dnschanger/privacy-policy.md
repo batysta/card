@@ -29,6 +29,10 @@ O DNS Changer nao vende nem compartilha a lista de aplicativos instalados para p
 
 As consultas DNS podem ser enviadas ao servidor DNS escolhido pelo proprio usuario. Isso significa que o provedor DNS selecionado pode processar essas consultas de acordo com a politica de privacidade dele.
 
+## Coleta de Diagnósticos e Dados Analíticos (Crashlytics)
+
+Com o objetivo de melhorar continuamente a estabilidade e a experiência do aplicativo, utilizamos serviços de terceiros, especificamente o Google Firebase (Crashlytics e Analytics), para monitorar erros operacionais. Em caso de falha ou 'crash' no aplicativo, o serviço coleta automaticamente informações técnicas e totalmente anônimas de diagnóstico, incluindo, mas não se limitando a: modelo do dispositivo, versão do sistema operacional (Ex: Android 13), endereço IP anonimizado, estado do aplicativo no momento da falha e configuração de hardware. Esses dados não contêm informações de identificação pessoal (PII), não monitoram seu tráfego de internet através da VPN, nem são compartilhados para fins de marketing, sendo utilizados exclusivamente pela nossa equipe de desenvolvimento para identificar bugs, corrigir erros sistêmicos e garantir a viabilidade técnica do serviço em futuras atualizações.
+
 ## Armazenamento
 
 As preferencias do aplicativo sao armazenadas localmente no dispositivo.
