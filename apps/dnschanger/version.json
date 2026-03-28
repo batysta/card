@@ -1,6 +1,7 @@
 {
-    "versionCode": 2,
-    "versionName": "1.0.14",
+    "versionCode": 1774672142,
+    "versionName": "1.0.16",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Aproveite a nova atualização com melhorias de performance e segurança."
+    "releaseNotes": "Melhorias de segurança na atualização in-app, validação de integridade do APK e fluxo correto de permissão para instalação.",
+    "sha256": "b5e6e06b0b3ec495a9fab41670dd723d5efe62b438015aee1c962ca395b6f157"
 }
