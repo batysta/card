@@ -4,5 +4,6 @@
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
     "releaseNotes": "Distribuicao direta oficial da NovaApps Studio com validacao de pacote no updater. Esta versao usa o novo pacote com.novaapps.dnschanger; se voce vier do app antigo, instale como novo app e depois remova a versao anterior.",
+    "releaseNotesEn": "Official NovaApps Studio direct distribution with package validation in the updater. This version uses the new com.novaapps.dnschanger package; if you are coming from the old app, install it as a new app and then remove the previous version.",
     "sha256": "fd6b92f123c42a1ea83d7ee166cdbc8b79295e741dbd2f9c0ce0b4b11b0eecfc"
 }

@@ -524,7 +524,7 @@
 
         <section class="content">
             <div class="shell layout">
-                <nav class="toc" aria-label="Seções da política">
+                <nav class="toc" aria-label="Seções da política" data-aria-label-pt-BR="Seções da política" data-aria-label-en="Policy sections">
                     <h2 data-i18n="tocTitle">Nesta página</h2>
                     <a href="#identificacao" data-i18n="tocIdentification">Identificação do aplicativo</a>
                     <a href="#dados" data-i18n="tocData">Dados acessados e processados</a>
@@ -804,6 +804,14 @@
                 const key = node.getAttribute('data-i18n-html');
                 if (dictionary[key]) {
                     node.innerHTML = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll('[data-aria-label-pt-BR]').forEach((node) => {
+                const attributeName = `data-aria-label-${language}`;
+                const nextLabel = node.getAttribute(attributeName) || node.getAttribute('data-aria-label-pt-BR');
+                if (nextLabel) {
+                    node.setAttribute('aria-label', nextLabel);
                 }
             });
 
