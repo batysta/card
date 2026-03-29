@@ -8,14 +8,14 @@ O DNS Changer e um aplicativo Android para controle de DNS por meio de uma VPN l
 
 A distribuicao direta oficial atual e instalada como `com.novaapps.dnschanger`.
 
-## Dados coletados
+## Dados acessados e processados
 
 O DNS Changer nao exige criacao de conta e nao coleta dados pessoais para venda ou publicidade.
 
-O aplicativo pode acessar localmente no dispositivo:
+O aplicativo pode acessar e processar localmente no dispositivo:
 
 - configuracoes de DNS definidas pelo usuario
-- lista de aplicativos instalados, apenas para permitir a selecao de quais apps usam a VPN DNS
+- informacoes sobre aplicativos instalados, incluindo nomes dos apps, nomes de pacote e icones, somente para exibir a lista de apps e permitir que o usuario escolha quais apps usam a VPN DNS
 - estado local da VPN para operacao do aplicativo
 
 ## Como os dados sao usados
@@ -25,11 +25,14 @@ Essas informacoes sao usadas somente para:
 - ativar e manter a VPN local de DNS
 - aplicar as preferencias escolhidas pelo usuario
 - permitir a filtragem por aplicativo
+- armazenar localmente as selecoes de apps feitas pelo usuario para a Filtragem por App
 - encaminhar consultas DNS para o servidor selecionado pelo usuario
 
 ## Compartilhamento de dados
 
-O DNS Changer nao vende nem compartilha a lista de aplicativos instalados para publicidade, analytics de terceiros ou monetizacao.
+O DNS Changer nao vende nem compartilha as informacoes de aplicativos instalados para publicidade, analytics de terceiros ou monetizacao.
+
+As informacoes sobre apps instalados processadas para a Filtragem por App nao sao enviadas para nossos servidores.
 
 As consultas DNS podem ser enviadas ao servidor DNS escolhido pelo proprio usuario. Isso significa que o provedor DNS selecionado pode processar essas consultas de acordo com a politica de privacidade dele.
 
@@ -39,7 +42,7 @@ Com o objetivo de melhorar continuamente a estabilidade e a experiência do apli
 
 ## Armazenamento
 
-As preferencias do aplicativo sao armazenadas localmente no dispositivo.
+As preferencias do aplicativo e as selecoes de filtragem por app sao armazenadas localmente no dispositivo.
 
 ## Seguranca
 
@@ -53,6 +56,7 @@ O usuario pode, a qualquer momento:
 - desativar a VPN local
 - remover servidores personalizados
 - modificar a lista de aplicativos que usam a VPN DNS
+- recusar ou revisar o consentimento para Filtragem por App ao reinstalar o app ou limpar os dados
 
 ## Contato
 

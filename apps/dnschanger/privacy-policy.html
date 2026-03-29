@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | DNS Changer</title>
+    <meta name="description"
+        content="Política de privacidade oficial do DNS Changer, distribuído diretamente pela NovaApps Studio para Android.">
+    <meta name="theme-color" content="#09111f">
+    <link rel="icon" type="image/webp" href="favicon.webp">
+    <link rel="apple-touch-icon" href="favicon.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09111f;
+            --bg-soft: #101a2d;
+            --bg-panel: rgba(19, 30, 52, 0.78);
+            --line: rgba(138, 206, 255, 0.12);
+            --line-strong: rgba(138, 206, 255, 0.22);
+            --text: #eef4ff;
+            --muted: #9eb1c9;
+            --accent: #8aceff;
+            --accent-strong: #2493ff;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+            --max: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 18% 14%, rgba(36, 147, 255, 0.16), transparent 24%),
+                radial-gradient(circle at 82% 18%, rgba(138, 206, 255, 0.09), transparent 22%),
+                linear-gradient(180deg, #08101d 0%, #0c1525 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 96px 96px;
+            mask-image: radial-gradient(circle at center, black 32%, transparent 86%);
+            opacity: 0.18;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .shell {
+            width: min(calc(100% - 32px), var(--max));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(16px);
+            background: rgba(9, 17, 31, 0.72);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .site-header-inner {
+            width: min(calc(100% - 32px), var(--max));
+            margin: 0 auto;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-lockup {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .brand-name,
+        h1,
+        h2,
+        h3,
+        .pill {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .brand-name {
+            font-size: 0.92rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .brand-subtitle {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-option {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            min-height: 40px;
+            padding: 0 12px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .lang-option:hover {
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .lang-option.is-active {
+            color: #04111f;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+            box-shadow: 0 10px 24px rgba(36, 147, 255, 0.22);
+        }
+
+        .lang-emoji {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .lang-text {
+            letter-spacing: 0.04em;
+            font-size: 0.82rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 18px;
+            border-radius: 18px;
+            font-weight: 800;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+            color: #04111f;
+            box-shadow: 0 12px 32px rgba(36, 147, 255, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 56px 0 22px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.54fr);
+            gap: 34px;
+            align-items: start;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(138, 206, 255, 0.08);
+            border: 1px solid rgba(138, 206, 255, 0.16);
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            line-height: 0.96;
+            letter-spacing: -0.05em;
+        }
+
+        .hero-copy p {
+            margin: 20px 0 0;
+            color: var(--muted);
+            line-height: 1.78;
+            font-size: clamp(1rem, 1.6vw, 1.14rem);
+            max-width: 760px;
+        }
+
+        .hero-side {
+            padding: 24px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(18, 27, 45, 0.92) 0%, rgba(10, 16, 29, 0.92) 100%);
+            border: 1px solid rgba(138, 206, 255, 0.12);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-side h3 {
+            margin: 0 0 14px;
+            font-size: 1.24rem;
+        }
+
+        .meta-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .meta-item {
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .meta-item:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .meta-label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            line-height: 1.55;
+        }
+
+        .content {
+            padding: 42px 0 88px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .toc,
+        .policy-panel {
+            border-radius: 28px;
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+        }
+
+        .toc {
+            position: sticky;
+            top: 102px;
+            padding: 22px;
+        }
+
+        .toc h2 {
+            margin: 0 0 14px;
+            font-size: 1.08rem;
+        }
+
+        .toc a {
+            display: block;
+            padding: 10px 0;
+            color: var(--muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .toc a:first-of-type {
+            border-top: 0;
+        }
+
+        .toc a:hover {
+            color: var(--text);
+        }
+
+        .policy-panel {
+            padding: 34px;
+        }
+
+        .policy-section + .policy-section {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .policy-section h2 {
+            margin: 0 0 14px;
+            font-size: clamp(1.4rem, 2vw, 1.95rem);
+            letter-spacing: -0.04em;
+        }
+
+        .policy-section p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.82;
+        }
+
+        .policy-section p + p {
+            margin-top: 14px;
+        }
+
+        .policy-copy {
+            color: var(--muted);
+        }
+
+        .policy-section ul {
+            margin: 14px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .policy-section li + li {
+            margin-top: 10px;
+        }
+
+        code {
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .footer {
+            padding: 20px 0 54px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 22px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                position: static;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .shell,
+            .site-header-inner {
+                width: min(calc(100% - 22px), var(--max));
+            }
+
+            .hero {
+                padding-top: 30px;
+            }
+
+            .hero-side,
+            .toc,
+            .policy-panel {
+                padding: 24px;
+            }
+
+            .top-actions {
+                width: 100%;
+            }
+
+            .lang-switch {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="brand-lockup">
+                <div class="brand-name">NovaApps Studio</div>
+                <div class="brand-subtitle" data-i18n="brandSubtitle">Política de privacidade oficial do DNS Changer</div>
+            </div>
+            <div class="top-actions">
+                <div class="lang-switch" aria-label="Selecionar idioma / Select language">
+                    <button class="lang-option" type="button" data-language="pt-BR" aria-label="Português do Brasil">
+                        <span class="lang-emoji">🇧🇷</span>
+                        <span class="lang-text">PT</span>
+                    </button>
+                    <button class="lang-option" type="button" data-language="en" aria-label="English">
+                        <span class="lang-emoji">🇺🇸</span>
+                        <span class="lang-text">EN</span>
+                    </button>
+                </div>
+                <a class="btn-secondary" href="index.html" data-i18n="homeCta">Home</a>
+                <a class="btn-primary" href="dnschanger-latest.apk" data-download-link data-i18n="downloadCta">Baixar APK</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="shell hero-grid">
+                <div class="hero-copy">
+                    <div class="pill-row">
+                        <div class="pill" data-i18n="pillDocument">Documento oficial</div>
+                        <div class="pill" data-i18n="pillDirect">Distribuição direta</div>
+                        <div class="pill" data-i18n="pillBrand">NovaApps Studio</div>
+                    </div>
+                    <h1 data-i18n="heroTitle">Política de Privacidade</h1>
+                    <p data-i18n="heroIntro">
+                        Esta página explica quais informações o DNS Changer acessa para funcionar, como esses dados são
+                        usados no dispositivo e o que não é compartilhado com nossos servidores. A proposta do app é
+                        controle local de DNS no Android com clareza sobre consentimento, armazenamento e operação.
+                    </p>
+                </div>
+
+                <aside class="hero-side">
+                    <h3 data-i18n="summaryTitle">Resumo rápido</h3>
+                    <div class="meta-list">
+                        <div class="meta-item">
+                            <span class="meta-label" data-i18n="summaryUpdatedLabel">Última atualização</span>
+                            <span class="meta-value" data-i18n="summaryUpdatedValue">29 de março de 2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label" data-i18n="summaryPackageLabel">Pacote oficial</span>
+                            <span class="meta-value js-package-name">com.novaapps.dnschanger</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label" data-i18n="summaryDistributionLabel">Distribuição</span>
+                            <span class="meta-value" data-i18n="summaryDistributionValue">Distribuição direta oficial via batysta.com</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label" data-i18n="summaryContactLabel">Contato</span>
+                            <span class="meta-value" data-i18n="summaryContactValue">NovaApps Studio (batysta.com)</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="shell layout">
+                <nav class="toc" aria-label="Seções da política">
+                    <h2 data-i18n="tocTitle">Nesta página</h2>
+                    <a href="#identificacao" data-i18n="tocIdentification">Identificação do aplicativo</a>
+                    <a href="#dados" data-i18n="tocData">Dados acessados e processados</a>
+                    <a href="#uso" data-i18n="tocUsage">Como os dados são usados</a>
+                    <a href="#compartilhamento" data-i18n="tocSharing">Compartilhamento de dados</a>
+                    <a href="#diagnosticos" data-i18n="tocDiagnostics">Diagnósticos e analytics</a>
+                    <a href="#armazenamento" data-i18n="tocStorage">Armazenamento</a>
+                    <a href="#seguranca" data-i18n="tocSecurity">Segurança</a>
+                    <a href="#controles" data-i18n="tocControls">Seus controles</a>
+                    <a href="#contato" data-i18n="tocContact">Contato</a>
+                </nav>
+
+                <article class="policy-panel">
+                    <section class="policy-section" id="identificacao">
+                        <h2 data-i18n="sectionIdentificationTitle">Identificação do aplicativo</h2>
+                        <div class="policy-copy" data-i18n-html="sectionIdentificationBody">
+                            <p>
+                                O DNS Changer é um aplicativo Android para controle de DNS por meio de uma VPN local criada com
+                                <code>VpnService</code>. A distribuição direta oficial atual é instalada como
+                                <code class="js-package-name">com.novaapps.dnschanger</code>.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="dados">
+                        <h2 data-i18n="sectionDataTitle">Dados acessados e processados</h2>
+                        <div class="policy-copy" data-i18n-html="sectionDataBody">
+                            <p>
+                                O DNS Changer não exige criação de conta e não coleta dados pessoais para venda ou publicidade.
+                                O aplicativo pode acessar e processar localmente no dispositivo:
+                            </p>
+                            <ul>
+                                <li>configurações de DNS definidas pelo usuário;</li>
+                                <li>informações sobre aplicativos instalados, incluindo nomes dos apps, nomes de pacote e ícones, somente para exibir a lista de apps e permitir que o usuário escolha quais apps usam a VPN DNS;</li>
+                                <li>estado local da VPN para operação do aplicativo.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="uso">
+                        <h2 data-i18n="sectionUsageTitle">Como os dados são usados</h2>
+                        <div class="policy-copy" data-i18n-html="sectionUsageBody">
+                            <p>Essas informações são usadas somente para:</p>
+                            <ul>
+                                <li>ativar e manter a VPN local de DNS;</li>
+                                <li>aplicar as preferências escolhidas pelo usuário;</li>
+                                <li>permitir a filtragem por aplicativo;</li>
+                                <li>armazenar localmente as seleções de apps feitas pelo usuário para a Filtragem por App;</li>
+                                <li>encaminhar consultas DNS para o servidor selecionado pelo usuário.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="compartilhamento">
+                        <h2 data-i18n="sectionSharingTitle">Compartilhamento de dados</h2>
+                        <div class="policy-copy" data-i18n-html="sectionSharingBody">
+                            <p>
+                                O DNS Changer não vende nem compartilha as informações de aplicativos instalados para publicidade,
+                                analytics de terceiros ou monetização.
+                            </p>
+                            <p>
+                                As informações sobre apps instalados processadas para a Filtragem por App não são enviadas para
+                                nossos servidores.
+                            </p>
+                            <p>
+                                As consultas DNS podem ser enviadas ao servidor DNS escolhido pelo próprio usuário. Isso significa
+                                que o provedor DNS selecionado pode processar essas consultas de acordo com a política de privacidade dele.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="diagnosticos">
+                        <h2 data-i18n="sectionDiagnosticsTitle">Coleta de diagnósticos e dados analíticos</h2>
+                        <div class="policy-copy" data-i18n-html="sectionDiagnosticsBody">
+                            <p>
+                                Para melhorar a estabilidade e a experiência do aplicativo, utilizamos serviços do Google Firebase,
+                                incluindo Crashlytics e Analytics, para monitorar falhas operacionais.
+                            </p>
+                            <p>
+                                Em caso de erro ou crash, esses serviços podem coletar informações técnicas e anônimas de diagnóstico,
+                                como modelo do dispositivo, versão do sistema operacional, endereço IP anonimizado, estado do app no
+                                momento da falha e configuração de hardware. Esses dados não contêm informações de identificação pessoal,
+                                não monitoram seu tráfego de internet através da VPN e não são usados para marketing.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="armazenamento">
+                        <h2 data-i18n="sectionStorageTitle">Armazenamento</h2>
+                        <div class="policy-copy" data-i18n-html="sectionStorageBody">
+                            <p>
+                                As preferências do aplicativo e as seleções de filtragem por app são armazenadas localmente no dispositivo.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="seguranca">
+                        <h2 data-i18n="sectionSecurityTitle">Segurança</h2>
+                        <div class="policy-copy" data-i18n-html="sectionSecurityBody">
+                            <p>
+                                Quando configurado pelo usuário, o aplicativo pode usar DNS over HTTPS e DNS over TLS para proteger as
+                                consultas DNS em trânsito até o endpoint configurado.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="controles">
+                        <h2 data-i18n="sectionControlsTitle">Seus controles</h2>
+                        <div class="policy-copy" data-i18n-html="sectionControlsBody">
+                            <p>O usuário pode, a qualquer momento:</p>
+                            <ul>
+                                <li>alterar o servidor DNS;</li>
+                                <li>desativar a VPN local;</li>
+                                <li>remover servidores personalizados;</li>
+                                <li>modificar a lista de aplicativos que usam a VPN DNS;</li>
+                                <li>recusar ou revisar o consentimento para Filtragem por App ao reinstalar o app ou limpar os dados.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="policy-section" id="contato">
+                        <h2 data-i18n="sectionContactTitle">Contato</h2>
+                        <div class="policy-copy" data-i18n-html="sectionContactBody">
+                            <p>NovaApps Studio (batysta.com)</p>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="shell footer-inner">
+            <div data-i18n="footerBrand">© 2026 NovaApps Studio · DNS Changer</div>
+            <div class="footer-links">
+                <a href="index.html" data-i18n="footerHome">Home</a>
+                <a href="version.json" data-i18n="footerManifest">Manifesto de versão</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const policyTranslations = {
+            'pt-BR': {
+                metaTitle: 'Política de Privacidade | DNS Changer',
+                metaDescription: 'Política de privacidade oficial do DNS Changer, distribuído diretamente pela NovaApps Studio para Android.',
+                brandSubtitle: 'Política de privacidade oficial do DNS Changer',
+                homeCta: 'Home',
+                downloadCta: 'Baixar APK',
+                pillDocument: 'Documento oficial',
+                pillDirect: 'Distribuição direta',
+                pillBrand: 'NovaApps Studio',
+                heroTitle: 'Política de Privacidade',
+                heroIntro: 'Esta página explica quais informações o DNS Changer acessa para funcionar, como esses dados são usados no dispositivo e o que não é compartilhado com nossos servidores. A proposta do app é controle local de DNS no Android com clareza sobre consentimento, armazenamento e operação.',
+                summaryTitle: 'Resumo rápido',
+                summaryUpdatedLabel: 'Última atualização',
+                summaryUpdatedValue: '29 de março de 2026',
+                summaryPackageLabel: 'Pacote oficial',
+                summaryDistributionLabel: 'Distribuição',
+                summaryDistributionValue: 'Distribuição direta oficial via batysta.com',
+                summaryContactLabel: 'Contato',
+                summaryContactValue: 'NovaApps Studio (batysta.com)',
+                tocTitle: 'Nesta página',
+                tocIdentification: 'Identificação do aplicativo',
+                tocData: 'Dados acessados e processados',
+                tocUsage: 'Como os dados são usados',
+                tocSharing: 'Compartilhamento de dados',
+                tocDiagnostics: 'Diagnósticos e analytics',
+                tocStorage: 'Armazenamento',
+                tocSecurity: 'Segurança',
+                tocControls: 'Seus controles',
+                tocContact: 'Contato',
+                sectionIdentificationTitle: 'Identificação do aplicativo',
+                sectionIdentificationBody: `<p>O DNS Changer é um aplicativo Android para controle de DNS por meio de uma VPN local criada com <code>VpnService</code>. A distribuição direta oficial atual é instalada como <code class="js-package-name">com.novaapps.dnschanger</code>.</p>`,
+                sectionDataTitle: 'Dados acessados e processados',
+                sectionDataBody: `<p>O DNS Changer não exige criação de conta e não coleta dados pessoais para venda ou publicidade. O aplicativo pode acessar e processar localmente no dispositivo:</p><ul><li>configurações de DNS definidas pelo usuário;</li><li>informações sobre aplicativos instalados, incluindo nomes dos apps, nomes de pacote e ícones, somente para exibir a lista de apps e permitir que o usuário escolha quais apps usam a VPN DNS;</li><li>estado local da VPN para operação do aplicativo.</li></ul>`,
+                sectionUsageTitle: 'Como os dados são usados',
+                sectionUsageBody: `<p>Essas informações são usadas somente para:</p><ul><li>ativar e manter a VPN local de DNS;</li><li>aplicar as preferências escolhidas pelo usuário;</li><li>permitir a filtragem por aplicativo;</li><li>armazenar localmente as seleções de apps feitas pelo usuário para a Filtragem por App;</li><li>encaminhar consultas DNS para o servidor selecionado pelo usuário.</li></ul>`,
+                sectionSharingTitle: 'Compartilhamento de dados',
+                sectionSharingBody: `<p>O DNS Changer não vende nem compartilha as informações de aplicativos instalados para publicidade, analytics de terceiros ou monetização.</p><p>As informações sobre apps instalados processadas para a Filtragem por App não são enviadas para nossos servidores.</p><p>As consultas DNS podem ser enviadas ao servidor DNS escolhido pelo próprio usuário. Isso significa que o provedor DNS selecionado pode processar essas consultas de acordo com a política de privacidade dele.</p>`,
+                sectionDiagnosticsTitle: 'Coleta de diagnósticos e dados analíticos',
+                sectionDiagnosticsBody: `<p>Para melhorar a estabilidade e a experiência do aplicativo, utilizamos serviços do Google Firebase, incluindo Crashlytics e Analytics, para monitorar falhas operacionais.</p><p>Em caso de erro ou crash, esses serviços podem coletar informações técnicas e anônimas de diagnóstico, como modelo do dispositivo, versão do sistema operacional, endereço IP anonimizado, estado do app no momento da falha e configuração de hardware. Esses dados não contêm informações de identificação pessoal, não monitoram seu tráfego de internet através da VPN e não são usados para marketing.</p>`,
+                sectionStorageTitle: 'Armazenamento',
+                sectionStorageBody: `<p>As preferências do aplicativo e as seleções de filtragem por app são armazenadas localmente no dispositivo.</p>`,
+                sectionSecurityTitle: 'Segurança',
+                sectionSecurityBody: `<p>Quando configurado pelo usuário, o aplicativo pode usar DNS over HTTPS e DNS over TLS para proteger as consultas DNS em trânsito até o endpoint configurado.</p>`,
+                sectionControlsTitle: 'Seus controles',
+                sectionControlsBody: `<p>O usuário pode, a qualquer momento:</p><ul><li>alterar o servidor DNS;</li><li>desativar a VPN local;</li><li>remover servidores personalizados;</li><li>modificar a lista de aplicativos que usam a VPN DNS;</li><li>recusar ou revisar o consentimento para Filtragem por App ao reinstalar o app ou limpar os dados.</li></ul>`,
+                sectionContactTitle: 'Contato',
+                sectionContactBody: `<p>NovaApps Studio (batysta.com)</p>`,
+                footerBrand: '© 2026 NovaApps Studio · DNS Changer',
+                footerHome: 'Home',
+                footerManifest: 'Manifesto de versão'
+            },
+            en: {
+                metaTitle: 'Privacy Policy | DNS Changer',
+                metaDescription: 'Official privacy policy for DNS Changer, directly distributed by NovaApps Studio for Android.',
+                brandSubtitle: 'Official DNS Changer privacy policy',
+                homeCta: 'Home',
+                downloadCta: 'Download APK',
+                pillDocument: 'Official document',
+                pillDirect: 'Direct distribution',
+                pillBrand: 'NovaApps Studio',
+                heroTitle: 'Privacy Policy',
+                heroIntro: 'This page explains which information DNS Changer accesses to work, how that data is used on the device, and what is not shared with our servers. The app is built around local DNS control on Android with clear consent, storage, and operational transparency.',
+                summaryTitle: 'Quick summary',
+                summaryUpdatedLabel: 'Last updated',
+                summaryUpdatedValue: 'March 29, 2026',
+                summaryPackageLabel: 'Official package',
+                summaryDistributionLabel: 'Distribution',
+                summaryDistributionValue: 'Official direct distribution via batysta.com',
+                summaryContactLabel: 'Contact',
+                summaryContactValue: 'NovaApps Studio (batysta.com)',
+                tocTitle: 'On this page',
+                tocIdentification: 'App identification',
+                tocData: 'Data accessed and processed',
+                tocUsage: 'How data is used',
+                tocSharing: 'Data sharing',
+                tocDiagnostics: 'Diagnostics and analytics',
+                tocStorage: 'Storage',
+                tocSecurity: 'Security',
+                tocControls: 'Your controls',
+                tocContact: 'Contact',
+                sectionIdentificationTitle: 'App identification',
+                sectionIdentificationBody: `<p>DNS Changer is an Android app for DNS control through a local VPN created with <code>VpnService</code>. The current official direct distribution is installed as <code class="js-package-name">com.novaapps.dnschanger</code>.</p>`,
+                sectionDataTitle: 'Data accessed and processed',
+                sectionDataBody: `<p>DNS Changer does not require account creation and does not collect personal data for sale or advertising. The app may locally access and process on the device:</p><ul><li>DNS settings defined by the user;</li><li>installed app information, including app names, package names, and icons, only to display the app list and let the user choose which apps use the DNS VPN;</li><li>local VPN state for app operation.</li></ul>`,
+                sectionUsageTitle: 'How data is used',
+                sectionUsageBody: `<p>This information is used only to:</p><ul><li>enable and maintain the local DNS VPN;</li><li>apply the preferences chosen by the user;</li><li>enable per-app filtering;</li><li>store locally the app selections made by the user for App Filtering;</li><li>forward DNS queries to the server selected by the user.</li></ul>`,
+                sectionSharingTitle: 'Data sharing',
+                sectionSharingBody: `<p>DNS Changer does not sell or share installed app information for advertising, third-party analytics, or monetization.</p><p>Installed app information processed for App Filtering is not sent to our servers.</p><p>DNS queries may be sent to the DNS server chosen by the user. This means the selected DNS provider may process those queries according to its own privacy policy.</p>`,
+                sectionDiagnosticsTitle: 'Diagnostics and analytics collection',
+                sectionDiagnosticsBody: `<p>To improve app stability and experience, we use Google Firebase services, including Crashlytics and Analytics, to monitor operational failures.</p><p>In the event of an error or crash, these services may collect anonymous technical diagnostics such as device model, operating system version, anonymized IP address, app state at the time of failure, and hardware configuration. This data does not include personal identifying information, does not monitor your internet traffic through the VPN, and is not used for marketing.</p>`,
+                sectionStorageTitle: 'Storage',
+                sectionStorageBody: `<p>App preferences and per-app filtering selections are stored locally on the device.</p>`,
+                sectionSecurityTitle: 'Security',
+                sectionSecurityBody: `<p>When configured by the user, the app may use DNS over HTTPS and DNS over TLS to protect DNS queries in transit to the configured endpoint.</p>`,
+                sectionControlsTitle: 'Your controls',
+                sectionControlsBody: `<p>The user can, at any time:</p><ul><li>change the DNS server;</li><li>disable the local VPN;</li><li>remove custom servers;</li><li>modify the list of apps that use the DNS VPN;</li><li>decline or review consent for App Filtering by reinstalling the app or clearing app data.</li></ul>`,
+                sectionContactTitle: 'Contact',
+                sectionContactBody: `<p>NovaApps Studio (batysta.com)</p>`,
+                footerBrand: '© 2026 NovaApps Studio · DNS Changer',
+                footerHome: 'Home',
+                footerManifest: 'Version manifest'
+            }
+        };
+
+        const policyMetaDescription = document.querySelector('meta[name="description"]');
+        const policyLanguageButtons = document.querySelectorAll('[data-language]');
+        const policyRemoteVersion = {
+            downloadUrl: 'dnschanger-latest.apk',
+            packageName: 'com.novaapps.dnschanger'
+        };
+
+        function getPolicyLanguage() {
+            const saved = localStorage.getItem('dnschanger-language');
+            if (saved === 'pt-BR' || saved === 'en') {
+                return saved;
+            }
+            return navigator.language && navigator.language.toLowerCase().startsWith('en') ? 'en' : 'pt-BR';
+        }
+
+        function applyPolicyLanguage(language) {
+            const dictionary = policyTranslations[language] || policyTranslations['pt-BR'];
+            document.documentElement.lang = language;
+            document.title = dictionary.metaTitle;
+            policyMetaDescription.setAttribute('content', dictionary.metaDescription);
+
+            document.querySelectorAll('[data-i18n]').forEach((node) => {
+                const key = node.getAttribute('data-i18n');
+                if (dictionary[key]) {
+                    node.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach((node) => {
+                const key = node.getAttribute('data-i18n-html');
+                if (dictionary[key]) {
+                    node.innerHTML = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll('.js-package-name').forEach((node) => {
+                node.textContent = policyRemoteVersion.packageName;
+            });
+
+            document.querySelectorAll('[data-download-link]').forEach((node) => {
+                node.setAttribute('href', policyRemoteVersion.downloadUrl);
+            });
+
+            policyLanguageButtons.forEach((button) => {
+                const isActive = button.getAttribute('data-language') === language;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-pressed', String(isActive));
+            });
+        }
+
+        fetch('version.json')
+            .then((response) => response.ok ? response.json() : Promise.reject(new Error('version.json unavailable')))
+            .then((data) => {
+                policyRemoteVersion.downloadUrl = data.downloadUrl || policyRemoteVersion.downloadUrl;
+                policyRemoteVersion.packageName = data.packageName || policyRemoteVersion.packageName;
+                applyPolicyLanguage(getPolicyLanguage());
+            })
+            .catch(() => applyPolicyLanguage(getPolicyLanguage()));
+
+        policyLanguageButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const language = button.getAttribute('data-language');
+                localStorage.setItem('dnschanger-language', language);
+                applyPolicyLanguage(language);
+            });
+        });
+
+        applyPolicyLanguage(getPolicyLanguage());
+    </script>
+</body>
+
+</html>
