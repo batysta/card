@@ -1,9 +1,9 @@
 {
-    "versionCode": 1774800102,
-    "versionName": "1.0.24",
+    "versionCode": 1774801741,
+    "versionName": "1.0.25",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Notificacao local do Android para novas atualizacoes, rechecagem periodica enquanto o app estiver aberto, onboarding mais direto com 3 etapas e melhorias gerais de estabilidade.",
-    "releaseNotesEn": "Android update notifications, periodic rechecks while the app stays open, streamlined 3-step onboarding, and general stability improvements.",
-    "sha256": "5269b3284e6ab1010e73b830e65abafc01c643aecb0d51ba906550ddbae639dd"
+    "releaseNotes": "Correcao do fluxo de notificacoes no Android 13+, exibicao correta da notificacao persistente da VPN, notificacao local para novas atualizacoes e melhorias gerais de estabilidade.",
+    "releaseNotesEn": "Fixed the notification flow on Android 13+, restored the persistent VPN notification, added local update notifications, and improved overall stability.",
+    "sha256": "3a6df72c847e596d5c536ee83b9a89f5bf2a41fe990ac05493e558d7b9a3ee88"
 }
