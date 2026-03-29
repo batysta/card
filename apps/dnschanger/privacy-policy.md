@@ -1,8 +1,12 @@
 # Politica de Privacidade - DNS Changer
 
-Ultima atualizacao: 8 de marco de 2026
+Ultima atualizacao: 28 de marco de 2026
 
 O DNS Changer e um aplicativo Android para controle de DNS por meio de uma VPN local criada com `VpnService`.
+
+## Identificacao do aplicativo
+
+A distribuicao direta oficial atual e instalada como `com.novaapps.dnschanger`.
 
 ## Dados coletados
 

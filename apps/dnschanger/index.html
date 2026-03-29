@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNS Changer - Criptografado e Seguro</title>
+    <title>DNS Changer - Distribuicao Direta Oficial</title>
     <meta name="description"
-        content="Baixe DNS Changer, o aplicativo definitivo para gerenciar seus servidores DNS, bloquear anúncios e proteger sua privacidade no Android.">
+        content="Baixe a distribuicao direta oficial do DNS Changer para Android. Controle DNS local, use DoH e DoT e receba atualizacoes seguras fora da loja.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,6 +101,31 @@
             flex-direction: column;
             align-items: center;
             gap: 16px;
+        }
+
+        .migration-note {
+            max-width: 760px;
+            margin: 28px auto 0 auto;
+            padding: 20px 22px;
+            text-align: left;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .migration-note strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .migration-note p {
+            margin: 0;
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .btn-download {
@@ -210,11 +235,11 @@
 
 <body>
     <div class="container">
-        <div class="hero-badge">DISPONÍVEL FORA DA LOJA</div>
+        <div class="hero-badge">DISTRIBUICAO DIRETA OFICIAL</div>
         <h1>DNS Changer</h1>
         <p class="description">
-            Otimize sua internet, bloqueie anúncios e proteja sua privacidade. Tudo em um só lugar, com controle total
-            na sua mão.
+            Controle DNS local com suporte a DNS por IP, DNS over TLS e DNS over HTTPS. Uma distribuicao direta da
+            NovaApps Studio com atualizacoes seguras dentro do proprio app.
         </p>
 
         <div class="download-section">
@@ -224,9 +249,17 @@
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                Baixar DNS Changer (APK)
+                Baixar APK oficial
             </a>
-            <span class="version-tag">Versão 1.0.16 estável para Android 9.0+</span>
+            <span class="version-tag">Versao 1.0.20 estavel para Android 9.0+ • pacote com.novaapps.dnschanger</span>
+        </div>
+
+        <div class="migration-note">
+            <strong>Migracao importante para usuarios antigos</strong>
+            <p>As versoes atuais usam o novo identificador Android <code>com.novaapps.dnschanger</code>. Se voce ainda
+                estiver com a instalacao antiga <code>com.blockdns.app</code>, esta versao sera instalada como um novo
+                app. Instale normalmente, confirme que tudo esta funcionando e depois remova a versao anterior se nao
+                precisar mais dela.</p>
         </div>
 
         <div class="features">
@@ -266,7 +299,7 @@
         </div>
 
         <footer>
-            &copy; 2026 Batysta - DNS Changer App
+            &copy; 2026 NovaApps Studio • DNS Changer
         </footer>
     </div>
 </body>

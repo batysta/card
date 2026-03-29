@@ -1,7 +1,8 @@
 {
-    "versionCode": 1774672142,
-    "versionName": "1.0.16",
+    "versionCode": 1774753420,
+    "versionName": "1.0.20",
+    "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Melhorias de segurança na atualização in-app, validação de integridade do APK e fluxo correto de permissão para instalação.",
-    "sha256": "b5e6e06b0b3ec495a9fab41670dd723d5efe62b438015aee1c962ca395b6f157"
+    "releaseNotes": "Distribuicao direta oficial da NovaApps Studio com validacao de pacote no updater. Esta versao usa o novo pacote com.novaapps.dnschanger; se voce vier do app antigo, instale como novo app e depois remova a versao anterior.",
+    "sha256": "fd6b92f123c42a1ea83d7ee166cdbc8b79295e741dbd2f9c0ce0b4b11b0eecfc"
 }
