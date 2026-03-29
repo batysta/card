@@ -1,9 +1,12 @@
 {
-    "versionCode": 1774804465,
-    "versionName": "1.0.27",
+    "manifestVersion": 1,
+    "signatureAlgorithm": "Ed25519",
+    "publishedAt": "2026-03-29T17:57:23Z",
+    "versionCode": 1774806586,
+    "versionName": "1.0.28",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Texto explicativo do botao de adicionar servidor na aba Servers, com mais clareza sem reintroduzir titulos redundantes, e ajustes de consistencia visual.",
-    "releaseNotesEn": "Added a clearer helper text for the add-server button in the Servers tab without bringing back redundant titles, plus visual consistency refinements.",
-    "sha256": "644574b3bf26949ff2a93d8bbd1c208ace2590318ca96219712e511f4ce8f6af"
+    "releaseNotes": "Manifesto de atualização assinado com validação de assinatura, hash, pacote e certificado para reforçar a segurança do updater.",
+    "releaseNotesEn": "Signed update manifest with signature, hash, package, and certificate validation for a stronger updater trust chain.",
+    "sha256": "5cbede247aa7f9ada07ecb9e7a90ad207a05f910234e0693e4a927ec518d7617"
 }
