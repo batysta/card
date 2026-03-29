@@ -1,9 +1,9 @@
 {
-    "versionCode": 1774797698,
-    "versionName": "1.0.23",
+    "versionCode": 1774800102,
+    "versionName": "1.0.24",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Onboarding mais direto com 3 etapas, atualizador mais seguro com validacao de assinatura do APK, aba Apps mais limpa por padrao e ajustes de integracao e estabilidade.",
-    "releaseNotesEn": "Streamlined 3-step onboarding, safer updater with APK signature validation, a cleaner Apps tab by default, and integration and stability improvements.",
-    "sha256": "577ccbd5e9f72c1986e97ef6d98e935877d331636b9fbd4925c62105cabc2caf"
+    "releaseNotes": "Notificacao local do Android para novas atualizacoes, rechecagem periodica enquanto o app estiver aberto, onboarding mais direto com 3 etapas e melhorias gerais de estabilidade.",
+    "releaseNotesEn": "Android update notifications, periodic rechecks while the app stays open, streamlined 3-step onboarding, and general stability improvements.",
+    "sha256": "5269b3284e6ab1010e73b830e65abafc01c643aecb0d51ba906550ddbae639dd"
 }
