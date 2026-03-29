@@ -1,9 +1,9 @@
 {
-    "versionCode": 1774803021,
-    "versionName": "1.0.26",
+    "versionCode": 1774804465,
+    "versionName": "1.0.27",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Remocao de titulos redundantes nas telas principais, rolagem completa da aba Apps com os filtros acompanhando a lista e melhorias gerais de consistencia visual.",
-    "releaseNotesEn": "Removed redundant screen titles, made the Apps tab scroll as a single flow with its filters, and improved overall visual consistency.",
-    "sha256": "00b2902442723c390ed8ec22f5977c3ecaceba5e875d46aadcd5839ff267dc0e"
+    "releaseNotes": "Texto explicativo do botao de adicionar servidor na aba Servers, com mais clareza sem reintroduzir titulos redundantes, e ajustes de consistencia visual.",
+    "releaseNotesEn": "Added a clearer helper text for the add-server button in the Servers tab without bringing back redundant titles, plus visual consistency refinements.",
+    "sha256": "644574b3bf26949ff2a93d8bbd1c208ace2590318ca96219712e511f4ce8f6af"
 }
