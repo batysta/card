@@ -1,12 +1,12 @@
 {
     "manifestVersion": 1,
     "signatureAlgorithm": "Ed25519",
-    "publishedAt": "2026-03-30T22:42:38Z",
-    "versionCode": 1774910393,
-    "versionName": "1.0.36",
+    "publishedAt": "2026-03-30T23:01:56Z",
+    "versionCode": 1774911605,
+    "versionName": "1.0.38",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Limpeza final do projeto, correções no updater e ajustes no estado de conexão da VPN.",
-    "releaseNotesEn": "Final project cleanup, updater fixes, and improvements to VPN connection state handling.",
-    "sha256": "0524220f6df7443d97000ef861a3ae6a8f4908616efb88a6e77a0225da70e6fc"
+    "releaseNotes": "Correções na recuperação de rede da VPN, proteção anti-replay no updater, limpeza de localização dos servidores e alinhamentos na superfície pública.",
+    "releaseNotesEn": "VPN network-recovery fix, anti-replay protection in the updater, server localization cleanup, and public-surface alignment.",
+    "sha256": "b0f8149740e50746e20cc712887a2268752c650cae4e8bb85565eb5921473d22"
 }
