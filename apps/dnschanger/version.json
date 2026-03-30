@@ -1,12 +1,12 @@
 {
     "manifestVersion": 1,
     "signatureAlgorithm": "Ed25519",
-    "publishedAt": "2026-03-30T13:40:00Z",
-    "versionCode": 1774877576,
-    "versionName": "1.0.30",
+    "publishedAt": "2026-03-30T14:03:34Z",
+    "versionCode": 1774879110,
+    "versionName": "1.0.31",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Correção do desligamento da VPN DNS em alguns aparelhos. O app agora encerra o túnel de forma confiável quando o usuário toca para desativar.",
-    "releaseNotesEn": "Fixed DNS VPN shutdown on some devices. The app now tears down the tunnel reliably when the user taps to disable it.",
-    "sha256": "e85a6ec43b0f5751f644da336faa2273a73507946e4a6163d1cddc66d70865dd"
+    "releaseNotes": "Detecção de mudança de rede subjacente com recuperação mais rápida do túnel. A VPN agora reage melhor a trocas entre Wi‑Fi e dados móveis quando a reconexão automática está ativada.",
+    "releaseNotesEn": "Detects underlying network changes and recovers the tunnel faster. The VPN now reacts better to switching between Wi‑Fi and mobile data when auto-reconnect is enabled.",
+    "sha256": "37a64873f7d00d139b8609fd29e305aa32ab7d3ec7c578cb2d2c75032136de84"
 }
