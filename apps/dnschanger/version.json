@@ -1,12 +1,12 @@
 {
     "manifestVersion": 1,
     "signatureAlgorithm": "Ed25519",
-    "publishedAt": "2026-03-29T17:57:23Z",
-    "versionCode": 1774806586,
-    "versionName": "1.0.28",
+    "publishedAt": "2026-03-30T02:44:26Z",
+    "versionCode": 1774838493,
+    "versionName": "1.0.29",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Manifesto de atualização assinado com validação de assinatura, hash, pacote e certificado para reforçar a segurança do updater.",
-    "releaseNotesEn": "Signed update manifest with signature, hash, package, and certificate validation for a stronger updater trust chain.",
-    "sha256": "5cbede247aa7f9ada07ecb9e7a90ad207a05f910234e0693e4a927ec518d7617"
+    "releaseNotes": "Correção do loading global na abertura do app. A Home agora aparece sem esperar o estado da aba Apps, reduzindo atrasos com spinner antes da interface principal.",
+    "releaseNotesEn": "Fixed the global startup loading gate. Home now appears without waiting for the Apps tab state, reducing spinner delays before the main interface.",
+    "sha256": "fbe3190b08a41969707c6a96c17c19e010315719b59f060af99b7cb577a4657f"
 }
