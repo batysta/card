@@ -1,12 +1,12 @@
 {
     "manifestVersion": 1,
     "signatureAlgorithm": "Ed25519",
-    "publishedAt": "2026-03-30T14:03:34Z",
-    "versionCode": 1774879110,
-    "versionName": "1.0.31",
+    "publishedAt": "2026-03-30T22:31:29Z",
+    "versionCode": 1774909600,
+    "versionName": "1.0.34",
     "packageName": "com.novaapps.dnschanger",
     "downloadUrl": "https://batysta.com/apps/dnschanger/dnschanger-latest.apk",
-    "releaseNotes": "Detecção de mudança de rede subjacente com recuperação mais rápida do túnel. A VPN agora reage melhor a trocas entre Wi‑Fi e dados móveis quando a reconexão automática está ativada.",
-    "releaseNotesEn": "Detects underlying network changes and recovers the tunnel faster. The VPN now reacts better to switching between Wi‑Fi and mobile data when auto-reconnect is enabled.",
-    "sha256": "37a64873f7d00d139b8609fd29e305aa32ab7d3ec7c578cb2d2c75032136de84"
+    "releaseNotes": "Correções no updater e na validação de chave rotativa, ajuste do estado Connecting da VPN e refinamentos internos de estabilidade.",
+    "releaseNotesEn": "Fixes in the updater and rotating-key validation, improved VPN Connecting state handling, and internal stability refinements.",
+    "sha256": "567a40e2fd1121dbb3bdaeac5d463ad15949784ac8ace1142904dc0619fda2e0"
 }
