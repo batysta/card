@@ -23,8 +23,8 @@
     <meta property="og:locale" content="pt_BR">
     
     <meta property="og:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.png">
-    <meta property="og:image:width" content="100">
-    <meta property="og:image:height" content="100">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Antonio Batysta - Professor & Web Designer">
@@ -105,6 +105,12 @@
         .lang-btn.active {
             opacity: 1;
             transform: scale(1.2);
+        }
+
+        .lang-btn:focus-visible,
+        .link-btn:focus-visible {
+            outline: 3px solid #fdbb2d;
+            outline-offset: 3px;
         }
 
         .header {
@@ -237,18 +243,26 @@
                 max-width: 100%;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('pt')" title="Português">🇧🇷</button>
-            <button class="lang-btn" onclick="setLanguage('en')" title="English">🇺🇸</button>
+            <button type="button" class="lang-btn active" onclick="setLanguage('pt')" title="Português" aria-label="Mudar idioma para Português" aria-pressed="true">🇧🇷</button>
+            <button type="button" class="lang-btn" onclick="setLanguage('en')" title="English" aria-label="Switch language to English" aria-pressed="false">🇺🇸</button>
         </div>
 
         <div class="header">
-            <div class="profile-pic"></div>
+            <div class="profile-pic" role="img" aria-label="Foto de perfil de Antonio Batysta"></div>
         </div>
 
         <div class="content">
@@ -257,7 +271,7 @@
             <p class="subtitle" id="role">Professor de Matemática | Web Design</p>
 
             <div class="bio" id="bio">
-                Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong>, refletindo um compromisso permanente com a aprendizagem contínua.
+                Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong> e, mais recentemente, tenho me aventurado no campo do <strong>Desenvolvimento Mobile</strong>, refletindo um compromisso permanente com a aprendizagem contínua.
             </div>
 
             <div class="skills-section">
@@ -265,6 +279,7 @@
                 <div class="skills-container">
                     <span class="skill-tag" id="skill-math">📐 Matemática</span>
                     <span class="skill-tag" id="skill-web">💻 Web Design</span>
+                    <span class="skill-tag" id="skill-mobile">📱 Desenvolvimento Mobile</span>
                     <span class="skill-tag" id="skill-teach">🎓 Docência</span>
                     <span class="skill-tag" id="skill-tech">🔧 Hardware & Redes</span>
                     <span class="skill-tag" id="skill-acc">⚡ Tecnologia</span>
@@ -279,10 +294,10 @@
                 <a href="https://wa.me/5598984604488" target="_blank" rel="noopener noreferrer" class="link-btn" style="background-color: #25D366;">
                     <span class="icon">💬</span> WhatsApp
                 </a>
-                <a href="mailto:batysta.fx@gmail.com" target="_blank" rel="noopener noreferrer" class="link-btn" style="background-color: #ea4335;">
+                <a href="mailto:batysta.fx@gmail.com" class="link-btn" style="background-color: #ea4335;">
                     <span class="icon">✉️</span> E-mail
                 </a>
-                <a href="./portifolio" class="link-btn" style="background-color: #333;" id="btn-projects">
+                <a href="./portfolio.html" class="link-btn" style="background-color: #333;" id="btn-projects">
                     <span class="icon">🌐</span> Meus Projetos Web
                 </a>
             </div>
@@ -297,10 +312,11 @@
         const translations = {
             'pt': {
                 'role': 'Professor de Matemática | Web Design',
-                'bio': 'Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong>, refletindo um compromisso permanente com a aprendizagem contínua.',
+                'bio': 'Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong> e, mais recentemente, tenho me aventurado no campo do <strong>Desenvolvimento Mobile</strong>, refletindo um compromisso permanente com a aprendizagem contínua.',
                 'skills-title': 'Habilidades & Interesses',
                 'skill-math': '📐 Matemática',
                 'skill-web': '💻 Web Design',
+                'skill-mobile': '📱 Desenvolvimento Mobile',
                 'skill-teach': '🎓 Docência',
                 'skill-tech': '🔧 Hardware & Redes',
                 'skill-acc': '⚡ Tecnologia',
@@ -309,10 +325,11 @@
             },
             'en': {
                 'role': 'Mathematics Teacher | Web Design',
-                'bio': 'With a tenure in public education beginning in 2005, I launched my professional trajectory at the age of 19. My credentials include undergraduate degrees in <strong>Mathematics and Accounting</strong>, alongside a <strong>Postgraduate Specialization in Teaching and Pedagogical Practices</strong>. Extending my scope beyond the academic setting, I possess a technical background in <strong>Information Technology, with expertise in computer assembly, maintenance, and networking</strong>. Furthermore, I delve into technology via <strong>Web Design</strong>, reflecting an enduring dedication to lifelong learning.',
+                'bio': 'With a tenure in public education beginning in 2005, I launched my professional trajectory at the age of 19. My credentials include undergraduate degrees in <strong>Mathematics and Accounting</strong>, alongside a <strong>Postgraduate Specialization in Teaching and Pedagogical Practices</strong>. Extending my scope beyond the academic setting, I possess a technical background in <strong>Information Technology, with expertise in computer assembly, maintenance, and networking</strong>. Furthermore, I delve into technology via <strong>Web Design</strong> and, more recently, I have been venturing into the field of <strong>Mobile Development</strong>, reflecting an enduring dedication to lifelong learning.',
                 'skills-title': 'Skills & Interests',
                 'skill-math': '📐 Mathematics',
                 'skill-web': '💻 Web Design',
+                'skill-mobile': '📱 Mobile Development',
                 'skill-teach': '🎓 Teaching',
                 'skill-tech': '🔧 Hardware & Networking',
                 'skill-acc': '⚡ Technology',
@@ -322,11 +339,13 @@
         };
 
         function setLanguage(lang) {
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
             document.getElementById('role').innerText = translations[lang]['role'];
             document.getElementById('bio').innerHTML = translations[lang]['bio'];
             document.getElementById('skills-title').innerText = translations[lang]['skills-title'];
             document.getElementById('skill-math').innerText = translations[lang]['skill-math'];
             document.getElementById('skill-web').innerText = translations[lang]['skill-web'];
+            document.getElementById('skill-mobile').innerText = translations[lang]['skill-mobile'];
             document.getElementById('skill-tech').innerText = translations[lang]['skill-tech'];
             document.getElementById('skill-acc').innerText = translations[lang]['skill-acc'];
             document.getElementById('skill-teach').innerText = translations[lang]['skill-teach'];
@@ -338,10 +357,16 @@
             
             if(lang === 'pt') {
                 buttons[0].classList.add('active');
+                buttons[0].setAttribute('aria-pressed', 'true');
+                buttons[1].setAttribute('aria-pressed', 'false');
             } else {
                 buttons[1].classList.add('active');
+                buttons[1].setAttribute('aria-pressed', 'true');
+                buttons[0].setAttribute('aria-pressed', 'false');
             }
         }
+
+        setLanguage('pt');
     </script>
 
 </body>
