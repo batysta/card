@@ -1,0 +1,150 @@
+{
+    "pt": [
+        {
+            "tag": "Aplicativo Android",
+            "title": "DNS Changer",
+            "desc": "Aplicativo Android para controle local de DNS (Android 9.0+). Utiliza uma VPN local para aplicar políticas de DNS sem rotear o tráfego através de um servidor remoto. Suporta DNS por IP, DNS over TLS (DoT) e DNS over HTTPS (DoH), filtragem por aplicativo, e oferece distribuição oficial de APK com atualizações seguras. Foco total em privacidade com processamento local.",
+            "img": "img/project0.webp",
+            "alt": "Miniatura do Projeto DNS Changer",
+            "visit": "https://batysta.com/apps/dnschanger/"
+        },
+        {
+            "tag": "Site Institucional / Blog",
+            "title": "Página Institucional",
+            "desc": "O site do SINPROESEMMA – Núcleo de Alto Alegre do Pindaré - MA reúne, em um só lugar, os principais serviços e informações para os professores: notícias locais e estaduais, agenda sindical, direitos da categoria, tabela salarial 2026, plano de carreira, calculadora salarial de acordo com o IRRF 2026, além de convênios e contato via WhatsApp. Tudo em um layout moderno, responsivo e de fácil acesso.",
+            "img": "img/project1.webp",
+            "alt": "Miniatura do Projeto SINPROESEMMA",
+            "visit": "https://batysta.com/sinproesemma-aap"
+        },
+        {
+            "tag": "Site Institucional",
+            "title": "Maktub Hotel",
+            "desc": "O site do Maktub Hotel foi redesenhado com foco em presença digital e conversão: visual premium, layout responsivo, galeria com modal e navegação por setas, formulário de reservas integrado ao WhatsApp, SEO com Open Graph e favicon, além de otimização de imagens para melhor desempenho. Um projeto completo de revitalização web e experiência do usuário.",
+            "img": "img/project2.webp",
+            "alt": "Miniatura do Projeto Maktub Hotel",
+            "visit": "https://batysta.com/maktubhotel"
+        },
+        {
+            "tag": "Aplicação Web",
+            "title": "Sistema Educacional",
+            "desc": "WebApp de horários escolares (CMT XVIII 2026) com atualização dinâmica via Google Planilhas, organização por turnos Matutino e Vespertino, visual limpo e responsivo, leitura rápida por dia da semana e experiência aplicativo com instalação em Android e iOS, funcionando como app direto na tela inicial.",
+            "img": "img/project3.webp",
+            "alt": "Miniatura do Projeto Sistema Educacional",
+            "visit": "https://batysta.com/horarioscmtxviii"
+        },
+        {
+            "tag": "Site Empresarial",
+            "title": "ElyFitness",
+            "desc": "Projeto de website institucional e comercial para a ElyFitness, desenvolvido com foco em performance, UX e conversão. A solução inclui página da academia, planos, galeria interativa, localização integrada, contato via WhatsApp e loja dinâmica conectada ao Google Sheets, com busca, filtros, ordenação, promoções e paginação, site totalmente responsivo.",
+            "img": "img/project4.webp",
+            "alt": "Miniatura do Projeto ElyFitness",
+            "visit": "https://batysta.com/elyfitness"
+        },
+        {
+            "tag": "Aplicação Web",
+            "title": "Simulador Salarial (Alto Alegre)",
+            "desc": "Desenvolvido para o SINPROESEMMA de Alto Alegre do Pindaré - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
+            "img": "img/project5.webp",
+            "alt": "Miniatura do Simulador Salarial - Alto Alegre",
+            "visit": "https://simulador.batysta.com/altoalegredopindare"
+        },
+        {
+            "tag": "Aplicação Web",
+            "title": "Simulador Salarial (Humberto de Campos)",
+            "desc": "Desenvolvido para o SINPROESEMMA de Humberto de Campos - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
+            "img": "img/project6.webp",
+            "alt": "Miniatura do Simulador Salarial - Humberto de Campos",
+            "visit": "https://simulador.batysta.com/humbertodecampos"
+        },
+        {
+            "tag": "Aplicação Web",
+            "title": "Simulador Salarial (Nova Olinda)",
+            "desc": "Desenvolvido para o SINPROESEMMA de Nova Olinda do Maranhão - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
+            "img": "img/project7.webp",
+            "alt": "Miniatura do Simulador Salarial - Nova Olinda",
+            "visit": "https://simulador.batysta.com/novaolindadomaranhao"
+        },
+        {
+            "tag": "Aplicação Web",
+            "title": "Simulador Salarial (Pindaré Mirim)",
+            "desc": "Desenvolvido para o SINPROESEMMA de Pindaré Mirim - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
+            "img": "img/project8.webp",
+            "alt": "Miniatura do Simulador Salarial - Pindaré Mirim",
+            "visit": "https://simulador.batysta.com/pindaremirim"
+        }
+    ],
+    "en": [
+        {
+            "tag": "Android App",
+            "title": "DNS Changer",
+            "desc": "Android app for local DNS control (Android 9.0+). Uses a local VPN to apply DNS policies without routing traffic through a remote server. Supports DNS by IP, DNS over TLS (DoT), and DNS over HTTPS (DoH), app filtering, and offers official APK distribution with secure updates. Total focus on privacy with local processing.",
+            "img": "img/project0.webp",
+            "alt": "DNS Changer Project Thumbnail",
+            "visit": "https://batysta.com/apps/dnschanger/"
+        },
+        {
+            "tag": "Institutional Website / Blog",
+            "title": "Institutional Page",
+            "desc": "The SINPROESEMMA website - Alto Alegre do Pindare - MA gathers key services and information for teachers in one place: local and state news, union agenda, category rights, 2026 salary table, career plan, salary calculator based on 2026 IRRF, plus agreements and WhatsApp contact. All in a modern, responsive, easy-access layout.",
+            "img": "img/project1.webp",
+            "alt": "SINPROESEMMA Project Thumbnail",
+            "visit": "https://batysta.com/sinproesemma-aap"
+        },
+        {
+            "tag": "Institutional Website",
+            "title": "Maktub Hotel",
+            "desc": "The Maktub Hotel website was redesigned with a focus on digital presence and conversion: premium look, responsive layout, gallery with modal and arrow navigation, reservation form integrated with WhatsApp, SEO with Open Graph and favicon, plus image optimization for better performance. A complete web revamp and user experience project.",
+            "img": "img/project2.webp",
+            "alt": "Maktub Hotel Project Thumbnail",
+            "visit": "https://batysta.com/maktubhotel"
+        },
+        {
+            "tag": "Web Application",
+            "title": "Educational System",
+            "desc": "School schedule web app (CMT XVIII 2026) with dynamic updates via Google Sheets, morning and afternoon shifts, clean responsive design, quick day-by-day reading, and app-like experience with Android and iOS installation, working directly from the home screen.",
+            "img": "img/project3.webp",
+            "alt": "Educational System Project Thumbnail",
+            "visit": "https://batysta.com/horarioscmtxviii"
+        },
+        {
+            "tag": "Business Website",
+            "title": "ElyFitness",
+            "desc": "Institutional and commercial website project for ElyFitness, built with focus on performance, UX, and conversion. The solution includes gym page, plans, interactive gallery, integrated location, WhatsApp contact, and dynamic store connected to Google Sheets with search, filters, sorting, promotions, and pagination, fully responsive.",
+            "img": "img/project4.webp",
+            "alt": "ElyFitness Project Thumbnail",
+            "visit": "https://batysta.com/elyfitness"
+        },
+        {
+            "tag": "Web Application",
+            "title": "Salary Simulator (Alto Alegre)",
+            "desc": "Developed for SINPROESEMMA in Alto Alegre do Pindare - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
+            "img": "img/project5.webp",
+            "alt": "Salary Simulator - Alto Alegre Thumbnail",
+            "visit": "https://simulador.batysta.com/altoalegredopindare"
+        },
+        {
+            "tag": "Web Application",
+            "title": "Salary Simulator (Humberto de Campos)",
+            "desc": "Developed for SINPROESEMMA in Humberto de Campos - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
+            "img": "img/project6.webp",
+            "alt": "Salary Simulator - Humberto de Campos Thumbnail",
+            "visit": "https://simulador.batysta.com/humbertodecampos"
+        },
+        {
+            "tag": "Web Application",
+            "title": "Salary Simulator (Nova Olinda)",
+            "desc": "Developed for SINPROESEMMA in Nova Olinda do Maranhao - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
+            "img": "img/project7.webp",
+            "alt": "Salary Simulator - Nova Olinda Thumbnail",
+            "visit": "https://simulador.batysta.com/novaolindadomaranhao"
+        },
+        {
+            "tag": "Web Application",
+            "title": "Salary Simulator (Pindare Mirim)",
+            "desc": "Developed for SINPROESEMMA in Pindare Mirim - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
+            "img": "img/project8.webp",
+            "alt": "Salary Simulator - Pindare Mirim Thumbnail",
+            "visit": "https://simulador.batysta.com/pindaremirim"
+        }
+    ]
+}

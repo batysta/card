@@ -8,327 +8,48 @@
     <meta name="keywords" content="Antonio Batysta, Portfólio, Web Design, Desenvolvimento Web, Projetos">
     <meta name="author" content="Antonio Batysta">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://batysta.com/portfolio">
+    <link rel="canonical" href="https://batysta.com/portfolio.html">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🆎</text></svg>">
+    <link rel="stylesheet" href="style.css">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Portfólio | Antonio Batysta">
     <meta property="og:description" content="Uma seleção de projetos em Web Design e desenvolvimento web.">
-    <meta property="og:url" content="https://batysta.com/portifolio">
+    <meta property="og:url" content="https://batysta.com/portfolio.html">
     <meta property="og:site_name" content="Antonio Batysta">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/project1.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/project1.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portfólio | Antonio Batysta">
     <meta name="twitter:description" content="Uma seleção de projetos em Web Design e desenvolvimento web.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/project1.png">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #2ecc71;
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --muted-text: #5d6d7e;
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/project1.webp">
+
+    <meta name="theme-color" content="#2c3e50">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Portfólio - Antonio Batysta",
+        "description": "Uma seleção de projetos em Web Design e desenvolvimento web.",
+        "url": "https://batysta.com/portfolio.html",
+        "author": {
+            "@type": "Person",
+            "name": "Antonio Batysta"
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-color);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            background-color: var(--card-bg);
-            width: 100%;
-            max-width: 980px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .lang-switch {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            opacity: 1;
-            transition: opacity 0.3s, transform 0.2s;
-            padding: 0 5px;
-        }
-
-        .lang-btn:hover {
-            transform: scale(1.5);
-        }
-
-        .lang-btn.active {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        .lang-btn:focus-visible,
-        .action-btn:focus-visible,
-        .project-links a:focus-visible,
-        .close-modal:focus-visible,
-        .project-thumb:focus-visible {
-            outline: 3px solid #fdbb2d;
-            outline-offset: 3px;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            padding: 42px 28px 30px;
-            color: #fff;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: clamp(1.6rem, 2.5vw, 2.3rem);
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.95;
-            max-width: 760px;
-            margin: 0 auto;
-            line-height: 1.55;
-        }
-
-        .content {
-            padding: 28px;
-        }
-
-        .actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 22px;
-            justify-content: center;
-        }
-
-        .action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            filter: brightness(1.07);
-        }
-
-        .primary { background-color: #2c3e50; }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .project-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 18px;
-            background: #fff;
-            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 22px rgba(44, 62, 80, 0.13);
-        }
-
-        .project-tag {
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            background: #edf2f7;
-            color: #334155;
-            text-align: center;
-        }
-
-        .project-card h2 {
-            font-size: 1.08rem;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .project-card p {
-            font-size: 0.96rem;
-            color: var(--muted-text);
-            line-height: 1.65;
-            margin-bottom: 16px;
-        }
-
-        .project-thumb {
-            display: block;
-            margin-bottom: 14px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #dbe3ea;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.1);
-        }
-
-        .project-thumb img {
-            display: block;
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            transition: transform 0.25s ease;
-        }
-
-        .project-thumb:hover img {
-            transform: scale(1.03);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .project-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.85rem;
-            padding: 8px 10px;
-            border-radius: 8px;
-            transition: filter 0.2s;
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .project-links a:hover {
-            filter: brightness(1.08);
-        }
-
-        .demo { background: #2ecc71; }
-        .visit { background: #2563eb; }
-
-        .footer {
-            margin-top: 24px;
-            text-align: center;
-            color: #9ca3af;
-            font-size: 0.8rem;
-        }
-
-        .image-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.82);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-            z-index: 1000;
-        }
-
-        .image-modal.open {
-            display: flex;
-        }
-
-        .image-modal-content {
-            position: relative;
-            width: min(96vw, 1100px);
-        }
-
-        .image-modal img {
-            width: 100%;
-            max-height: 86vh;
-            object-fit: contain;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: #111827;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -42px;
-            right: 0;
-            background: #fff;
-            color: #111827;
-            border: none;
-            border-radius: 999px;
-            width: 34px;
-            height: 34px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        @media (max-width: 640px) {
-            .projects-grid { grid-template-columns: 1fr; }
-            .content { padding: 20px; }
-            .header { padding: 44px 18px 22px; }
-            .action-btn { min-width: 220px; }
-            .close-modal { top: -38px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+    }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="lang-switch">
-            <button type="button" class="lang-btn active" onclick="setLanguage('pt')" title="Português" aria-label="Mudar idioma para Português" aria-pressed="true">🇧🇷</button>
-            <button type="button" class="lang-btn" onclick="setLanguage('en')" title="English" aria-label="Switch language to English" aria-pressed="false">🇺🇸</button>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div class="container portfolio-container">
+        <div class="lang-switch" role="group" aria-label="Seleção de idioma">
+            <button type="button" class="lang-btn active" title="Português" aria-label="Mudar idioma para Português" aria-pressed="true">🇧🇷</button>
+            <button type="button" class="lang-btn" title="English" aria-label="Switch language to English" aria-pressed="false">🇺🇸</button>
         </div>
 
         <header class="header">
@@ -336,403 +57,32 @@
             <p class="subtitle" id="page-subtitle">Uma seleção dos meus últimos trabalhos em Web Design e desenvolvimento web.</p>
         </header>
 
-        <main class="content">
+        <main class="content" id="main-content">
             <div class="actions">
                 <a class="action-btn primary" href="./index.html" id="btn-back">⬅ Voltar para o Início</a>
             </div>
 
-            <section class="projects-grid">
-                <article class="project-card">
-                    <span class="project-tag" id="tag-0">Aplicativo Android</span>
-                    <h2 id="title-0">DNS Changer</h2>
-                    <p id="desc-0">Aplicativo Android para controle local de DNS (Android 9.0+). Utiliza uma VPN local para aplicar políticas de DNS sem rotear o tráfego através de um servidor remoto. Suporta DNS por IP, DNS over TLS (DoT) e DNS over HTTPS (DoH), filtragem por aplicativo, e oferece distribuição oficial de APK com atualizações seguras. Foco total em privacidade com processamento local.</p>
-                    <a class="project-thumb" href="img/project0.png">
-                        <img src="img/project0.png" alt="Miniatura do Projeto DNS Changer" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project0.png" id="demo-0">Visualizar</a>
-                        <a class="visit" href="https://batysta.com/apps/dnschanger/" id="visit-0" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-1">Site Institucional / Blog</span>
-                    <h2 id="title-1">Página Institucional</h2>
-                    <p id="desc-1">O site do SINPROESEMMA – Núcleo de Alto Alegre do Pindaré - MA reúne, em um só lugar, os principais serviços e informações para os professores: notícias locais e estaduais, agenda sindical, direitos da categoria, tabela salarial 2026, plano de carreira, calculadora salarial de acordo com o IRRF 2026, além de convênios e contato via WhatsApp. Tudo em um layout moderno, responsivo e de fácil acesso.</p>
-                    <a class="project-thumb" href="img/project1.png">
-                        <img src="img/project1.png" alt="Miniatura do Projeto 01" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project1.png" id="demo-1">Visualizar</a>
-                        <a class="visit" href="https://batysta.com/sinproesemma-aap" id="visit-1" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-2">Site Institucional</span>
-                    <h2 id="title-2">Site Institucional</h2>
-                    <p id="desc-2">O site do Maktub Hotel foi redesenhado com foco em presença digital e conversão: visual premium, layout responsivo, galeria com modal e navegação por setas, formulário de reservas integrado ao WhatsApp, SEO com Open Graph e favicon, além de otimização de imagens para melhor desempenho. Um projeto completo de revitalização web e experiência do usuário.</p>
-                    <a class="project-thumb" href="img/project2.png">
-                        <img src="img/project2.png" alt="Miniatura do Projeto 02" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project2.png" id="demo-2">Visualizar</a>
-                        <a class="visit" href="https://batysta.com/maktubhotel" id="visit-2" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-3">Aplicação Web</span>
-                    <h2 id="title-3">Sistema Educacional</h2>
-                    <p id="desc-3">WebApp de horários escolares (CMT XVIII 2026) com atualização dinâmica via Google Planilhas, organização por turnos Matutino e Vespertino, visual limpo e responsivo, leitura rápida por dia da semana e experiência aplicativo com instalação em Android e iOS, funcionando como app direto na tela inicial.</p>
-                    <a class="project-thumb" href="img/project3.png">
-                        <img src="img/project3.png" alt="Miniatura do Projeto 03" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project3.png" id="demo-3">Visualizar</a>
-                        <a class="visit" href="https://batysta.com/horarioscmtxviii" id="visit-3" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-4">Site Empresarial</span>
-                    <h2 id="title-4">Site Institucional</h2>
-                    <p id="desc-4">Projeto de website institucional e comercial para a ElyFitness, desenvolvido com foco em performance, UX e conversão. A solução inclui página da academia, planos, galeria interativa, localização integrada, contato via WhatsApp e loja dinâmica conectada ao Google Sheets, com busca, filtros, ordenação, promoções e paginação, site totalmente responsivo.</p>
-                    <a class="project-thumb" href="img/project4.png">
-                        <img src="img/project4.png" alt="Miniatura do Projeto 04" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project4.png" id="demo-4">Visualizar</a>
-                        <a class="visit" href="https://batysta.com/elyfitness" id="visit-4" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-5">Aplicação Web</span>
-                    <h2 id="title-5">Simulador Salarial</h2>
-                    <p id="desc-5">Desenvolvido para o SINPROESEMMA de Alto Alegre do Pindaré - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
-                    <a class="project-thumb" href="img/project5.png">
-                        <img src="img/project5.png" alt="Miniatura do Projeto 05" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project5.png" id="demo-5">Visualizar</a>
-                        <a class="visit" href="https://simulador.batysta.com/altoalegredopindare" id="visit-5" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-6">Aplicação Web</span>
-                    <h2 id="title-6">Simulador Salarial</h2>
-                    <p id="desc-6">Desenvolvido para o SINPROESEMMA de Humberto de Campos - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
-                    <a class="project-thumb" href="img/project6.png">
-                        <img src="img/project6.png" alt="Miniatura do Projeto 06" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project6.png" id="demo-6">Visualizar</a>
-                        <a class="visit" href="https://simulador.batysta.com/humbertodecampos" id="visit-6" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-7">Aplicação Web</span>
-                    <h2 id="title-7">Simulador Salarial</h2>
-                    <p id="desc-7">Desenvolvido para o SINPROESEMMA de Nova Olinda do Maranhão - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
-                    <a class="project-thumb" href="img/project7.png">
-                        <img src="img/project7.png" alt="Miniatura do Projeto 07" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project7.png" id="demo-7">Visualizar</a>
-                        <a class="visit" href="https://simulador.batysta.com/novaolindadomaranhao" id="visit-7" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-8">Aplicação Web</span>
-                    <h2 id="title-8">Simulador Salarial</h2>
-                    <p id="desc-8">Desenvolvido para o SINPROESEMMA de Pindaré Mirim - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.</p>
-                    <a class="project-thumb" href="img/project8.png">
-                        <img src="img/project8.png" alt="Miniatura do Projeto 08" loading="lazy" decoding="async">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project8.png" id="demo-8">Visualizar</a>
-                        <a class="visit" href="https://simulador.batysta.com/pindaremirim" id="visit-8" target="_blank" rel="noopener noreferrer">Visitar site</a>
-                    </div>
-                </article>
-
-                <!-- <article class="project-card">
-                    <span class="project-tag" id="tag-9">Site Empresarial</span>
-                    <h2 id="title-9">Projeto 09 - Presença Digital</h2>
-                    <p id="desc-9">Website institucional para empresa, com apresentação de serviços, equipe e formulário de contato.</p>
-                    <a class="project-thumb" href="img/project2.png">
-                        <img src="img/project2.png" alt="Miniatura do Projeto 09">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="img/project2.png" id="demo-9">Visualizar</a>
-                    </div>
-                </article> -->
-
-                <!-- <article class="project-card">
-                    <span class="project-tag" id="tag-10">Portfólio</span>
-                    <h2 id="title-10">Projeto 10 - Portfólio Criativo</h2>
-                    <p id="desc-10">Modelo de portfólio com foco em apresentação visual de trabalhos e experiência fluida de navegação.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto10/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto10/600/380" alt="Miniatura do Projeto 10">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto10/1600/1000" id="demo-10">Visualizar</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-11">Aplicação Web</span>
-                    <h2 id="title-11">Projeto 11 - Agenda Online</h2>
-                    <p id="desc-11">Aplicação para agendamentos com calendário, horários disponíveis e confirmação de atendimento.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto11/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto11/600/380" alt="Miniatura do Projeto 11">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto11/1600/1000" id="demo-11">Visualizar</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <span class="project-tag" id="tag-12">Dashboard</span>
-                    <h2 id="title-12">Projeto 12 - Relatórios e Métricas</h2>
-                    <p id="desc-12">Painel para análise de indicadores com cartões, tabelas e gráficos para tomada de decisão.</p>
-                    <a class="project-thumb" href="https://picsum.photos/seed/projeto12/1600/1000">
-                        <img src="https://picsum.photos/seed/projeto12/600/380" alt="Miniatura do Projeto 12">
-                    </a>
-                    <div class="project-links">
-                        <a class="demo" href="https://picsum.photos/seed/projeto12/1600/1000" id="demo-12">Visualizar</a>
-                    </div>
-                </article> -->
+            <section class="projects-grid" id="projects-grid" aria-label="Projetos">
+                <!-- Cards renderizados dinamicamente via script.js -->
             </section>
-
-            <div class="footer">
-                <p id="footer-text">&copy; 2026 ∴ Antonio Batysta</p>
-            </div>
         </main>
+
+        <footer class="footer">
+            <p>&copy; <span id="year-portfolio"></span> ∴ Antonio Batysta</p>
+        </footer>
     </div>
 
     <div class="image-modal" id="image-modal" role="dialog" aria-modal="true" aria-label="Visualização ampliada do projeto" aria-hidden="true">
         <div class="image-modal-content">
-            <button type="button" class="close-modal" id="close-modal" aria-label="Fechar imagem">×</button>
+            <button type="button" class="close-modal" id="close-modal" aria-label="Fechar imagem">&times;</button>
             <img id="modal-image" src="" alt="Imagem ampliada do projeto">
         </div>
     </div>
 
-    <script>
-        const translations = {
-            pt: {
-                "page-title": "Portfólio e Projetos",
-                "page-subtitle": "Uma seleção dos meus últimos trabalhos em Web Design e desenvolvimento web.",
-                "btn-back": "⬅ Voltar para o Início",
-                "tag-0": "Aplicativo Android",
-                "title-0": "DNS Changer",
-                "desc-0": "Aplicativo Android para controle local de DNS (Android 9.0+). Utiliza uma VPN local para aplicar políticas de DNS sem rotear o tráfego através de um servidor remoto. Suporta DNS por IP, DNS over TLS (DoT) e DNS over HTTPS (DoH), filtragem por aplicativo, e oferece distribuição oficial de APK com atualizações seguras. Foco total em privacidade com processamento local.",
-                "tag-1": "Site Institucional / Blog",
-                "title-1": "Página Institucional",
-                "desc-1": "O site do SINPROESEMMA – Núcleo de Alto Alegre do Pindaré - MA reúne, em um só lugar, os principais serviços e informações para os professores: notícias locais e estaduais, agenda sindical, direitos da categoria, tabela salarial 2026, plano de carreira, calculadora salarial de acordo com o IRRF 2026, além de convênios e contato via WhatsApp. Tudo em um layout moderno, responsivo e de fácil acesso.",
-                "tag-2": "Site Institucional",
-                "title-2": "Site Institucional",
-                "desc-2": "O site do Maktub Hotel foi redesenhado com foco em presença digital e conversão: visual premium, layout responsivo, galeria com modal e navegação por setas, formulário de reservas integrado ao WhatsApp, SEO com Open Graph e favicon, além de otimização de imagens para melhor desempenho. Um projeto completo de revitalização web e experiência do usuário.",
-                "tag-3": "Aplicação Web",
-                "title-3": "Sistema Educacional",
-                "desc-3": "WebApp de horários escolares (CMT XVIII 2026) com atualização dinâmica via Google Planilhas, organização por turnos Matutino e Vespertino, visual limpo e responsivo, leitura rápida por dia da semana e experiência aplicativo com instalação em Android e iOS, funcionando como app direto na tela inicial.",
-                "tag-4": "Site Empresarial",
-                "title-4": "Site Institucional",
-                "desc-4": "Projeto de website institucional e comercial para a ElyFitness, desenvolvido com foco em performance, UX e conversão. A solução inclui página da academia, planos, galeria interativa, localização integrada, contato via WhatsApp e loja dinâmica conectada ao Google Sheets, com busca, filtros, ordenação, promoções e paginação, site totalmente responsivo.",
-                "tag-5": "Aplicação Web",
-                "title-5": "Simulador Salarial",
-                "desc-5": "Desenvolvido para o SINPROESEMMA de Alto Alegre do Pindaré - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
-                "tag-6": "Aplicação Web",
-                "title-6": "Simulador Salarial",
-                "desc-6": "Desenvolvido para o SINPROESEMMA de Humberto de Campos - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
-                "tag-7": "Aplicação Web",
-                "title-7": "Simulador Salarial",
-                "desc-7": "Desenvolvido para o SINPROESEMMA de Nova Olinda do Maranhão - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
-                "tag-8": "Aplicação Web",
-                "title-8": "Simulador Salarial",
-                "desc-8": "Desenvolvido para o SINPROESEMMA de Pindaré Mirim - MA, esta página simula, com clareza, o salário líquido de professores. O sistema calcula vencimento base, anuênios, formação continuada, dependentes, desconto sindical, previdência e IRRF (regra 2026), exibindo cada etapa do cálculo. É uma solução web prática para consulta rápida e transparência financeira.",
-                "tag-9": "Site Empresarial",
-                "title-9": "Projeto 09 - Presença Digital",
-                "desc-9": "Website institucional para empresa, com apresentação de serviços, equipe e formulário de contato.",
-                "tag-10": "Portfólio",
-                "title-10": "Projeto 10 - Portfólio Criativo",
-                "desc-10": "Modelo de portfólio com foco em apresentação visual de trabalhos e experiência fluida de navegação.",
-                "tag-11": "Aplicação Web",
-                "title-11": "Projeto 11 - Agenda Online",
-                "desc-11": "Aplicação para agendamentos com calendário, horários disponíveis e confirmação de atendimento.",
-                "tag-12": "Dashboard",
-                "title-12": "Projeto 12 - Relatórios e Métricas",
-                "desc-12": "Painel para análise de indicadores com cartões, tabelas e gráficos para tomada de decisão.",
-                "demo-0": "Visualizar",
-                "demo-1": "Visualizar",
-                "demo-2": "Visualizar",
-                "demo-3": "Visualizar",
-                "demo-4": "Visualizar",
-                "demo-5": "Visualizar",
-                "demo-6": "Visualizar",
-                "demo-7": "Visualizar",
-                "demo-8": "Visualizar",
-                "demo-9": "Visualizar",
-                "demo-10": "Visualizar",
-                "demo-11": "Visualizar",
-                "demo-12": "Visualizar",
-                "visit-0": "Visitar site",
-                "visit-1": "Visitar site",
-                "visit-2": "Visitar site",
-                "visit-3": "Visitar site",
-                "visit-4": "Visitar site",
-                "visit-5": "Visitar site",
-                "visit-6": "Visitar site",
-                "visit-7": "Visitar site",
-                "visit-8": "Visitar site",
-                "visit-9": "Visitar site",
-                "visit-10": "Visitar site",
-                "visit-11": "Visitar site",
-                "visit-12": "Visitar site",
-                "footer-text": "© 2026 ∴ Antonio Batysta"
-            },
-            en: {
-                "page-title": "Portfolio and Projects",
-                "page-subtitle": "A selection of my latest work in Web Design and web development.",
-                "btn-back": "⬅ Back to Home",
-                "tag-0": "Android App",
-                "title-0": "DNS Changer",
-                "desc-0": "Android app for local DNS control (Android 9.0+). Uses a local VPN to apply DNS policies without routing traffic through a remote server. Supports DNS by IP, DNS over TLS (DoT), and DNS over HTTPS (DoH), app filtering, and offers official APK distribution with secure updates. Total focus on privacy with local processing.",
-                "tag-1": "Institutional Website / Blog",
-                "title-1": "Institutional Page",
-                "desc-1": "The SINPROESEMMA website - Alto Alegre do Pindare - MA gathers key services and information for teachers in one place: local and state news, union agenda, category rights, 2026 salary table, career plan, salary calculator based on 2026 IRRF, plus agreements and WhatsApp contact. All in a modern, responsive, easy-access layout.",
-                "tag-2": "Institutional Website",
-                "title-2": "Institutional Website",
-                "desc-2": "The Maktub Hotel website was redesigned with a focus on digital presence and conversion: premium look, responsive layout, gallery with modal and arrow navigation, reservation form integrated with WhatsApp, SEO with Open Graph and favicon, plus image optimization for better performance. A complete web revamp and user experience project.",
-                "tag-3": "Web Application",
-                "title-3": "Educational System",
-                "desc-3": "School schedule web app (CMT XVIII 2026) with dynamic updates via Google Sheets, morning and afternoon shifts, clean responsive design, quick day-by-day reading, and app-like experience with Android and iOS installation, working directly from the home screen.",
-                "tag-4": "Business Website",
-                "title-4": "Institutional Website",
-                "desc-4": "Institutional and commercial website project for ElyFitness, built with focus on performance, UX, and conversion. The solution includes gym page, plans, interactive gallery, integrated location, WhatsApp contact, and dynamic store connected to Google Sheets with search, filters, sorting, promotions, and pagination, fully responsive.",
-                "tag-5": "Web Application",
-                "title-5": "Salary Simulator",
-                "desc-5": "Developed for SINPROESEMMA in Alto Alegre do Pindare - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
-                "tag-6": "Web Application",
-                "title-6": "Salary Simulator",
-                "desc-6": "Developed for SINPROESEMMA in Humberto de Campos - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
-                "tag-7": "Web Application",
-                "title-7": "Salary Simulator",
-                "desc-7": "Developed for SINPROESEMMA in Nova Olinda do Maranhao - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
-                "tag-8": "Web Application",
-                "title-8": "Salary Simulator",
-                "desc-8": "Developed for SINPROESEMMA in Pindare Mirim - MA, this page clearly simulates teachers net salary. The system calculates base salary, seniority bonuses, continuing education, dependents, union discount, social security, and IRRF (2026 rules), showing each calculation step. A practical web solution for quick consultation and financial transparency.",
-                "tag-9": "Business Website",
-                "title-9": "Project 09 - Digital Presence",
-                "desc-9": "Corporate website presenting services, team, and contact form for lead generation.",
-                "tag-10": "Portfolio",
-                "title-10": "Project 10 - Creative Portfolio",
-                "desc-10": "Portfolio template focused on visual work presentation and smooth navigation.",
-                "tag-11": "Web Application",
-                "title-11": "Project 11 - Online Schedule",
-                "desc-11": "Scheduling app with calendar, available slots, and booking confirmation.",
-                "tag-12": "Dashboard",
-                "title-12": "Project 12 - Reports and Metrics",
-                "desc-12": "Metrics dashboard with cards, tables, and charts to support decision-making.",
-                "demo-0": "View",
-                "demo-1": "View",
-                "demo-2": "View",
-                "demo-3": "View",
-                "demo-4": "View",
-                "demo-5": "View",
-                "demo-6": "View",
-                "demo-7": "View",
-                "demo-8": "View",
-                "demo-9": "View Image",
-                "demo-10": "View Image",
-                "demo-11": "View Image",
-                "demo-12": "View Image",
-                "visit-0": "Visit Site",
-                "visit-1": "Visit Site",
-                "visit-2": "Visit Site",
-                "visit-3": "Visit Site",
-                "visit-4": "Visit Site",
-                "visit-5": "Visit Site",
-                "visit-6": "Visit Site",
-                "visit-7": "Visit Site",
-                "visit-8": "Visit Site",
-                "visit-9": "Visit Site",
-                "visit-10": "Visit Site",
-                "visit-11": "Visit Site",
-                "visit-12": "Visit Site",
-                "footer-text": "© 2026 ∴ Antonio Batysta"
-            }
-        };
+    <noscript>
+        <p style="text-align:center;padding:2rem;color:#333;">Este site requer JavaScript habilitado para funcionar corretamente.</p>
+    </noscript>
 
-        function setLanguage(lang) {
-            document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-            const sourceTexts = translations[lang];
-
-            Object.keys(sourceTexts).forEach((id) => {
-                const element = document.getElementById(id);
-                if (element) element.textContent = sourceTexts[id];
-            });
-
-            const buttons = document.querySelectorAll(".lang-btn");
-            buttons.forEach((btn) => btn.classList.remove("active"));
-            if (lang === "pt") {
-                buttons[0].classList.add("active");
-                buttons[0].setAttribute("aria-pressed", "true");
-                buttons[1].setAttribute("aria-pressed", "false");
-            } else {
-                buttons[1].classList.add("active");
-                buttons[1].setAttribute("aria-pressed", "true");
-                buttons[0].setAttribute("aria-pressed", "false");
-            }
-        }
-
-        const imageModal = document.getElementById("image-modal");
-        const modalImage = document.getElementById("modal-image");
-        const closeModalButton = document.getElementById("close-modal");
-        let lastFocusedElement = null;
-
-        function openImageModal(url) {
-            lastFocusedElement = document.activeElement;
-            modalImage.src = url;
-            imageModal.classList.add("open");
-            imageModal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-            closeModalButton.focus();
-        }
-
-        function closeImageModal() {
-            imageModal.classList.remove("open");
-            imageModal.setAttribute("aria-hidden", "true");
-            modalImage.src = "";
-            document.body.style.overflow = "";
-            if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-                lastFocusedElement.focus();
-            }
-        }
-
-        document.querySelectorAll(".project-thumb, .demo").forEach((el) => {
-            el.addEventListener("click", (event) => {
-                event.preventDefault();
-                openImageModal(el.getAttribute("href"));
-            });
-        });
-
-        closeModalButton.addEventListener("click", closeImageModal);
-
-        imageModal.addEventListener("click", (event) => {
-            if (event.target === imageModal) closeImageModal();
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape" && imageModal.classList.contains("open")) {
-                closeImageModal();
-            }
-        });
-
-        setLanguage("pt");
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>

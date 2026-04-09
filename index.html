@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Antonio Batysta - Professor de Matemática & Web Designer</title>
 
     <meta name="description" content="Perfil profissional de Antonio Batysta. Professor de Matemática com vasta experiência na educação pública e Web Designer com background técnico em TI e Redes.">
     <meta name="keywords" content="Antonio Batysta, Professor de Matemática, Web Design, Educação, TI, Hardware, Redes, Currículo, Portfólio, Batysta">
     <meta name="author" content="Antonio Batysta">
     <meta name="robots" content="index, follow">
-    
+
     <link rel="canonical" href="https://batysta.com/">
-    <!-- <link rel="icon" href="https://www.bitcoin.com/favicon-32x32.png" type="image/png"/> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🆎</text></svg>">
+    <link rel="stylesheet" href="style.css">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Antonio Batysta - Professor & Web Designer">
@@ -21,261 +20,55 @@
     <meta property="og:url" content="https://batysta.com/">
     <meta property="og:site_name" content="Antonio Batysta">
     <meta property="og:locale" content="pt_BR">
-    
-    <meta property="og:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.png">
+    <meta property="og:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Antonio Batysta - Professor & Web Designer">
     <meta name="twitter:description" content="Acesse meu cartão digital. Matemática, Educação e Tecnologia.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.png">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.webp">
 
     <meta name="theme-color" content="#2c3e50">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #2ecc71;
-            --card-bg: #ffffff;
-            --text-color: #333;
-        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            background-color: var(--card-bg);
-            width: 100%;
-            max-width: 650px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            overflow: hidden;
-            text-align: center;
-            padding-bottom: 30px;
-            position: relative;
-        }
-
-        .lang-switch {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            opacity: 1.0;
-            transition: opacity 0.3s, transform 0.2s;
-            padding: 0 5px;
-        }
-
-        .lang-btn:hover {
-            transform: scale(1.5);
-        }
-
-        .lang-btn.active {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        .lang-btn:focus-visible,
-        .link-btn:focus-visible {
-            outline: 3px solid #fdbb2d;
-            outline-offset: 3px;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            height: 130px;
-            position: relative;
-        }
-
-        .profile-pic {
-            width: 130px;
-            height: 130px;
-            background-color: #ddd;
-            border-radius: 50%;
-            border: 5px solid var(--card-bg);
-            position: absolute;
-            bottom: -65px;
-            left: 50%;
-            transform: translateX(-50%);
-            /* INSIRA SUA FOTO AQUI */
-            background-image: url('img/profile.png'); 
-            background-size: cover;
-            background-position: center;
-        }
-
-        .content {
-            margin-top: 75px;
-            padding: 0 25px;
-        }
-
-        h1 {
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .bio {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 25px;
-            text-align: justify;
-            text-align-last: center;
-        }
-
-        .skills-section h3 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            color: #888;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-
-        .skill-tag {
-            background-color: #f1f3f5;
-            color: var(--primary-color);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid #e1e4e8;
-            transition: transform 0.2s;
-        }
-
-        .skill-tag:hover {
-            transform: scale(1.05);
-            background-color: #e2e6ea;
-        }
-
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .link-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            filter: brightness(1.1);
-        }
-
-        .icon { margin-right: 10px; font-size: 1.1rem; }
-
-        .footer {
-            margin-top: 35px;
-            font-size: 0.75rem;
-            color: #aaa;
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 650px;
-            }
-
-            .links-container {
-                align-items: center;
-            }
-
-            .links-container .link-btn {
-                width: 400px;
-                max-width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Antonio Batysta",
+        "jobTitle": "Professor de Matemática & Web Designer",
+        "url": "https://batysta.com/",
+        "image": "https://raw.githubusercontent.com/batysta/card/refs/heads/main/img/profile.webp",
+        "sameAs": [
+            "https://www.instagram.com/mr.batysta"
+        ],
+        "knowsAbout": ["Mathematics", "Web Design", "Mobile Development", "IT", "Hardware", "Networking"]
+    }
+    </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <div class="container">
-        <div class="lang-switch">
-            <button type="button" class="lang-btn active" onclick="setLanguage('pt')" title="Português" aria-label="Mudar idioma para Português" aria-pressed="true">🇧🇷</button>
-            <button type="button" class="lang-btn" onclick="setLanguage('en')" title="English" aria-label="Switch language to English" aria-pressed="false">🇺🇸</button>
+    <div class="container home-container">
+        <div class="lang-switch" role="group" aria-label="Seleção de idioma">
+            <button type="button" class="lang-btn active" title="Português" aria-label="Mudar idioma para Português" aria-pressed="true">🇧🇷</button>
+            <button type="button" class="lang-btn" title="English" aria-label="Switch language to English" aria-pressed="false">🇺🇸</button>
         </div>
 
-        <div class="header">
+        <header class="header">
             <div class="profile-pic" role="img" aria-label="Foto de perfil de Antonio Batysta"></div>
-        </div>
+        </header>
 
-        <div class="content">
+        <main class="content" id="main-content">
             <h1>Antonio Batysta</h1>
-            
             <p class="subtitle" id="role">Professor de Matemática | Web Design</p>
 
             <div class="bio" id="bio">
                 Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong> e, mais recentemente, tenho me aventurado no campo do <strong>Desenvolvimento Mobile</strong>, refletindo um compromisso permanente com a aprendizagem contínua.
             </div>
 
-            <div class="skills-section">
-                <h3 id="skills-title">Habilidades & Interesses</h3>
+            <section class="skills-section" aria-labelledby="skills-title">
+                <h2 id="skills-title">Habilidades & Interesses</h2>
                 <div class="skills-container">
                     <span class="skill-tag" id="skill-math">📐 Matemática</span>
                     <span class="skill-tag" id="skill-web">💻 Web Design</span>
@@ -285,94 +78,33 @@
                     <span class="skill-tag" id="skill-acc">⚡ Tecnologia</span>
                     <span class="skill-tag" id="skill-eng">🇬🇧 Inglês</span>
                 </div>
-            </div>
+            </section>
 
-            <div class="links-container">
-                <a href="https://www.instagram.com/mr.batysta" target="_blank" rel="noopener noreferrer" class="link-btn" style="background-color: #E1306C;">
+            <nav class="links-container" aria-label="Links de contato e redes sociais">
+                <a href="https://www.instagram.com/mr.batysta" target="_blank" rel="noopener noreferrer" class="link-btn link-instagram">
                     <span class="icon">📸</span> Instagram
                 </a>
-                <a href="https://wa.me/5598984604488" target="_blank" rel="noopener noreferrer" class="link-btn" style="background-color: #25D366;">
+                <a href="https://wa.me/5598984604488" target="_blank" rel="noopener noreferrer" class="link-btn link-whatsapp">
                     <span class="icon">💬</span> WhatsApp
                 </a>
-                <a href="mailto:batysta.fx@gmail.com" class="link-btn" style="background-color: #ea4335;">
+                <a href="mailto:batysta.fx@gmail.com" class="link-btn link-email">
                     <span class="icon">✉️</span> E-mail
                 </a>
-                <a href="./portfolio.html" class="link-btn" style="background-color: #333;" id="btn-projects">
+                <a href="./portfolio.html" class="link-btn link-portfolio" id="btn-projects">
                     <span class="icon">🌐</span> Meus Projetos Web
                 </a>
-            </div>
+            </nav>
+        </main>
 
-            <div class="footer">
-                <p>&copy; 2026 ∴ Antonio Batysta</p>
-            </div>
-        </div>
+        <footer class="footer">
+            <p>&copy; <span id="year-home"></span> ∴ Antonio Batysta</p>
+        </footer>
     </div>
 
-    <script>
-        const translations = {
-            'pt': {
-                'role': 'Professor de Matemática | Web Design',
-                'bio': 'Atuando na educação pública desde 2005, dei início à minha trajetória profissional aos 19 anos. Minha formação acadêmica abrange graduações em <strong>Matemática e Ciências Contábeis</strong>, complementadas por uma <strong>Pós-Graduação em Docência e Práticas Pedagógicas</strong>. Para além do contexto acadêmico, possuo base técnica em <strong>Tecnologia da Informação, com expertise em montagem, manutenção e redes de computadores</strong>. Ademais, exploro o campo tecnológico por meio do <strong>Web Design</strong> e, mais recentemente, tenho me aventurado no campo do <strong>Desenvolvimento Mobile</strong>, refletindo um compromisso permanente com a aprendizagem contínua.',
-                'skills-title': 'Habilidades & Interesses',
-                'skill-math': '📐 Matemática',
-                'skill-web': '💻 Web Design',
-                'skill-mobile': '📱 Desenvolvimento Mobile',
-                'skill-teach': '🎓 Docência',
-                'skill-tech': '🔧 Hardware & Redes',
-                'skill-acc': '⚡ Tecnologia',
-                'skill-eng': '🇬🇧 Inglês',
-                'btn-projects': '<span class="icon">🌐</span> Meus Projetos Web'
-            },
-            'en': {
-                'role': 'Mathematics Teacher | Web Design',
-                'bio': 'With a tenure in public education beginning in 2005, I launched my professional trajectory at the age of 19. My credentials include undergraduate degrees in <strong>Mathematics and Accounting</strong>, alongside a <strong>Postgraduate Specialization in Teaching and Pedagogical Practices</strong>. Extending my scope beyond the academic setting, I possess a technical background in <strong>Information Technology, with expertise in computer assembly, maintenance, and networking</strong>. Furthermore, I delve into technology via <strong>Web Design</strong> and, more recently, I have been venturing into the field of <strong>Mobile Development</strong>, reflecting an enduring dedication to lifelong learning.',
-                'skills-title': 'Skills & Interests',
-                'skill-math': '📐 Mathematics',
-                'skill-web': '💻 Web Design',
-                'skill-mobile': '📱 Mobile Development',
-                'skill-teach': '🎓 Teaching',
-                'skill-tech': '🔧 Hardware & Networking',
-                'skill-acc': '⚡ Technology',
-                'skill-eng': '🇬🇧 English / 🇧🇷 Portuguese',
-                'btn-projects': '<span class="icon">🌐</span> My Web Projects'
-            }
-        };
+    <noscript>
+        <p style="text-align:center;padding:2rem;color:#333;">Este site requer JavaScript habilitado para funcionar corretamente.</p>
+    </noscript>
 
-        function setLanguage(lang) {
-            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
-            document.getElementById('role').innerText = translations[lang]['role'];
-            document.getElementById('bio').innerHTML = translations[lang]['bio'];
-            document.getElementById('skills-title').innerText = translations[lang]['skills-title'];
-            document.getElementById('skill-math').innerText = translations[lang]['skill-math'];
-            document.getElementById('skill-web').innerText = translations[lang]['skill-web'];
-            document.getElementById('skill-mobile').innerText = translations[lang]['skill-mobile'];
-            document.getElementById('skill-tech').innerText = translations[lang]['skill-tech'];
-            document.getElementById('skill-acc').innerText = translations[lang]['skill-acc'];
-            document.getElementById('skill-teach').innerText = translations[lang]['skill-teach'];
-            document.getElementById('skill-eng').innerText = translations[lang]['skill-eng'];
-            document.getElementById('btn-projects').innerHTML = translations[lang]['btn-projects'];
-
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            if(lang === 'pt') {
-                buttons[0].classList.add('active');
-                buttons[0].setAttribute('aria-pressed', 'true');
-                buttons[1].setAttribute('aria-pressed', 'false');
-            } else {
-                buttons[1].classList.add('active');
-                buttons[1].setAttribute('aria-pressed', 'true');
-                buttons[0].setAttribute('aria-pressed', 'false');
-            }
-        }
-
-        setLanguage('pt');
-    </script>
-
+    <script src="script.js" defer></script>
 </body>
-
 </html>
-
-
-
-
