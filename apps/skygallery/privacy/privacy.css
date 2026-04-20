@@ -128,7 +128,7 @@ h1 {
     flex-wrap: wrap;
     gap: 12px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin: 18px 0 24px;
 }
 
@@ -156,14 +156,6 @@ h1 {
     background: var(--accent-strong);
     border-color: var(--accent-strong);
     color: #f5f1e9;
-}
-
-.callout {
-    padding: 14px 16px;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    background: var(--panel);
-    color: var(--muted);
 }
 
 .policy {
